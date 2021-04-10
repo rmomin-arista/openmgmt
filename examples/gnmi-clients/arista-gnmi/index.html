@@ -1,0 +1,2407 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
+    
+    
+      
+        <title>Arista gNMI client examples - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.33e2939f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gnmi-get-rpc-examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arista gNMI client examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/" class="md-nav__link">
+        Device Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        examples
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Ansible
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Ansible" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ansible
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/" class="md-nav__link">
+        Ansible playbook example demo
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        Gnmi clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Gnmi clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gnmi clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3_1">
+        Arista gnmi
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Arista gnmi" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Arista gnmi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Arista gNMI client examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Arista gNMI client examples
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-get-rpc-examples" class="md-nav__link">
+    gNMI GET RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI GET RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-information" class="md-nav__link">
+    Get all information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-bgp-configuration-in-the-default-vrf" class="md-nav__link">
+    Get the BGP configuration in the default VRF
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the BGP configuration in the default VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-bgp-neighbors" class="md-nav__link">
+    Get BGP neighbors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-interface-descriptions" class="md-nav__link">
+    Get all interface descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-description" class="md-nav__link">
+    Get an interface's description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-operational-status-of-all-interfaces" class="md-nav__link">
+    Get the operational status of all interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the operational status of all interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-states-of-an-interface" class="md-nav__link">
+    Get all states of an interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-operational-status" class="md-nav__link">
+    Get an interface's operational status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-admin-status" class="md-nav__link">
+    Get an interface's admin status
+  </a>
+  
+    <nav class="md-nav" aria-label="Get an interface's admin status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-dom-metrics-of-all-interfaces" class="md-nav__link">
+    Get the DOM metrics of all interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-dom-metrics-of-an-interface" class="md-nav__link">
+    Get the DOM metrics of an interface
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the DOM metrics of an interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-per-core-cpu-utilization" class="md-nav__link">
+    Get per core CPU utilization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-availableutilized-memory" class="md-nav__link">
+    Get the available/utilized memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-system-environment-temperatures" class="md-nav__link">
+    Get the system environment temperatures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eos-native-paths" class="md-nav__link">
+    EOS Native paths
+  </a>
+  
+    <nav class="md-nav" aria-label="EOS Native paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonly-used-paths" class="md-nav__link">
+    Commonly used paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Commonly used paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-cpu-utilization" class="md-nav__link">
+    Get CPU utilization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transceiver-dom-temperature" class="md-nav__link">
+    Get transceiver DOM temperature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-connectivity-monitor-host-stats" class="md-nav__link">
+    Get connectivity monitor host stats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-set-rpc-examples" class="md-nav__link">
+    gNMI SET RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI SET RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths_1" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-bgp-neighbor" class="md-nav__link">
+    Configure BGP neighbor
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure BGP neighbor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-neighbor-address-and-peer-as" class="md-nav__link">
+    Configure neighbor address and peer AS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-neighbor-address-peer-as-and-send-community" class="md-nav__link">
+    Configure neighbor address, peer AS and send-community
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-peer-group" class="md-nav__link">
+    Create peer group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-peer-as" class="md-nav__link">
+    Update the peer AS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-peer-group" class="md-nav__link">
+    Update the peer group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-bgp-config-using-json-file" class="md-nav__link">
+    Update BGP config using json file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-acl" class="md-nav__link">
+    Create an ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shutdown-an-interface" class="md-nav__link">
+    Shutdown an interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bring-up-an-interface" class="md-nav__link">
+    Bring up an interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-subscribe-rpc-examples" class="md-nav__link">
+    gNMI SUBSCRIBE RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI SUBSCRIBE RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths_2" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-to-all-bgp-neighbor-states" class="md-nav__link">
+    Subscribe to all BGP neighbor states
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-to-specific-bgp-neighbor-state" class="md-nav__link">
+    Subscribe to specific BGP neighbor state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-with-stream-mode-sample-and-interval" class="md-nav__link">
+    Subscribe with stream mode sample and interval
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_2" type="checkbox" id="__nav_3_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_3_2">
+        Gnmic
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Gnmic" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gnmic
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnmic/" class="md-nav__link">
+        gNMIC examples
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        Gnmi gateway
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Gnmi gateway" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Gnmi gateway
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gnmi-gateway/" class="md-nav__link">
+        gNMI-Gateway
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      <label class="md-nav__link" for="__nav_3_5">
+        Golang
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Golang" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Golang
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/" class="md-nav__link">
+        golang
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      <label class="md-nav__link" for="__nav_3_6">
+        Python
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        python
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../models/" class="md-nav__link">
+        Device Models
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Protocols
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Protocols" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Protocols
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../protocols/" class="md-nav__link">
+        Management Protocols
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Telemetry
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Telemetry" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Telemetry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../telemetry/" class="md-nav__link">
+        Device Telemetry
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-get-rpc-examples" class="md-nav__link">
+    gNMI GET RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI GET RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-information" class="md-nav__link">
+    Get all information
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-bgp-configuration-in-the-default-vrf" class="md-nav__link">
+    Get the BGP configuration in the default VRF
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the BGP configuration in the default VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-bgp-neighbors" class="md-nav__link">
+    Get BGP neighbors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-all-interface-descriptions" class="md-nav__link">
+    Get all interface descriptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-description" class="md-nav__link">
+    Get an interface's description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-operational-status-of-all-interfaces" class="md-nav__link">
+    Get the operational status of all interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the operational status of all interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-all-states-of-an-interface" class="md-nav__link">
+    Get all states of an interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-operational-status" class="md-nav__link">
+    Get an interface's operational status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-an-interfaces-admin-status" class="md-nav__link">
+    Get an interface's admin status
+  </a>
+  
+    <nav class="md-nav" aria-label="Get an interface's admin status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-dom-metrics-of-all-interfaces" class="md-nav__link">
+    Get the DOM metrics of all interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-dom-metrics-of-an-interface" class="md-nav__link">
+    Get the DOM metrics of an interface
+  </a>
+  
+    <nav class="md-nav" aria-label="Get the DOM metrics of an interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-per-core-cpu-utilization" class="md-nav__link">
+    Get per core CPU utilization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-availableutilized-memory" class="md-nav__link">
+    Get the available/utilized memory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-the-system-environment-temperatures" class="md-nav__link">
+    Get the system environment temperatures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eos-native-paths" class="md-nav__link">
+    EOS Native paths
+  </a>
+  
+    <nav class="md-nav" aria-label="EOS Native paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commonly-used-paths" class="md-nav__link">
+    Commonly used paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Commonly used paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-cpu-utilization" class="md-nav__link">
+    Get CPU utilization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-transceiver-dom-temperature" class="md-nav__link">
+    Get transceiver DOM temperature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-connectivity-monitor-host-stats" class="md-nav__link">
+    Get connectivity monitor host stats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-set-rpc-examples" class="md-nav__link">
+    gNMI SET RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI SET RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths_1" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-bgp-neighbor" class="md-nav__link">
+    Configure BGP neighbor
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure BGP neighbor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-neighbor-address-and-peer-as" class="md-nav__link">
+    Configure neighbor address and peer AS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-neighbor-address-peer-as-and-send-community" class="md-nav__link">
+    Configure neighbor address, peer AS and send-community
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-peer-group" class="md-nav__link">
+    Create peer group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-peer-as" class="md-nav__link">
+    Update the peer AS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-peer-group" class="md-nav__link">
+    Update the peer group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-bgp-config-using-json-file" class="md-nav__link">
+    Update BGP config using json file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-an-acl" class="md-nav__link">
+    Create an ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shutdown-an-interface" class="md-nav__link">
+    Shutdown an interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bring-up-an-interface" class="md-nav__link">
+    Bring up an interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-subscribe-rpc-examples" class="md-nav__link">
+    gNMI SUBSCRIBE RPC Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMI SUBSCRIBE RPC Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openconfig-paths_2" class="md-nav__link">
+    OpenConfig paths
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-to-all-bgp-neighbor-states" class="md-nav__link">
+    Subscribe to all BGP neighbor states
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-to-specific-bgp-neighbor-state" class="md-nav__link">
+    Subscribe to specific BGP neighbor state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribe-with-stream-mode-sample-and-interval" class="md-nav__link">
+    Subscribe with stream mode sample and interval
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Arista gNMI client examples</h1>
+                
+                <h2 id="gnmi-get-rpc-examples">gNMI GET RPC Examples</h2>
+<h3 id="openconfig-paths">OpenConfig paths</h3>
+<h4 id="get-all-information">Get all information</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista get /
+</code></pre>
+<h4 id="get-the-bgp-configuration-in-the-default-vrf">Get the BGP configuration in the default VRF</h4>
+<pre><code class="language-shell">gnmi -addr 172.28.160.219:6030 -username admin -password arista get \
+  '/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp'`
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp:
+{
+  &quot;openconfig-network-instance:global&quot;: {
+ &quot;confederation&quot;: {
+   &quot;config&quot;: {
+     &quot;identifier&quot;: 0
+   },
+   &quot;state&quot;: {p
+     &quot;identifier&quot;: 0
+   }
+ },
+ &quot;config&quot;: {
+   &quot;as&quot;: 4206000022,
+   &quot;router-id&quot;: &quot;0.0.0.0&quot;
+ },
+ &quot;default-route-distance&quot;: {
+   &quot;config&quot;: {
+     &quot;external-route-distance&quot;: 200,
+     &quot;internal-route-distance&quot;: 200
+   },
+   &quot;state&quot;: {
+     &quot;external-route-distance&quot;: 200,
+     &quot;internal-route-distance&quot;: 200
+   }
+ },
+ &quot;graceful-restart&quot;: {
+   &quot;config&quot;: {
+     &quot;restart-time&quot;: 0
+   },
+   &quot;state&quot;: {
+     &quot;restart-time&quot;: 0
+   }
+ },
+ &quot;route-selection-options&quot;: {
+   &quot;config&quot;: {},
+   &quot;state&quot;: {}
+ },
+ &quot;state&quot;: {
+   &quot;as&quot;: 4206000022,
+   &quot;router-id&quot;: &quot;4.4.4.4&quot;
+ }
+  },
+  &quot;openconfig-network-instance:neighbors&quot;: {
+ &quot;neighbor&quot;: [
+   {
+     &quot;afi-safis&quot;: {
+       &quot;afi-safi&quot;: [
+         {
+           &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+           &quot;config&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           },
+           &quot;graceful-restart&quot;: {
+             &quot;config&quot;: {
+               &quot;enabled&quot;: false
+             },
+             &quot;state&quot;: {
+               &quot;enabled&quot;: false
+             }
+           },
+           &quot;state&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           }
+         },
+         {
+           &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+           &quot;config&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           },
+           &quot;graceful-restart&quot;: {
+             &quot;config&quot;: {
+               &quot;enabled&quot;: false
+             },
+             &quot;state&quot;: {
+               &quot;enabled&quot;: false
+             }
+           },
+           &quot;state&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           }
+         }
+       ]
+     },
+     &quot;config&quot;: {
+       &quot;auth-password&quot;: &quot;&quot;,
+       &quot;description&quot;: &quot;&quot;,
+       &quot;local-as&quot;: 0,
+       &quot;neighbor-address&quot;: &quot;3.4.5.6&quot;,
+       &quot;peer-as&quot;: 1,
+       &quot;send-community&quot;: &quot;NONE&quot;
+     },
+     &quot;ebgp-multihop&quot;: {
+       &quot;config&quot;: {
+         &quot;multihop-ttl&quot;: 0
+       },
+       &quot;state&quot;: {
+         &quot;multihop-ttl&quot;: 0
+       }
+     },
+     &quot;neighbor-address&quot;: &quot;3.4.5.6&quot;,
+     &quot;route-reflector&quot;: {
+       &quot;config&quot;: {
+         &quot;route-reflector-client&quot;: false
+       },
+       &quot;state&quot;: {
+         &quot;route-reflector-client&quot;: false
+       }
+     },
+     &quot;state&quot;: {
+       &quot;auth-password&quot;: &quot;&quot;,
+       &quot;description&quot;: &quot;&quot;,
+       &quot;local-as&quot;: 0,
+       &quot;peer-as&quot;: 1,
+       &quot;send-community&quot;: &quot;NONE&quot;
+     },
+     &quot;timers&quot;: {
+       &quot;config&quot;: {
+         &quot;hold-time&quot;: &quot;180.0&quot;,
+         &quot;keepalive-interval&quot;: &quot;60.0&quot;
+       },
+       &quot;state&quot;: {
+         &quot;hold-time&quot;: &quot;180.0&quot;,
+         &quot;keepalive-interval&quot;: &quot;60.0&quot;
+       }
+     },
+     &quot;transport&quot;: {
+       &quot;config&quot;: {
+         &quot;passive-mode&quot;: false
+       },
+       &quot;state&quot;: {
+         &quot;passive-mode&quot;: false
+       }
+     }
+   },
+   {
+     &quot;afi-safis&quot;: {
+       &quot;afi-safi&quot;: [
+         {
+           &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+           &quot;config&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           },
+           &quot;graceful-restart&quot;: {
+             &quot;config&quot;: {
+               &quot;enabled&quot;: false
+             },
+             &quot;state&quot;: {
+               &quot;enabled&quot;: false
+             }
+           },
+           &quot;state&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV4_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           }
+         },
+         {
+           &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+           &quot;config&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           },
+           &quot;graceful-restart&quot;: {
+             &quot;config&quot;: {
+               &quot;enabled&quot;: false
+             },
+             &quot;state&quot;: {
+               &quot;enabled&quot;: false
+             }
+           },
+           &quot;state&quot;: {
+             &quot;afi-safi-name&quot;: &quot;IPV6_UNICAST&quot;,
+             &quot;enabled&quot;: false
+           }
+         }
+       ]
+     },
+     &quot;config&quot;: {
+       &quot;auth-password&quot;: &quot;&quot;,
+       &quot;description&quot;: &quot;&quot;,
+       &quot;local-as&quot;: 0,
+       &quot;neighbor-address&quot;: &quot;20.1.1.1&quot;,
+       &quot;peer-as&quot;: 65001,
+       &quot;send-community&quot;: &quot;NONE&quot;
+     },
+     &quot;ebgp-multihop&quot;: {
+       &quot;config&quot;: {
+         &quot;multihop-ttl&quot;: 0
+       },
+       &quot;state&quot;: {
+         &quot;multihop-ttl&quot;: 0
+       }
+     },
+     &quot;neighbor-address&quot;: &quot;20.1.1.1&quot;,
+     &quot;route-reflector&quot;: {
+       &quot;config&quot;: {
+         &quot;route-reflector-client&quot;: false
+       },
+       &quot;state&quot;: {
+         &quot;route-reflector-client&quot;: false
+       }
+     },
+     &quot;state&quot;: {
+       &quot;auth-password&quot;: &quot;&quot;,
+       &quot;description&quot;: &quot;&quot;,
+       &quot;local-as&quot;: 0,
+       &quot;peer-as&quot;: 65001,
+       &quot;send-community&quot;: &quot;NONE&quot;
+     },
+     &quot;timers&quot;: {
+       &quot;config&quot;: {
+         &quot;hold-time&quot;: &quot;180.0&quot;,
+         &quot;keepalive-interval&quot;: &quot;60.0&quot;
+       },
+       &quot;state&quot;: {
+         &quot;hold-time&quot;: &quot;180.0&quot;,
+         &quot;keepalive-interval&quot;: &quot;60.0&quot;
+       }
+     },
+     &quot;transport&quot;: {
+       &quot;config&quot;: {
+         &quot;passive-mode&quot;: false
+       },
+       &quot;state&quot;: {
+         &quot;passive-mode&quot;: false
+       }
+     }
+   }
+ ]
+  }
+</code></pre>
+
+
+</p>
+</details>
+
+<h5 id="get-bgp-neighbors">Get BGP neighbors</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139 -username admin get \
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors'
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">
+/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors:
+{
+  &quot;openconfig-network-instance:neighbor&quot;: [
+    {
+      &quot;afi-safis&quot;: {
+        &quot;afi-safi&quot;: [
+          {
+            &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV6_UNICAST&quot;,
+            &quot;config&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV6_UNICAST&quot;
+            },
+            &quot;state&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV6_UNICAST&quot;,
+              &quot;prefixes&quot;: {
+                &quot;arista-bgp-augments:best-ecmp-paths&quot;: 0,
+                &quot;arista-bgp-augments:best-paths&quot;: 0,
+                &quot;installed&quot;: 0,
+                &quot;received&quot;: 0,
+                &quot;sent&quot;: 0
+              }
+            }
+          },
+          {
+            &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:L2VPN_EVPN&quot;,
+            &quot;config&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:L2VPN_EVPN&quot;
+            },
+            &quot;state&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:L2VPN_EVPN&quot;,
+              &quot;prefixes&quot;: {
+                &quot;arista-bgp-augments:best-ecmp-paths&quot;: 0,
+                &quot;arista-bgp-augments:best-paths&quot;: 0,
+                &quot;installed&quot;: 0,
+                &quot;received&quot;: 0,
+                &quot;sent&quot;: 0
+              }
+            }
+          },
+          {
+            &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV4_UNICAST&quot;,
+            &quot;config&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV4_UNICAST&quot;
+            },
+            &quot;state&quot;: {
+              &quot;afi-safi-name&quot;: &quot;openconfig-bgp-types:IPV4_UNICAST&quot;,
+              &quot;prefixes&quot;: {
+                &quot;arista-bgp-augments:best-ecmp-paths&quot;: 0,
+                &quot;arista-bgp-augments:best-paths&quot;: 0,
+                &quot;installed&quot;: 0,
+                &quot;received&quot;: 0,
+                &quot;sent&quot;: 0
+              }
+            }
+          }
+        ]
+      },
+      &quot;apply-policy&quot;: {
+        &quot;config&quot;: {
+          &quot;default-export-policy&quot;: &quot;REJECT_ROUTE&quot;,
+          &quot;default-import-policy&quot;: &quot;REJECT_ROUTE&quot;
+        },
+        &quot;state&quot;: {
+          &quot;default-export-policy&quot;: &quot;REJECT_ROUTE&quot;,
+          &quot;default-import-policy&quot;: &quot;REJECT_ROUTE&quot;
+        }
+      },
+      &quot;as-path-options&quot;: {
+        &quot;config&quot;: {
+          &quot;replace-peer-as&quot;: false
+        },
+        &quot;state&quot;: {
+          &quot;replace-peer-as&quot;: false
+        }
+      },
+      &quot;config&quot;: {
+        &quot;enabled&quot;: true,
+        &quot;neighbor-address&quot;: &quot;172.168.14.2&quot;,
+        &quot;peer-as&quot;: 65002,
+        &quot;send-community&quot;: &quot;NONE&quot;
+      },
+      &quot;ebgp-multihop&quot;: {
+        &quot;config&quot;: {
+          &quot;enabled&quot;: false,
+          &quot;multihop-ttl&quot;: 0
+        },
+        &quot;state&quot;: {
+          &quot;enabled&quot;: false,
+          &quot;multihop-ttl&quot;: 0
+        }
+      },
+      &quot;neighbor-address&quot;: &quot;172.168.14.2&quot;,
+      &quot;state&quot;: {
+        &quot;enabled&quot;: true,
+        &quot;established-transitions&quot;: &quot;2&quot;,
+        &quot;last-established&quot;: &quot;1614170027122047488&quot;,
+        &quot;messages&quot;: {
+          &quot;received&quot;: {
+            &quot;UPDATE&quot;: &quot;2&quot;
+          },
+          &quot;sent&quot;: {
+            &quot;UPDATE&quot;: &quot;2&quot;
+          }
+        },
+        &quot;neighbor-address&quot;: &quot;172.168.14.2&quot;,
+        &quot;peer-as&quot;: 65002,
+        &quot;send-community&quot;: &quot;NONE&quot;,
+        &quot;session-state&quot;: &quot;ESTABLISHED&quot;
+      },
+      &quot;transport&quot;: {
+        &quot;config&quot;: {
+          &quot;mtu-discovery&quot;: true
+        },
+        &quot;state&quot;: {
+          &quot;mtu-discovery&quot;: true,
+          &quot;remote-address&quot;: &quot;172.168.14.2&quot;,
+          &quot;remote-port&quot;: 0
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h4 id="get-all-interface-descriptions">Get all interface descriptions</h4>
+<p><code>gnmi -addr 10.83.13.139:6030 -username admin -password arista get '/interfaces/interface/subinterfaces/subinterface/state/description'</code></p>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet3]/subinterfaces/subinterface[index=0]/state/description:
+SRV01
+/interfaces/interface[name=Ethernet1]/subinterfaces/subinterface[index=0]/state/description:
+DCI
+/interfaces/interface[name=Ethernet2]/subinterfaces/subinterface[index=0]/state/description:
+To Spines
+</code></pre>
+<h4 id="get-an-interfaces-description">Get an interface's description</h4>
+<pre><code class="language-shell">./gnmi -addr 10.81.117.100:6030 -username admin -password arista get \
+  'interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface/state/description'
+</code></pre>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface[index=0]/state/description:
+&quot;Tyrion&quot;
+</code></pre>
+<h4 id="get-the-operational-status-of-all-interfaces">Get the operational status of all interfaces</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista get \
+  'interfaces/interface/state/oper-status'`
+</code></pre>
+<h5 id="get-all-states-of-an-interface">Get all states of an interface</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  'interfaces/interface[name=Ethernet24]/state/'`
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">/interfaces/interface[name=Ethernet24]/state:
+{
+  &quot;openconfig-interfaces:admin-status&quot;: &quot;UP&quot;,
+  &quot;openconfig-interfaces:counters&quot;: {
+    &quot;in-broadcast-pkts&quot;: &quot;1&quot;,
+    &quot;in-discards&quot;: &quot;0&quot;,
+    &quot;in-errors&quot;: &quot;0&quot;,
+    &quot;in-fcs-errors&quot;: &quot;0&quot;,
+    &quot;in-multicast-pkts&quot;: &quot;70143&quot;,
+    &quot;in-octets&quot;: &quot;570132503174&quot;,
+    &quot;in-unicast-pkts&quot;: &quot;376128549&quot;,
+    &quot;out-broadcast-pkts&quot;: &quot;2&quot;,
+    &quot;out-discards&quot;: &quot;0&quot;,
+    &quot;out-errors&quot;: &quot;0&quot;,
+    &quot;out-multicast-pkts&quot;: &quot;169207&quot;,
+    &quot;out-octets&quot;: &quot;569979193348&quot;,
+    &quot;out-unicast-pkts&quot;: &quot;376049116&quot;
+  },
+  &quot;openconfig-interfaces:description&quot;: &quot;&quot;,
+  &quot;openconfig-interfaces:enabled&quot;: true,
+  &quot;openconfig-platform-port:hardware-port&quot;: &quot;Port24&quot;,
+  &quot;openconfig-interfaces:ifindex&quot;: 24,
+  &quot;arista-intf-augments:inactive&quot;: false,
+  &quot;openconfig-interfaces:last-change&quot;: &quot;1614001155863084032&quot;,
+  &quot;openconfig-interfaces:loopback-mode&quot;: false,
+  &quot;openconfig-interfaces:mtu&quot;: 0,
+  &quot;openconfig-interfaces:name&quot;: &quot;Ethernet24&quot;,
+  &quot;openconfig-interfaces:oper-status&quot;: &quot;UP&quot;,
+  &quot;openconfig-vlan:tpid&quot;: &quot;openconfig-vlan-types:TPID_0X8100&quot;,
+  &quot;openconfig-interfaces:type&quot;: &quot;iana-if-type:ethernetCsmacd&quot;
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h4 id="get-an-interfaces-operational-status">Get an interface's operational status</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  'interfaces/interface[name=Ethernet24]/state/oper-status'
+</code></pre>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/oper-status:
+UP
+</code></pre>
+<h4 id="get-an-interfaces-admin-status">Get an interface's admin status</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  'interfaces/interface[name=Ethernet24]/state/admin-status'`
+</code></pre>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/admin-status:
+UP
+</code></pre>
+<h5 id="get-the-dom-metrics-of-all-interfaces">Get the DOM metrics of all interfaces</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  &quot;components/component/transceiver/physical-channels/channel/state/&quot;
+</code></pre>
+<h4 id="get-the-dom-metrics-of-an-interface">Get the DOM metrics of an interface</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  &quot;components/component[name=Ethernet24  transceiver]/transceiver/physical-channels/channel/state/&quot;
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">/components/component[name=Ethernet24 transceiver]/transceiver/physical-channels/channel[index=0]/state:
+{
+  &quot;openconfig-platform-transceiver:index&quot;: 0,
+  &quot;openconfig-platform-transceiver:input-power&quot;: {
+    &quot;instant&quot;: &quot;-0.26&quot;
+  },
+  &quot;openconfig-platform-transceiver:laser-bias-current&quot;: {
+    &quot;instant&quot;: &quot;7.49&quot;
+  },
+  &quot;openconfig-platform-transceiver:output-power&quot;: {
+    &quot;instant&quot;: &quot;0.32&quot;
+  }
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h5 id="get-per-core-cpu-utilization">Get per core CPU utilization</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  'components/component/cpu'
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">/components/component[name=CPU3]/cpu:
+{
+  &quot;openconfig-platform-cpu:utilization&quot;: {
+    &quot;state&quot;: {
+      &quot;avg&quot;: 18,
+      &quot;instant&quot;: 16,
+      &quot;interval&quot;: &quot;1000000000000&quot;,
+      &quot;max&quot;: 28,
+      &quot;max-time&quot;: &quot;3230106984172745216&quot;,
+      &quot;min&quot;: 13,
+      &quot;min-time&quot;: &quot;3230106514174602752&quot;
+    }
+  }
+}
+/components/component[name=CPU0]/cpu:
+{
+  &quot;openconfig-platform-cpu:utilization&quot;: {
+    &quot;state&quot;: {
+      &quot;avg&quot;: 17,
+      &quot;instant&quot;: 16,
+      &quot;interval&quot;: &quot;1000000000000&quot;,
+      &quot;max&quot;: 25,
+      &quot;max-time&quot;: &quot;3230106564173730816&quot;,
+      &quot;min&quot;: 12,
+      &quot;min-time&quot;: &quot;3230106394175068672&quot;
+    }
+  }
+}
+/components/component[name=CPU1]/cpu:
+{
+  &quot;openconfig-platform-cpu:utilization&quot;: {
+    &quot;state&quot;: {
+      &quot;avg&quot;: 18,
+      &quot;instant&quot;: 17,
+      &quot;interval&quot;: &quot;1000000000000&quot;,
+      &quot;max&quot;: 27,
+      &quot;max-time&quot;: &quot;3230107464174793728&quot;,
+      &quot;min&quot;: 13,
+      &quot;min-time&quot;: &quot;3230107334172570624&quot;
+    }
+  }
+}
+/components/component[name=CPU2]/cpu:
+{
+  &quot;openconfig-platform-cpu:utilization&quot;: {
+    &quot;state&quot;: {
+      &quot;avg&quot;: 17,
+      &quot;instant&quot;: 21,
+      &quot;interval&quot;: &quot;1000000000000&quot;,
+      &quot;max&quot;: 24,
+      &quot;max-time&quot;: &quot;3230106924173756928&quot;,
+      &quot;min&quot;: 11,
+      &quot;min-time&quot;: &quot;3230107394173572608&quot;
+    }
+  }
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h5 id="get-the-availableutilized-memory">Get the available/utilized memory</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+  'components/component/state/memory/'`
+</code></pre>
+<pre><code class="language-text">/components/component[name=Chassis]/state/memory:
+{
+  &quot;openconfig-platform:available&quot;: &quot;8298774528&quot;,
+  &quot;openconfig-platform:utilized&quot;: &quot;7706267648&quot;
+}
+</code></pre>
+<h5 id="get-the-system-environment-temperatures">Get the system environment temperatures</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
+   'components/component/state/temperature/instant'
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-text">/components/component[name=DomTemperatureSensor49]/state/temperature/instant:
+30.49609375
+/components/component[name=DomTemperatureSensor25]/state/temperature/instant:
+24.69921875
+/components/component[name=DomTemperatureSensor40]/state/temperature/instant:
+25.5078125
+/components/component[name=TempSensorP2/2]/state/temperature/instant:
+0.0
+/components/component[name=TempSensorP1/3]/state/temperature/instant:
+40.0
+/components/component[name=TempSensorP2/1]/state/temperature/instant:
+0.0
+/components/component[name=TempSensorP2/3]/state/temperature/instant:
+0.0
+/components/component[name=DomTemperatureSensor24]/state/temperature/instant:
+24.5
+/components/component[name=DomTemperatureSensor26]/state/temperature/instant:
+23.73046875
+/components/component[name=DomTemperatureSensor54]/state/temperature/instant:
+27.26953125
+/components/component[name=TempSensorP1/1]/state/temperature/instant:
+34.0
+/components/component[name=DomTemperatureSensor50]/state/temperature/instant:
+27.453125
+/components/component[name=TempSensorP1/2]/state/temperature/instant:
+25.0
+/components/component[name=TempSensor1]/state/temperature/instant:
+45.84278576588521
+/components/component[name=TempSensor15]/state/temperature/instant:
+33.875
+/components/component[name=TempSensor18]/state/temperature/instant:
+44.625
+/components/component[name=TempSensor16]/state/temperature/instant:
+22.75
+/components/component[name=TempSensor17]/state/temperature/instant:
+37.0
+/components/component[name=TempSensor14]/state/temperature/instant:
+37.0
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="eos-native-paths">EOS Native paths</h3>
+<p>To get EOS native paths, OCTA has to be enabled as mentioned in the
+configuration section. Performing GET/SUBSCRIBE actions using EOS native paths
+require changing the origin to <code>eos_native</code>.</p>
+<h4 id="commonly-used-paths">Commonly used paths</h4>
+<ul>
+<li>MAC table: <code>/Smash/bridging/status/smashFdbStatus</code></li>
+<li>ARP table: <code>/Smash/arp/status/arpEntry</code></li>
+<li>Neighbor table: <code>/Smash/arp/status/neighborEntry</code></li>
+<li>IPv4 RIB: <code>/Smash/routing/status/route</code></li>
+<li>IPv6 RIB: <code>/Smash/routing6/status/route</code></li>
+<li>IPv4 next-hop table: <code>/Smash/routing/status/nexthop</code></li>
+<li>IPv6 next-hop table: <code>/Smash/routing6/status/nexthop</code></li>
+<li>CPU info: <code>/Kernel/proc/cpu</code></li>
+<li>Process statistics: <code>/Kernel/proc/stat</code></li>
+<li>System info: <code>/Kernel/sysinfo</code></li>
+<li>EOS version: <code>/Eos/image</code></li>
+<li>Interface counters: <code>/Smash/counters/ethIntf/&lt;agent&gt;/current/counter</code></li>
+<li>Values for <code>&lt;agent&gt;</code> are:<ul>
+<li>7500-family, 7280-family, 7020-family (Arad/Jericho ASICs): <code>SandCounters</code></li>
+<li>7300-family, 7250-family, 7050-family, 7010 products, 720-family (Trident
+  ASICs): <code>StrataCounters</code></li>
+<li>For 7060-family, 7260-family (Tomahawk): <code>Strata-FixedSystem</code> or
+  <code>StrataCounters</code> from 4.22+</li>
+<li>7150-family products (Alta ASICs): <code>FocalPointV2</code></li>
+<li>7160-family products (Cavium/Xpliant ASICs): <code>XpCounters</code></li>
+<li>7170-family products (Barefoot ASIC): <code>BfnCounters</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="get-cpu-utilization">Get CPU utilization</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.130:6030 -username admin get origin=eos_native \
+  '/Kernel/proc/cpu/utilization/total'
+</code></pre>
+<pre><code class="language-text">/Kernel/proc/cpu/utilization/total/nice:
+38446
+/Kernel/proc/cpu/utilization/total/system:
+2347714
+/Kernel/proc/cpu/utilization/total/idle:
+247720286
+/Kernel/proc/cpu/utilization/total/name:
+total
+/Kernel/proc/cpu/utilization/total/util:
+7
+/Kernel/proc/cpu/utilization/total/user:
+16984784
+</code></pre>
+<h5 id="get-transceiver-dom-temperature">Get transceiver DOM temperature</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.130:6030 -username admin  get origin=eos_native \
+  'Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32'`
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-text">/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/temperature:
+{
+  &quot;value&quot;: 32.5
+}
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/maxTemperature:
+{
+  &quot;value&quot;: 34.88671875
+}
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/maxTemperatureTime:
+1564757444.339129
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/name:
+DomTemperatureSensor32
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/generationId:
+0
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/hwStatus:
+ok
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaised:
+false
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaisedCount:
+0
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/lastAlertRaisedTime:
+1564194739.259879
+</code></pre>
+
+
+</p>
+</details>
+
+<h5 id="get-connectivity-monitor-host-stats">Get connectivity monitor host stats</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin get origin=eos_native \ /Sysdb/connectivityMonitor/status/hostStatus/'
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-text">/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/key/hostName:
+wls100
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/key/vrfName:
+{
+  &quot;value&quot;: &quot;default&quot;
+}
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/name:
+wls100_default
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/packetLoss:
+0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/httpResponseTime:
+0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/interfaceName:
+
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/jitter:
+0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/latency:
+0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/ipAddr:
+&quot;10.83.13.140&quot;
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/key/hostName:
+ats323
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/key/vrfName:
+{
+  &quot;value&quot;: &quot;management&quot;
+}
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/name:
+ats323_management
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/ipAddr:
+&quot;10.83.13.138&quot;
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/latency:
+0.127
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/jitter:
+0.033
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/packetLoss:
+0
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/httpResponseTime:
+21.860306
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/interfaceName:
+</code></pre>
+
+
+</p>
+</details>
+
+<h2 id="gnmi-set-rpc-examples">gNMI SET RPC Examples</h2>
+<h3 id="openconfig-paths_1">OpenConfig paths</h3>
+<h4 id="configure-bgp-neighbor">Configure BGP neighbor</h4>
+<h5 id="configure-neighbor-address-and-peer-as">Configure neighbor address and peer AS</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra update \
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123}}'
+</code></pre>
+<h5 id="configure-neighbor-address-peer-as-and-send-community">Configure neighbor address, peer AS and send-community</h5>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123, &quot;enabled&quot;: true, &quot;send-community&quot;: &quot;EXTENDED&quot;}}'
+</code></pre>
+<h4 id="create-peer-group">Create peer group</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista update \
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/peer-groups/peer-group[peer-group-name=XYZ]' '{&quot;config&quot;: {&quot;peer-group-name&quot;:&quot;XYZ&quot;, &quot;local-as&quot;: 114}}'
+</code></pre>
+<h4 id="update-the-peer-as">Update the peer AS</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+
+'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]/config/peer-as' '110'
+</code></pre>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' '{&quot;config&quot;: {&quot;peer-as&quot;: 110}}'
+</code></pre>
+<h4 id="update-the-peer-group">Update the peer group</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]/config/peer-group' 'XYZ'
+</code></pre>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' '{&quot;config&quot;: {&quot;peer-group&quot;: &quot;XYZ&quot;,&quot;peer-as&quot;: 143}}'
+</code></pre>
+<h4 id="update-bgp-config-using-json-file">Update BGP config using json file</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
+  /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp'
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+    &quot;neighbors&quot;: {
+        &quot;neighbor&quot;: [
+            {
+                &quot;config&quot;: {
+                    &quot;enabled&quot;: true,
+                    &quot;neighbor-address&quot;: &quot;10.10.10.154&quot;,
+                    &quot;peer-group&quot;: &quot;XYZ&quot;
+                },
+                &quot;neighbor-address&quot;: &quot;10.10.10.154&quot;
+            },
+            {
+                &quot;config&quot;: {
+                    &quot;enabled&quot;: true,
+                    &quot;neighbor-address&quot;: &quot;10.10.10.157&quot;,
+                    &quot;peer-group&quot;: &quot;XYZ&quot;
+                },
+                &quot;neighbor-address&quot;: &quot;10.10.10.157&quot;
+            }
+        ]
+    },
+    &quot;peer-groups&quot;: {
+        &quot;peer-group&quot;: [
+            {
+                &quot;config&quot;: {
+                    &quot;peer-as&quot;: 65002,
+                    &quot;peer-group-name&quot;: &quot;ABC&quot;
+                },
+                &quot;peer-group-name&quot;: &quot;ABC&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h4 id="create-an-acl">Create an ACL</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username admin -password arista \
+  update /acl/acl-sets acl2.json`
+cat acl2.json
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+   &quot;acl-set&quot;: [
+      {
+         &quot;config&quot;: {
+            &quot;name&quot;: &quot;test&quot;,
+            &quot;type&quot;: &quot;ACL_IPV4&quot;
+         },
+         &quot;name&quot;: &quot;test&quot;,
+         &quot;type&quot;: &quot;ACL_IPV4&quot;,
+         &quot;acl-entries&quot;: {
+            &quot;acl-entry&quot;: [
+               {
+                  &quot;sequence-id&quot;: 10,
+                  &quot;actions&quot;: {
+                     &quot;config&quot;: {
+                        &quot;forwarding-action&quot;: &quot;DROP&quot;
+                     }
+                  },
+                  &quot;config&quot;: {
+                     &quot;sequence-id&quot;: 10
+                  },
+                  &quot;ipv4&quot;: {
+                     &quot;config&quot;: {
+                        &quot;destination-address&quot;: &quot;1.2.3.4/12&quot;,
+                        &quot;source-address&quot;: &quot;0.0.0.0/0&quot;
+                     }
+                  }
+               }
+            ]
+         }
+      }
+   ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<p>This creates</p>
+<pre><code class="language-text">ip access-list test
+   10 deny ip any 1.0.0.0/12
+</code></pre>
+<h4 id="shutdown-an-interface">Shutdown an interface</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista update \
+   '/interfaces/interface[name=Ethernet1]/config/enabled' 'false'
+</code></pre>
+<h4 id="bring-up-an-interface">Bring up an interface</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista update \
+  '/interfaces/interface[name=Ethernet1]/config/enabled' 'true'
+</code></pre>
+<h2 id="gnmi-subscribe-rpc-examples">gNMI SUBSCRIBE RPC Examples</h2>
+<h3 id="openconfig-paths_2">OpenConfig paths</h3>
+<h4 id="subscribe-to-all-bgp-neighbor-states">Subscribe to all BGP neighbor states</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista subscribe \
+  '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state'
+</code></pre>
+<h4 id="subscribe-to-specific-bgp-neighbor-state">Subscribe to specific BGP neighbor state</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista subscribe \
+  '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor[neighbor-address=10.10.10.5]/state'
+</code></pre>
+<h4 id="subscribe-with-stream-mode-sample-and-interval">Subscribe with stream mode sample and interval</h4>
+<pre><code class="language-shell">gnmi -addr 10.83.13.214:6030 -username admin -password arista \
+  -sample_interval 5s -stream_mode sample subscribe \
+  '/network-instances/network-instance[name=Tenant_A_WEB_Zone]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.255.251.1]/afi-safis/afi-safi[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST]/state/prefixes/received'
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../ansible/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Ansible playbook example demo
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../gnmic/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              gNMIC examples
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d892486b.min.js"></script>
+      
+    
+  </body>
+</html>
