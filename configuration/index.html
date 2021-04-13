@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.33e2939f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -174,7 +174,7 @@
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Introduction
+        Open Management
       </a>
     </li>
   
@@ -216,12 +216,168 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
-        
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Device Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Device Configuration
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openconfig" class="md-nav__link">
+    OpenConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform-compatibility" class="md-nav__link">
+    Platform compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnmi" class="md-nav__link">
+    GNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#octa" class="md-nav__link">
+    OCTA
+  </a>
+  
+    <nav class="md-nav" aria-label="OCTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-enable-octa" class="md-nav__link">
+    How to enable Octa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-models" class="md-nav__link">
+    API models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificate-based-authentication-for-gnmi" class="md-nav__link">
+    Certificate based authentication for gNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-example" class="md-nav__link">
+    Test example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netconf" class="md-nav__link">
+    NETCONF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restconf" class="md-nav__link">
+    RESTCONF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-changing-ports" class="md-nav__link">
+    A note on changing ports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-role-authorizations" class="md-nav__link">
+    RPC role authorizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-aft-mapping" class="md-nav__link">
+    Enable AFT mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-openconfig-paths" class="md-nav__link">
+    Supported OpenConfig paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-resources" class="md-nav__link">
+    References / Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -677,8 +833,152 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openconfig" class="md-nav__link">
+    OpenConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform-compatibility" class="md-nav__link">
+    Platform compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnmi" class="md-nav__link">
+    GNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#octa" class="md-nav__link">
+    OCTA
+  </a>
+  
+    <nav class="md-nav" aria-label="OCTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-enable-octa" class="md-nav__link">
+    How to enable Octa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-models" class="md-nav__link">
+    API models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certificate-based-authentication-for-gnmi" class="md-nav__link">
+    Certificate based authentication for gNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-example" class="md-nav__link">
+    Test example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netconf" class="md-nav__link">
+    NETCONF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restconf" class="md-nav__link">
+    RESTCONF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-changing-ports" class="md-nav__link">
+    A note on changing ports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpc-role-authorizations" class="md-nav__link">
+    RPC role authorizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-aft-mapping" class="md-nav__link">
+    Enable AFT mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-openconfig-paths" class="md-nav__link">
+    Supported OpenConfig paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-resources" class="md-nav__link">
+    References / Resources
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -690,6 +990,8 @@
             <article class="md-content__inner md-typeset">
               
                 
+                
+                  <h1>Device Configuration</h1>
                 
                 <ul>
 <li><a href="#Overview">Overview</a></li>
@@ -826,80 +1128,47 @@ provider sysdb
 <p>The following example shows how to create a Root CA cert and key, the server
 cert and key and the client cert and key.</p>
 <p>On the switch side:</p>
-<ol>
-<li>
-<p>Generate the private key for the CA:</p>
+<p>1. Generate the private key for the CA:</p>
 <p><code>openssl genrsa -out rootCA.key 2048</code></p>
-</li>
-<li>
-<p>Generate the CA certificate:</p>
+<p>2. Generate the CA certificate:</p>
 <p><code>openssl req -x509 -new -nodes -key rootCA.key -out rootCA.pem</code></p>
-</li>
-<li>
-<p>Generate the server key:</p>
+<p>3. Generate the server key:</p>
 <p><code>openssl genrsa -out gnmi_server.key 2048</code></p>
-</li>
-<li>
-<p>Generate the server's certificate signing request:</p>
+<p>4. Generate the server's certificate signing request:</p>
 <p><code>openssl req -new -key gnmi_server.key -out gnmi_server.csr</code></p>
-</li>
-<li>
-<p>Generate the server's cert:</p>
-<p><code>shell
-openssl x509 -req -in gnmi_server.csr -CA rootCA.pem -CAkey rootCA.key \
--CAcreateserial -out gnmi_server.crt`</code></p>
-</li>
-<li>
-<p>copy <code>rootCA.key</code> and <code>rootCA.pem</code> to the gNMI collector</p>
-</li>
-<li>
-<p>Exit from bash and copy <code>rootCA.key</code> and <code>gnmi_server.key</code> to sslkey
+<p>5. Generate the server's cert:</p>
+<pre><code class="language-shell">openssl x509 -req -in gnmi_server.csr -CA rootCA.pem -CAkey rootCA.key \
+-CAcreateserial -out gnmi_server.crt`
+</code></pre>
+<p>6. copy <code>rootCA.key</code> and <code>rootCA.pem</code> to the gNMI collector</p>
+<p>7. Exit from bash and copy <code>rootCA.key</code> and <code>gnmi_server.key</code> to sslkey
    directory. e.g.:</p>
 <p><code>copy flash:gnmi_server.key sslkey:</code>)</p>
-</li>
-<li>
-<p>copy <code>rootCA.pem</code> and  <code>gnmi_server.crt</code> to certificate directory, e.g.:</p>
+<p>8. copy <code>rootCA.pem</code> and  <code>gnmi_server.crt</code> to certificate directory, e.g.:</p>
 <p><code>copy  flash:scripts/rootCA.pem certificate:</code></p>
-</li>
-<li>
-<p>Create the SSL profile</p>
-<p><code>text
-management security
+<p>9. Create the SSL profile</p>
+<pre><code class="language-text">management security
    ssl profile gnmi
       certificate gnmi_server.crt key gnmi_server.key
-      trust certificate rootCA.pem</code></p>
-</li>
-<li>
-<p>Apply the profile</p>
-<p>```text
-management api gnmi
+      trust certificate rootCA.pem
+</code></pre>
+<p>10. Apply the profile</p>
+<pre><code class="language-text">management api gnmi
    transport grpc def
       ssl profile gnmi
-   provider eos-native</p>
-<p>```</p>
-</li>
-</ol>
+   provider eos-native
+</code></pre>
 <p>On the remote machine which runs the gNMI queries:</p>
-<ol>
-<li>
-<p>Generate the client key:</p>
+<p>1. Generate the client key:</p>
 <p><code>openssl genrsa -out gnmi_client.key 2048</code></p>
-</li>
-<li>
-<p>Generate the certificate signing request:</p>
+<p>2. Generate the certificate signing request:</p>
 <p><code>openssl req -new -key gnmi_client.key -out gnmi_client.csr</code></p>
-</li>
-<li>
-<p>Sign the cert and generate the .crt file:</p>
-<p><code>shell
-openssl x509 -req -in gnmi_client.csr -CA rootCA.pem -CAkey rootCA.key \
--CAcreateserial -out gnmi_client.crt</code></p>
-</li>
-<li>
-<p>Make sure that <code>rootCA.key</code> and <code>rootCA.pem</code> are in same directory as
+<p>3. Sign the cert and generate the .crt file:</p>
+<pre><code class="language-shell">openssl x509 -req -in gnmi_client.csr -CA rootCA.pem -CAkey rootCA.key \
+-CAcreateserial -out gnmi_client.crt
+</code></pre>
+<p>4. Make sure that <code>rootCA.key</code> and <code>rootCA.pem</code> are in same directory as
    <code>gnmi_client.key</code> and <code>gnmi_client.crt</code></p>
-</li>
-</ol>
 <h4 id="test-example">Test example</h4>
 <pre><code class="language-shell">gnmi -tls -addr 172.28.161.138:6030 -keyfile gnmi_client.key \
   -certfile gnmi_client.crt get '/interfaces/interface[name=*]/state/counters'
@@ -1003,12 +1272,9 @@ new one has to be created and applied under <code>system control-plane</code> (E
 or <code>control-plane</code> (pre-EOS <code>4.23</code>). The fastest way to do this is to clone the
 existing control-plane and add new permit rules.</p>
 <p>e.g.:</p>
-<ol>
-<li>
-<p>Reading the default CP ACL can be done with <code>show ip access-lists default-control-plane-acl</code></p>
-<p>```text</p>
-<h1 id="show-ip-access-lists-default-control-plane-acl">show ip access-lists default-control-plane-acl</h1>
-<p>IP Access List default-control-plane-acl [readonly]
+<p>1. Reading the default CP ACL can be done with <code>show ip access-lists default-control-plane-acl</code></p>
+<pre><code class="language-text">#show ip access-lists default-control-plane-acl
+IP Access List default-control-plane-acl [readonly]
         counters per-entry
         10 permit icmp any any [match 7172 packets, 1 day, 20:46:09 ago]
         20 permit ip any any tracked [match 98544013 packets, 0:00:36 ago]
@@ -1037,29 +1303,18 @@ existing control-plane and add new permit rules.</p>
         250 permit tcp any any eq 6040
         260 permit tcp any any eq 5541 ttl eq 255
         270 permit tcp any any eq 5542 ttl eq 255
-```</p>
-</li>
-<li>
-<p>There are multiple ways to quickly edit and remove the unnecessary match
-   outputs, in this example we'll use <code>sed</code> on EOS. Save the file to
-   <code>/mnt/flash</code>:</p>
+</code></pre>
+<p>2. There are multiple ways to quickly edit and remove the unnecessary match
+   outputs, in this example we'll use <code>sed</code> on EOS. Save the file to <code>/mnt/flash</code>:</p>
 <p><code>show ip access-lists  default-control-plane-acl | redirect flash:cpacl.txt</code></p>
-</li>
-<li>
-<p>Drop down to bash:</p>
-<p><code>#bash</code></p>
-</li>
-<li>
-<p>Go to /mnt/flash and remove the match outputs</p>
-<p><code>shell
-cd /mnt/flash
-sudo sed -i  "s/\[.*//g" cpacl.txt</code></p>
-</li>
-<li>
-<p>Reading the file now should be clean without all the match outputs like
+<p>3. Drop down to bash: <code>#bash</code></p>
+<p>4. Go to /mnt/flash and remove the match outputs</p>
+<pre><code class="language-shell">cd /mnt/flash
+sudo sed -i  &quot;s/\[.*//g&quot; cpacl.txt
+</code></pre>
+<p>5. Reading the file now should be clean without all the match outputs like
    below:</p>
-<p><code>text
-cat cpacl.txt
+<pre><code class="language-text">cat cpacl.txt
 IP Access List default-control-plane-acl
         counters per-entry
         10 permit icmp any any
@@ -1088,31 +1343,26 @@ IP Access List default-control-plane-acl
         240 permit rsvp any any
         250 permit tcp any any eq 6040
         260 permit tcp any any eq 5541 ttl eq 255
-        270 permit tcp any any eq 5542 ttl eq 255</code></p>
-</li>
-<li>
-<p>Now we can just copy that ACLs content into a new ACL, add our new rules and
+        270 permit tcp any any eq 5542 ttl eq 255
+</code></pre>
+<p>6. Now we can just copy that ACLs content into a new ACL, add our new rules and
    apply it on the control-plane</p>
-<p><code>text
-$ exit
+<pre><code class="language-text">$ exit
 logout
 (config)# ip access-list custom-cp
 (config)#
 &lt;paste the content of the default CP from the file created&gt;
-(config)# 280 permit tcp any any eq 5900</code></p>
-</li>
-<li>
-<p>Apply the new ACL</p>
+(config)# 280 permit tcp any any eq 5900
+</code></pre>
+<p>7. Apply the new ACL</p>
 <p>Default VRF</p>
-<p><code>text
-sysem control-plane
-   ip access-group custom-cp in</code></p>
+<pre><code class="language-text">sysem control-plane
+   ip access-group custom-cp in
+</code></pre>
 <p>Non-default VRF</p>
-<p><code>text
-sysem control-plane
-   ip access-group custom-cp vrf management in</code></p>
-</li>
-</ol>
+<pre><code class="language-text">sysem control-plane
+   ip access-group custom-cp vrf management in
+</code></pre>
 <h2 id="rpc-role-authorizations">RPC role authorizations</h2>
 <p>Starting in EOS <code>4.24.1F</code> it is possible to perform authorization of each RPC
 (i.e. GET, SET, SUBSCRIBE), if authorization requests is supplied as described
@@ -1169,20 +1419,19 @@ regular trace command. Here are a couple of examples:</p>
   modified by the incoming request. This happens if a config that is part of a
   certain mountpoint but not supported by OpenConfig is configured via CLI prior
   to the OpenConfig client update/merge/replace request is processed.</li>
-<li>
-<p>Below listed commands are the only QoS config commands that are supported</p>
-<p>```text
-class-map type qos match-any <cm name>
-    match vlan <vlan id></p>
-<p>policy-map type qos <pmap name>
-    class <cm name>
-        police cir <cir> bc <burst> kbytes
-    class class-default</p>
-<p>interface Ethernet<xx> | port-channel<yy>
-    service-policy type qos input <pmap name>
-```</p>
-</li>
+<li>Below listed commands are the only QoS config commands that are supported</li>
 </ul>
+<pre><code class="language-text">class-map type qos match-any &lt;cm name&gt;
+    match vlan &lt;vlan id&gt;
+
+policy-map type qos &lt;pmap name&gt;
+    class &lt;cm name&gt;
+        police cir &lt;cir&gt; bc &lt;burst&gt; kbytes
+    class class-default
+
+interface Ethernet&lt;xx&gt; | port-channel&lt;yy&gt;
+    service-policy type qos input &lt;pmap name&gt;
+</code></pre>
 <h2 id="supported-openconfig-paths">Supported OpenConfig paths</h2>
 <p>Please refer to the TOIs for the EOS releases to see the new list of paths
 supported per release.</p>
@@ -1222,7 +1471,7 @@ supported per release.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Introduction
+              Open Management
             </div>
           </div>
         </a>
@@ -1266,7 +1515,7 @@ supported per release.</p>
     <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d892486b.min.js"></script>
+      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
       
     
   </body>
