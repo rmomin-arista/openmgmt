@@ -9,21 +9,21 @@
       
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/protocols/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/configuration/restconf/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>Management Protocols - Open Management</title>
+        <title>RESTCONF Configuration - Open Management</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -70,7 +70,7 @@
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -89,7 +89,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Management Protocols
+              RESTCONF Configuration
             
           </span>
         </div>
@@ -169,7 +169,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -188,7 +188,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -201,12 +201,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Configuration
@@ -224,7 +226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/openconfig/" class="md-nav__link">
+      <a href="../openconfig/" class="md-nav__link">
         OpenConfig
       </a>
     </li>
@@ -236,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/netconf/" class="md-nav__link">
+      <a href="../netconf/" class="md-nav__link">
         NETCONF
       </a>
     </li>
@@ -246,11 +248,60 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../configuration/restconf/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RESTCONF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         RESTCONF
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restconf" class="md-nav__link">
+    RESTCONF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -260,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/mtls/" class="md-nav__link">
+      <a href="../mtls/" class="md-nav__link">
         Certificate Authentication
       </a>
     </li>
@@ -272,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/security/" class="md-nav__link">
+      <a href="../security/" class="md-nav__link">
         Security Configuration
       </a>
     </li>
@@ -314,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/ansible/" class="md-nav__link">
+      <a href="../../examples/ansible/" class="md-nav__link">
         Ansible
       </a>
     </li>
@@ -347,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
+      <a href="../../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
         gnmi (Arista)
       </a>
     </li>
@@ -359,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-clients/gnmic/" class="md-nav__link">
+      <a href="../../examples/gnmi-clients/gnmic/" class="md-nav__link">
         gnmic
       </a>
     </li>
@@ -377,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-gateway/" class="md-nav__link">
+      <a href="../../examples/gnmi-gateway/" class="md-nav__link">
         gNMI gateway
       </a>
     </li>
@@ -389,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/golang/" class="md-nav__link">
+      <a href="../../examples/golang/" class="md-nav__link">
         Go Lang
       </a>
     </li>
@@ -401,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/python/" class="md-nav__link">
+      <a href="../../examples/python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -442,47 +493,18 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-cli" class="md-nav__link">
-    ssh (CLI)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eapi" class="md-nav__link">
-    eAPI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc" class="md-nav__link">
-    gRPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netconf" class="md-nav__link">
-    NETCONF
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#restconf" class="md-nav__link">
     RESTCONF
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#references-resources" class="md-nav__link">
-    References / Resources
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -499,40 +521,55 @@
               
                 
                 
-                  <h1>Management Protocols</h1>
+                  <h1>RESTCONF</h1>
                 
                 <h2 id="overview">Overview</h2>
-<h2 id="ssh-cli">ssh (CLI)</h2>
-<h2 id="eapi">eAPI</h2>
-<h2 id="grpc">gRPC</h2>
-<p>gRPC is a Remote Procedure Call (RPC) framework that OpenConfig utilizes as a
-transport. Services built with gRPC are defined in <code>.proto</code> files. They describe
-the RPCs supported by the service and the data types exchanged in those RPCs.</p>
-<p>The OpenConfig group originally published
-<a href="https://github.com/openconfig/reference/blob/master/rpc/openconfig/openconfig.proto">openconfig.proto</a>,
-but have since deprecated it in favor of
-<a href="https://github.com/openconfig/reference/blob/master/rpc/gnmi">gnmi.proto</a>. The
-current EOS versions supports gnmi.proto v0.7 and includes support for Get,
-Subscribe, Set, and Capabilities RPCs.</p>
-<p>Note: Support for openconfig.proto was dropped in EOS-4.23.0F+.</p>
-<p>A client application is required to communicate with a gRPC service. A sample
-application can be found on the Arista GitHub account:
-<a href="https://github.com/aristanetworks/goarista/tree/master/cmd/gnmi">gnmi</a>. <code>gnmi</code>
-is a simple command-line client for gNMI written in Go that can be used for
-testing and prototyping.</p>
-<p>Another popular gnmi client is <a href="https://gnmic.kmrd.dev/">gnmic</a>.</p>
-<h2 id="netconf">NETCONF</h2>
-<p><a href="https://tools.ietf.org/html/rfc6241">NETCONF</a> provides mechanisms to install,
-manipulate and delete the configuration of network devices. It uses eXtensible
-Markup Language (XML) based data encoding for the configuration data as well as
-protocol messages. The NETCONF protocol operations are realized as RPCs over ssh
-transport.</p>
-<h2 id="restconf">RESTCONF</h2>
-<h2 id="references-resources">References / Resources</h2>
-<ul>
-<li>NETCONF RFC: <a href="https://tools.ietf.org/html/rfc6241">https://tools.ietf.org/html/rfc6241</a></li>
-<li>RESTCONF RFC: <a href="https://tools.ietf.org/html/rfc8040">https://tools.ietf.org/html/rfc8040</a></li>
-</ul>
+<p>EOS provides support for RESTCONF and the necessary transport services to support it.</p>
+<h3 id="restconf">RESTCONF</h3>
+<p>Certificate-based authentication is required for RESTCONF to operate.  You should follow the instructions in the
+<a href="/configuration/mtls.html">Certificate Authentication</a> section in order to generate and install a certificate to support
+RESTCONF in your environment.  Alternately, a self-signed certificate may be generated on the switch and certificate
+validation can be handled appropriately by remote RESTCONF clients.</p>
+<p>The following Cli command generates a self-signed cert:</p>
+<pre><code class="language-text">security pki certificate generate self-signed restconf.crt key restconf.key generate rsa 2048 parameters common-name restconf
+</code></pre>
+<p>Create ssl profile:</p>
+<pre><code class="language-text">management security
+   ssl profile restconf
+   certificate restconf.crt key restconf.key
+</code></pre>
+<p>Configure RESTCONF:</p>
+<p>Default VRF:</p>
+<pre><code class="language-text">management api restconf
+   transport https test
+   ssl profile restconf
+</code></pre>
+<p>Non-default VRF</p>
+<pre><code class="language-text">management api restconf
+   transport https test
+   ssl profile restconf
+   vrf management
+</code></pre>
+<p>Changing the port:</p>
+<pre><code class="language-text">management api restconf
+   transport https test
+      port 5900
+</code></pre>
+<p>Apply ACL</p>
+<pre><code class="language-text">management api restconf
+   transport https test
+      ip access-group ACCESS_GROUP
+</code></pre>
+<blockquote>
+<p>Note The ACL should be a standard ACL allowing hosts or subnets.</p>
+</blockquote>
+<p>Status check</p>
+<pre><code class="language-text">#show management api restconf
+Enabled:            Yes
+Server:             running on port 6020, in management VRF
+SSL Profile:        restconf
+QoS DSCP:           none
+</code></pre>
                 
                   
                 
@@ -550,6 +587,41 @@ transport.</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../netconf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NETCONF" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              NETCONF
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../mtls/" class="md-footer__link md-footer__link--next" aria-label="Next: Certificate Authentication" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Certificate Authentication
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -570,10 +642,10 @@ transport.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

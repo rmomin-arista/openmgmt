@@ -9,21 +9,21 @@
       
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/protocols/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/configuration/security/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>Management Protocols - Open Management</title>
+        <title>Securing Management Services - Open Management</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -70,7 +70,7 @@
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#changing-default-service-ports" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Management Protocols
+              Securing Management Services
             
           </span>
         </div>
@@ -169,7 +169,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -188,7 +188,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -201,12 +201,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Configuration
@@ -224,7 +226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/openconfig/" class="md-nav__link">
+      <a href="../openconfig/" class="md-nav__link">
         OpenConfig
       </a>
     </li>
@@ -236,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/netconf/" class="md-nav__link">
+      <a href="../netconf/" class="md-nav__link">
         NETCONF
       </a>
     </li>
@@ -248,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/restconf/" class="md-nav__link">
+      <a href="../restconf/" class="md-nav__link">
         RESTCONF
       </a>
     </li>
@@ -260,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/mtls/" class="md-nav__link">
+      <a href="../mtls/" class="md-nav__link">
         Certificate Authentication
       </a>
     </li>
@@ -270,11 +272,60 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../configuration/security/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Security Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Security Configuration
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changing-default-service-ports" class="md-nav__link">
+    Changing Default Service Ports
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing Default Service Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -314,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/ansible/" class="md-nav__link">
+      <a href="../../examples/ansible/" class="md-nav__link">
         Ansible
       </a>
     </li>
@@ -347,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
+      <a href="../../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
         gnmi (Arista)
       </a>
     </li>
@@ -359,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-clients/gnmic/" class="md-nav__link">
+      <a href="../../examples/gnmi-clients/gnmic/" class="md-nav__link">
         gnmic
       </a>
     </li>
@@ -377,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/gnmi-gateway/" class="md-nav__link">
+      <a href="../../examples/gnmi-gateway/" class="md-nav__link">
         gNMI gateway
       </a>
     </li>
@@ -389,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/golang/" class="md-nav__link">
+      <a href="../../examples/golang/" class="md-nav__link">
         Go Lang
       </a>
     </li>
@@ -401,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/python/" class="md-nav__link">
+      <a href="../../examples/python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -438,51 +489,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#changing-default-service-ports" class="md-nav__link">
+    Changing Default Service Ports
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing Default Service Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-cli" class="md-nav__link">
-    ssh (CLI)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eapi" class="md-nav__link">
-    eAPI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grpc" class="md-nav__link">
-    gRPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netconf" class="md-nav__link">
-    NETCONF
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restconf" class="md-nav__link">
-    RESTCONF
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references-resources" class="md-nav__link">
-    References / Resources
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -499,40 +521,104 @@
               
                 
                 
-                  <h1>Management Protocols</h1>
+                  <h1>Security Configuration</h1>
                 
-                <h2 id="overview">Overview</h2>
-<h2 id="ssh-cli">ssh (CLI)</h2>
-<h2 id="eapi">eAPI</h2>
-<h2 id="grpc">gRPC</h2>
-<p>gRPC is a Remote Procedure Call (RPC) framework that OpenConfig utilizes as a
-transport. Services built with gRPC are defined in <code>.proto</code> files. They describe
-the RPCs supported by the service and the data types exchanged in those RPCs.</p>
-<p>The OpenConfig group originally published
-<a href="https://github.com/openconfig/reference/blob/master/rpc/openconfig/openconfig.proto">openconfig.proto</a>,
-but have since deprecated it in favor of
-<a href="https://github.com/openconfig/reference/blob/master/rpc/gnmi">gnmi.proto</a>. The
-current EOS versions supports gnmi.proto v0.7 and includes support for Get,
-Subscribe, Set, and Capabilities RPCs.</p>
-<p>Note: Support for openconfig.proto was dropped in EOS-4.23.0F+.</p>
-<p>A client application is required to communicate with a gRPC service. A sample
-application can be found on the Arista GitHub account:
-<a href="https://github.com/aristanetworks/goarista/tree/master/cmd/gnmi">gnmi</a>. <code>gnmi</code>
-is a simple command-line client for gNMI written in Go that can be used for
-testing and prototyping.</p>
-<p>Another popular gnmi client is <a href="https://gnmic.kmrd.dev/">gnmic</a>.</p>
-<h2 id="netconf">NETCONF</h2>
-<p><a href="https://tools.ietf.org/html/rfc6241">NETCONF</a> provides mechanisms to install,
-manipulate and delete the configuration of network devices. It uses eXtensible
-Markup Language (XML) based data encoding for the configuration data as well as
-protocol messages. The NETCONF protocol operations are realized as RPCs over ssh
-transport.</p>
-<h2 id="restconf">RESTCONF</h2>
-<h2 id="references-resources">References / Resources</h2>
-<ul>
-<li>NETCONF RFC: <a href="https://tools.ietf.org/html/rfc6241">https://tools.ietf.org/html/rfc6241</a></li>
-<li>RESTCONF RFC: <a href="https://tools.ietf.org/html/rfc8040">https://tools.ietf.org/html/rfc8040</a></li>
-</ul>
+                <h2 id="changing-default-service-ports">Changing Default Service Ports</h2>
+<p>When changing the default ports one has to make sure they are also allowed in the control-plane ACL. The default
+control-plane ACL cannot be modified, so a new one has to be created and applied under <code>system control-plane</code> (EOS
+<code>4.23+</code>) or <code>control-plane</code> (pre-EOS <code>4.23</code>). The fastest way to do this is to clone the existing control-plane and add
+new permit rules.</p>
+<h3 id="example">Example</h3>
+<p>1. Reading the default CP ACL can be done with <code>show ip access-lists default-control-plane-acl</code></p>
+<pre><code class="language-text">#show ip access-lists default-control-plane-acl
+IP Access List default-control-plane-acl [readonly]
+        counters per-entry
+        10 permit icmp any any [match 7172 packets, 1 day, 20:46:09 ago]
+        20 permit ip any any tracked [match 98544013 packets, 0:00:36 ago]
+        30 permit udp any any eq bfd ttl eq 255
+        40 permit udp any any eq bfd-echo ttl eq 254
+        50 permit udp any any eq multihop-bfd
+        60 permit udp any any eq micro-bfd
+        70 permit udp any any eq sbfd
+        80 permit udp any eq sbfd any eq sbfd-initiator
+        90 permit ospf any any
+        100 permit tcp any any eq ssh telnet www snmp bgp https msdp ldp netconf-ssh gnmi [match 873 packets, 1 day, 20:43:39 ago]
+        110 permit udp any any eq bootps bootpc snmp rip ntp ldp [match 970 packets, 1:43:38 ago]
+        120 permit tcp any any eq mlag ttl eq 255
+        130 permit udp any any eq mlag ttl eq 255
+        140 permit vrrp any any
+        150 permit ahp any any
+        160 permit pim any any
+        170 permit igmp any any
+        180 permit tcp any any range 5900 5910
+        190 permit tcp any any range 50000 50100 [match 1480505 packets, 1 day, 20:43:16 ago]
+        200 permit udp any any range 51000 51100
+        210 permit tcp any any eq 3333
+        220 permit tcp any any eq nat ttl eq 255
+        230 permit tcp any eq bgp any
+        240 permit rsvp any any
+        250 permit tcp any any eq 6040
+        260 permit tcp any any eq 5541 ttl eq 255
+        270 permit tcp any any eq 5542 ttl eq 255
+</code></pre>
+<p>2. There are multiple ways to quickly edit and remove the unnecessary match
+   outputs, in this example we'll use <code>sed</code> on EOS. Save the file to <code>/mnt/flash</code>:</p>
+<p><code>show ip access-lists  default-control-plane-acl | redirect flash:cpacl.txt</code></p>
+<p>3. Enter bash: <code>#bash</code></p>
+<p>4. Go to <code>/mnt/flash</code> and remove the match outputs</p>
+<pre><code class="language-shell">cd /mnt/flash
+sudo sed -i  &quot;s/\[.*//g&quot; cpacl.txt
+</code></pre>
+<p>5. Reading the file now should be clean without all the match outputs like below:</p>
+<pre><code class="language-text">cat cpacl.txt
+IP Access List default-control-plane-acl
+        counters per-entry
+        10 permit icmp any any
+        20 permit ip any any tracked
+        30 permit udp any any eq bfd ttl eq 255
+        40 permit udp any any eq bfd-echo ttl eq 254
+        50 permit udp any any eq multihop-bfd
+        60 permit udp any any eq micro-bfd
+        70 permit udp any any eq sbfd
+        80 permit udp any eq sbfd any eq sbfd-initiator
+        90 permit ospf any any
+        100 permit tcp any any eq ssh telnet www snmp bgp https msdp ldp netconf-ssh gnmi
+        110 permit udp any any eq bootps bootpc snmp rip ntp ldp
+        120 permit tcp any any eq mlag ttl eq 255
+        130 permit udp any any eq mlag ttl eq 255
+        140 permit vrrp any any
+        150 permit ahp any any
+        160 permit pim any any
+        170 permit igmp any any
+        180 permit tcp any any range 5900 5910
+        190 permit tcp any any range 50000 50100
+        200 permit udp any any range 51000 51100
+        210 permit tcp any any eq 3333
+        220 permit tcp any any eq nat ttl eq 255
+        230 permit tcp any eq bgp any
+        240 permit rsvp any any
+        250 permit tcp any any eq 6040
+        260 permit tcp any any eq 5541 ttl eq 255
+        270 permit tcp any any eq 5542 ttl eq 255
+</code></pre>
+<p>6. Now we can just copy that ACLs content into a new ACL, add our new rules and
+   apply it on the control-plane</p>
+<pre><code class="language-text">$ exit
+logout
+(config)# ip access-list custom-cp
+(config)#
+&lt;paste the content of the default CP from the file created&gt;
+(config)# 280 permit tcp any any eq 5900
+</code></pre>
+<p>7. Apply the new ACL</p>
+<p>Default VRF</p>
+<pre><code class="language-text">system control-plane
+   ip access-group custom-cp in
+</code></pre>
+<p>Non-default VRF</p>
+<pre><code class="language-text">system control-plane
+   ip access-group custom-cp vrf management in
+</code></pre>
                 
                   
                 
@@ -550,6 +636,41 @@ transport.</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../mtls/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Certificate Authentication" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Certificate Authentication
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../examples/ansible/" class="md-footer__link md-footer__link--next" aria-label="Next: Ansible" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Ansible
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -570,10 +691,10 @@ transport.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

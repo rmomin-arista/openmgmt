@@ -1,0 +1,919 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/configuration/openconfig/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>OpenConfig Configuration - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-4V8W728SS9"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-4V8W728SS9",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V8W728SS9"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OpenConfig Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          OpenConfig
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        OpenConfig
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform-compatibility" class="md-nav__link">
+    Platform compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnmi" class="md-nav__link">
+    gNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#octa" class="md-nav__link">
+    OCTA
+  </a>
+  
+    <nav class="md-nav" aria-label="OCTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-enable-octa" class="md-nav__link">
+    How to enable Octa
+  </a>
+  
+    <nav class="md-nav" aria-label="How to enable Octa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-models" class="md-nav__link">
+    API models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-per-rpc-role-authorizations" class="md-nav__link">
+    gNMI per-RPC role authorizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-aft-mapping" class="md-nav__link">
+    Enable AFT mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-openconfig-paths" class="md-nav__link">
+    Supported OpenConfig paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-resources" class="md-nav__link">
+    References / Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netconf/" class="md-nav__link">
+        NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mtls/" class="md-nav__link">
+        Certificate Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        gNMI clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNMI clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          gNMI clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
+        gnmi (Arista)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/gnmi-clients/gnmic/" class="md-nav__link">
+        gnmic
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/gnmi-gateway/" class="md-nav__link">
+        gNMI gateway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform-compatibility" class="md-nav__link">
+    Platform compatibility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnmi" class="md-nav__link">
+    gNMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#octa" class="md-nav__link">
+    OCTA
+  </a>
+  
+    <nav class="md-nav" aria-label="OCTA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-enable-octa" class="md-nav__link">
+    How to enable Octa
+  </a>
+  
+    <nav class="md-nav" aria-label="How to enable Octa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-models" class="md-nav__link">
+    API models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmi-per-rpc-role-authorizations" class="md-nav__link">
+    gNMI per-RPC role authorizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enable-aft-mapping" class="md-nav__link">
+    Enable AFT mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    Limitations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-openconfig-paths" class="md-nav__link">
+    Supported OpenConfig paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-resources" class="md-nav__link">
+    References / Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>OpenConfig</h1>
+                
+                <h2 id="overview">Overview</h2>
+<p>EOS supports the OpenConfig gNMI interface for device management.</p>
+<h3 id="platform-compatibility">Platform compatibility</h3>
+<p>All EOS flavors support OpenConfig (phyiscal, virtual, containerized, cloud).</p>
+<h3 id="gnmi">gNMI</h3>
+<p>To start the gNMI server, which listens by default on TCP/6030 configure the gRPC transport under <code>management api gnmi</code>
+in the global config mode:</p>
+<p>Default VRF</p>
+<pre><code class="language-text">management api gnmi
+  transport grpc openmgmt
+</code></pre>
+<p>Non-default VRF</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc openmgmt
+     vrf management
+</code></pre>
+<p>Changing the port:</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc openmgmt
+      port 5900
+</code></pre>
+<p>Apply ACL</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc openmgmt
+      ip access-group ACCESS_GROUP
+</code></pre>
+<p>Note, the ACL should be a standard ACL allowing hosts or subnets.</p>
+<p>Authenticate the connection with TLS</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc openmgmt
+      ssl profile PROFILE
+</code></pre>
+<p>Enable authorization of incoming requests</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc openmgmt
+      authorization requests
+</code></pre>
+<p>Status check</p>
+<pre><code class="language-text">#show management api gnmi
+Octa:               No
+Enabled:            Yes
+Server:             running on port 6030, in default VRF
+SSL Profile:        none
+QoS DSCP:           none
+</code></pre>
+<h3 id="octa">OCTA</h3>
+<p>The OpenConfig agent (gNMI API) can leverage the EOS state streaming agent's (TerminAttr) libraries, thus exposing EOS
+native paths. If Octa (OpenConfig + TerminAttr) is enabled then OpenConfig, in addition to accepting OpenConfig paths in
+gNMI get/subscribe requests, will also support EOS native paths (e.g. Sysdb/Smash paths). This feature was introduced in
+<code>4.22.1F</code>.</p>
+<p>gNMI requests received by Octa are interpreted as either OpenConfig or TerminAttr requests, as follows.</p>
+<ul>
+<li>gNMI requests containing an origin of <code>eos_native</code> are processed as as native path requests.</li>
+<li>Requests lacking an origin of <code>eos_native</code> are treated as OpenConfig requests.</li>
+</ul>
+<p>A gNMI client that supports specification of an origin as part of the associated RPC is a requirement.</p>
+<p>Note support for sending GET/SUBSCRIBE requests to both an openconfig and an eos-native path in the same call is not yet
+supported.</p>
+<h4 id="how-to-enable-octa">How to enable Octa</h4>
+<p>Octa can be enable by adding <code>provider eos-native</code> under <code>management api gnmi</code></p>
+<p><code>SW(config-mgmt-api-gnmi)#provider eos-native</code></p>
+<p>Status check</p>
+<pre><code class="language-text">#show management api gnmi
+Octa:               enabled
+Enabled:            Yes
+Server:             running on port 6030, in default VRF
+SSL Profile:        none
+QoS DSCP:           none
+</code></pre>
+<h5 id="api-models">API models</h5>
+<p>Starting in EOS <code>4.24.0F</code> it is possible to configure the Smash paths that Octa has access to. Under the <code>management api
+models</code> mode, the provider smash sub-mode allows for enabling or disabling a Smash path with the <code>[no] path
+smash_path_here [disabled]</code> command.</p>
+<pre><code class="language-text">SW(config)#management api models
+SW(config-mgmt-api-models)#provider smash
+SW(config-provider-smash)#path forwarding/status
+SW(config-provider-smash)#path routing/status disabled
+SW(config-provider-smash)#path routing/isis/lsdb
+SW(config-provider-smash)#exit
+</code></pre>
+<p>Note that every time a new path is added the Octa agent has to be restarted.
+EOS CLI:</p>
+<pre><code class="language-text">(config)#management api gnmi
+(config-mgmt-api-gnmi)#transport grpc &lt;NAME&gt;
+(config-gnmi-transport-def)#shut
+(config-gnmi-transport-def)#no shut
+</code></pre>
+<p>Bash:
+<code>$ sudo killall Octa</code></p>
+<p><code>show management api models</code> will list the Smash paths enabled/disabled</p>
+<p>e.g.:</p>
+<pre><code class="language-text">#show management api models
+provider smash
+  path /Smash/bridging
+  path /Smash/forwarding/status
+  path /Smash/routing/isis/lsdb
+  path /Smash/routing
+  path /Smash/routing/status disabled
+provider sysdb
+</code></pre>
+<h2 id="gnmi-per-rpc-role-authorizations">gNMI per-RPC role authorizations</h2>
+<p>Starting in EOS <code>4.24.1F</code> it is possible to perform authorization of each RPC (i.e. GET, SET, SUBSCRIBE), if
+authorization requests is supplied as described above.</p>
+<p>During authorization, the OpenConfig agent will communicate with the AAA agent, allowing authorization policies or roles
+to permit or deny the new tokens OpenConfig.Get and OpenConfig.Set.</p>
+<p>For example, a role may be defined such as:</p>
+<pre><code class="language-text">role oc-read
+   10 permit command OpenConfig.Get
+</code></pre>
+<p>A user which is assigned to this role would be allowed to issue a gNMI GET or SUBSCRIBE request, but not a SET request.</p>
+<blockquote>
+<p>Note that this is only available for gNMI.</p>
+</blockquote>
+<h2 id="enable-aft-mapping">Enable AFT mapping</h2>
+<p>By default, mapping of the FIB (forwarding information base) to the OpenConfig AFT (abstract forwarding table) model is
+disabled, as the volume of data can be large.</p>
+<p>Starting in EOS <code>4.25.1F</code> it is possible to enable these mappings, for IPV4, IPV6, or both, as described below:</p>
+<pre><code class="language-text">management api models
+    ipv4-unicast
+    ipv6-unicast
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>The OpenConfig agent handles all transports described above: gNMI, RESTCONF, and
+NETCONF. The agent log file is present at <code>/var/log/agents/OpenConfig-{PID}</code>.
+Lines that begin with <code>E</code> are errors. Debug logging can be enabled with a
+regular trace command. Here are a couple of examples:</p>
+<p><code>(config)#trace OpenConfig setting server/9</code> - For server (gNMI) traces</p>
+<p><code>(config)#trace OpenConfig setting */9</code> - For all traces with verbose setting</p>
+<p>similarly if Octa is enabled:</p>
+<p><code>(config)#trace Octa setting server/9</code> - For server (gNMI) traces</p>
+<p><code>(config)#trace Octa setting */9</code> - For all traces with verbose setting</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>In EOS versions prior to <code>4.24.0F</code>, not all Smash paths were accessible via Octa.</li>
+<li>Starting in EOS <code>4.24.0F</code> configuring the Smash paths that Octa has access to will also affect OpenConfig. Enabling a
+  Smash path for Octa can result in extra YANG paths being populated in OpenConfig. Disabling a Smash path can result in
+  having some YANG paths missing in OpenConfig.</li>
+<li>The <code>%&lt;zone-id&gt;</code> optional suffix in YANG <code>ietf:ipv4-address</code>, and <code>ietf:ipv6-address</code> types are not supported.</li>
+<li>An OpenConfig client update/merge/replace request can erase config that is not modified by the incoming request. This
+  happens if a config that is part of a certain mount point but not supported by OpenConfig is configured via CLI prior
+  to the OpenConfig client update/merge/replace request is processed.</li>
+</ul>
+<h2 id="supported-openconfig-paths">Supported OpenConfig paths</h2>
+<p>Please refer to the <a href="https://eos.arista.com/toi/">EOS Central TOIs</a> to see the new list of paths supported per release.</p>
+<p>For convenience, supported paths may be found at: <a href="https://eos.arista.com/path-report">https://eos.arista.com/path-report</a>.</p>
+<h2 id="references-resources">References / Resources</h2>
+<ul>
+<li>The OpenConfig working group: <a href="http://openconfig.net/">http://openconfig.net/</a></li>
+<li>Repository of gNMI specifications: <a href="https://github.com/openconfig/reference/">https://github.com/openconfig/reference/</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../netconf/" class="md-footer__link md-footer__link--next" aria-label="Next: NETCONF" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              NETCONF
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>
