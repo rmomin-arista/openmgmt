@@ -407,18 +407,12 @@
     Get the BGP configuration in the default VRF
   </a>
   
-    <nav class="md-nav" aria-label="Get the BGP configuration in the default VRF">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#get-bgp-neighbors" class="md-nav__link">
     Get BGP neighbors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -842,18 +836,12 @@
     Get the BGP configuration in the default VRF
   </a>
   
-    <nav class="md-nav" aria-label="Get the BGP configuration in the default VRF">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#get-bgp-neighbors" class="md-nav__link">
     Get BGP neighbors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1426,7 +1414,7 @@
 </p>
 </details>
 
-<h5 id="get-bgp-neighbors">Get BGP neighbors</h5>
+<h4 id="get-bgp-neighbors">Get BGP neighbors</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.13.139 -username admin get \
   '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors'
 </code></pre>
@@ -1647,7 +1635,7 @@ UP
 </code></pre>
 <h4 id="get-the-dom-metrics-of-an-interface">Get the DOM metrics of an interface</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  &quot;components/component[name=Ethernet24  transceiver]/transceiver/physical-channels/channel/state/&quot;
+  &quot;components/component[name=Ethernet24 transceiver]/transceiver/physical-channels/channel/state/&quot;
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
@@ -1888,7 +1876,7 @@ false
 </details>
 
 <h5 id="get-connectivity-monitor-host-stats">Get connectivity monitor host stats</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin get origin=eos_native \ /Sysdb/connectivityMonitor/status/hostStatus/'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin get origin=eos_native '/Sysdb/connectivityMonitor/status/hostStatus/'
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
@@ -1971,7 +1959,7 @@ ats323_management
 </code></pre>
 <h4 id="update-bgp-config-using-json-file">Update BGP config using json file</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-  /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp'
+  /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp' bgp.json
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
