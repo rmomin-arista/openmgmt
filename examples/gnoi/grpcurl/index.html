@@ -1,0 +1,1124 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnoi/grpcurl/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>gRPCurl examples - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-4V8W728SS9"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-4V8W728SS9",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V8W728SS9"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about-grpc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              gRPCurl examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/openconfig/" class="md-nav__link">
+        OpenConfig
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/netconf/" class="md-nav__link">
+        NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/mtls/" class="md-nav__link">
+        Certificate Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/security/" class="md-nav__link">
+        Security Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        gNMI clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNMI clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          gNMI clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gnmi-clients/arista-gnmi/" class="md-nav__link">
+        gnmi (Arista)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gnmi-clients/gnmic/" class="md-nav__link">
+        gnmic
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gnmi-gateway/" class="md-nav__link">
+        gNMI gateway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        gNOI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNOI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          gNOI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnoic/" class="md-nav__link">
+        gNOIc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          gRPCurl
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        gRPCurl
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-grpc" class="md-nav__link">
+    About gRPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-gnoi" class="md-nav__link">
+    About gNOI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
+    About gNOI support on EOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grpcurl-overview" class="md-nav__link">
+    gRPCurl overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-grpcurl" class="md-nav__link">
+    Install gRPCurl
+  </a>
+  
+    <nav class="md-nav" aria-label="Install gRPCurl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-go" class="md-nav__link">
+    Install GO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-gnoi-repository" class="md-nav__link">
+    Get gNOI repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-grpcurl_1" class="md-nav__link">
+    Install gRPCurl
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-config" class="md-nav__link">
+    Device config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-grpcurl" class="md-nav__link">
+    Use gRPCurl
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gRPCurl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describe-from-a-proto-file" class="md-nav__link">
+    Describe from a proto file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    List
+  </a>
+  
+    <nav class="md-nav" aria-label="List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-from-a-proto-file" class="md-nav__link">
+    List from a proto file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-from-a-grpc-server-eos-device" class="md-nav__link">
+    List from a gRPC server (EOS device)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-gnoi-rpc-with-eos" class="md-nav__link">
+    Execute gNOI RPC with EOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-grpc" class="md-nav__link">
+    About gRPC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-gnoi" class="md-nav__link">
+    About gNOI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
+    About gNOI support on EOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grpcurl-overview" class="md-nav__link">
+    gRPCurl overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-grpcurl" class="md-nav__link">
+    Install gRPCurl
+  </a>
+  
+    <nav class="md-nav" aria-label="Install gRPCurl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-go" class="md-nav__link">
+    Install GO
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-gnoi-repository" class="md-nav__link">
+    Get gNOI repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-grpcurl_1" class="md-nav__link">
+    Install gRPCurl
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-config" class="md-nav__link">
+    Device config
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-grpcurl" class="md-nav__link">
+    Use gRPCurl
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gRPCurl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describe-from-a-proto-file" class="md-nav__link">
+    Describe from a proto file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    List
+  </a>
+  
+    <nav class="md-nav" aria-label="List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-from-a-proto-file" class="md-nav__link">
+    List from a proto file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-from-a-grpc-server-eos-device" class="md-nav__link">
+    List from a gRPC server (EOS device)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-gnoi-rpc-with-eos" class="md-nav__link">
+    Execute gNOI RPC with EOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>gRPCurl</h1>
+                
+                <h2 id="about-grpc">About gRPC</h2>
+<p>gRPC - Google Remote Procedure Call</p>
+<p>gRPC uses protobuf and HTTP/2</p>
+<h2 id="about-gnoi">About gNOI</h2>
+<p>gNOI - gRPC Network Operations Interface</p>
+<p>gNOI defines a set of gRPC-based microservices for executing operational commands on network devices.</p>
+<p>gNOI <a href="https://github.com/openconfig/gnoi">github repository</a></p>
+<p>As example, <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto">this gNOI proto file</a> defines the service <code>System</code> with the RPC <code>Traceroute</code> and <code>Ping</code></p>
+<ul>
+<li>Ping executes the ping command on the target and streams back the results</li>
+<li>Traceroute executes the traceroute command on the target and streams back the results</li>
+<li>As you can see in the proto file, the field VRF is not defined for these messages</li>
+</ul>
+<h2 id="about-gnoi-support-on-eos">About gNOI support on EOS</h2>
+<p>Please refer to this <a href="https://eos.arista.com/eos-4-24-2f/gnoi/">link</a> for the gNOI support by EOS.</p>
+<p>Examples:</p>
+<ul>
+<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-ping/">gnoi ping</a></li>
+<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-traceroute/">gnoi traceroute</a></li>
+</ul>
+<h2 id="grpcurl-overview">gRPCurl overview</h2>
+<p>gRPCurl is a command-line tool that lets you interact with gRPC servers:</p>
+<ul>
+<li><a href="https://github.com/fullstorydev/grpcurl">github repository</a></li>
+</ul>
+<p>The following examples shows various gRPCurl commands to interact with Arista EOS devices.</p>
+<h2 id="install-grpcurl">Install gRPCurl</h2>
+<h3 id="install-go">Install GO</h3>
+<pre><code class="language-shell">$ go version
+go version go1.16.4 linux/amd64
+</code></pre>
+<pre><code class="language-shell">$ go env | grep 'GOROOT\|GOPATH'
+</code></pre>
+<pre><code class="language-shell">$ export GOROOT=/usr/local/go
+$ export GOPATH=$HOME/go
+$ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+</code></pre>
+<h3 id="get-gnoi-repository">Get gNOI repository</h3>
+<pre><code class="language-shell">$ mkdir -p $GOPATH/src/github.com/openconfig
+$ git clone https://github.com/openconfig/gnoi.git $GOPATH/src/github.com/openconfig/gnoi
+</code></pre>
+<pre><code class="language-shell">$ ls $GOPATH/src/github.com/openconfig
+gnoi
+</code></pre>
+<h3 id="install-grpcurl_1">Install gRPCurl</h3>
+<pre><code class="language-shell">$ go get github.com/fullstorydev/grpcurl
+</code></pre>
+<pre><code class="language-shell">$ ls $GOPATH/pkg/mod/github.com/fullstorydev/
+grpcurl@v1.8.1
+</code></pre>
+<pre><code class="language-shell">$ go install github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+</code></pre>
+<pre><code class="language-shell">ls $GOPATH/bin/
+grpcurl
+</code></pre>
+<h2 id="device-config">Device config</h2>
+<pre><code class="language-shell">interface Management1
+   description oob_management
+   vrf MGMT
+   ip address 10.73.1.118/24
+
+username arista secret 0 arista
+
+management api gnmi
+   transport grpc def
+      vrf MGMT
+</code></pre>
+<pre><code class="language-shell">DC1-L2LEAF2A#show management api gnmi
+Enabled:            Yes
+Server:             running on port 6030, in MGMT VRF
+SSL Profile:        none
+QoS DSCP:           none
+DC1-L2LEAF2A#
+</code></pre>
+<p>Before to use gNOI ping and traceroute, lets run these commands locally:</p>
+<pre><code>$ ssh arista@10.73.1.118
+Password:
+Last login: Thu Jun  3 12:06:25 2021 from 10.73.1.3
+DC1-L2LEAF2A&gt;en
+DC1-L2LEAF2A#bash
+
+Arista Networks EOS shell
+
+[arista@DC1-L2LEAF2A ~]$ ping  172.31.255.0 -c 2
+PING 172.31.255.0 (172.31.255.0) 56(84) bytes of data.
+64 bytes from 172.31.255.0: icmp_seq=1 ttl=63 time=24.6 ms
+64 bytes from 172.31.255.0: icmp_seq=2 ttl=63 time=18.8 ms
+
+--- 172.31.255.0 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 18.861/21.738/24.616/2.881 ms
+[arista@DC1-L2LEAF2A ~]$
+[arista@DC1-L2LEAF2A ~]$ traceroute -A 172.31.255.0
+traceroute to 172.31.255.0 (172.31.255.0), 30 hops max, 60 byte packets
+ 1  10.90.90.1 (10.90.90.1) [!!]  26.636 ms  29.420 ms  32.113 ms
+ 2  172.31.255.0 (172.31.255.0) [!!]  52.764 ms  53.881 ms  63.213 ms
+[arista@DC1-L2LEAF2A ~]$
+[arista@DC1-L2LEAF2A ~]$ exit
+logout
+DC1-L2LEAF2A#exit
+Connection to 10.73.1.118 closed.
+</code></pre>
+<h2 id="use-grpcurl">Use gRPCurl</h2>
+<h3 id="describe-from-a-proto-file">Describe from a proto file</h3>
+<pre><code class="language-shell">$ grpcurl --plaintext  --import-path ${GOPATH}/src --proto github.com/openconfig/gnoi/system/system.proto  describe  gnoi.system.System.CancelReboot
+gnoi.system.System.CancelReboot is a method:
+// CancelReboot cancels any pending reboot request.
+rpc CancelReboot ( .gnoi.system.CancelRebootRequest ) returns ( .gnoi.system.CancelRebootResponse );
+</code></pre>
+<pre><code class="language-shell">$ grpcurl --plaintext  --import-path ${GOPATH}/src --proto github.com/openconfig/gnoi/system/system.proto  describe  gnoi.system.System
+gnoi.system.System is a service:
+// The gNOI service is a collection of operational RPC's that allow for the
+// management of a target outside of the configuration and telemetry pipeline.
+service System {
+  // CancelReboot cancels any pending reboot request.
+  rpc CancelReboot ( .gnoi.system.CancelRebootRequest ) returns ( .gnoi.system.CancelRebootResponse );
+  // Ping executes the ping command on the target and streams back
+  // the results.  Some targets may not stream any results until all
+  // results are in.  If a packet count is not explicitly provided,
+  // 5 is used.
+  rpc Ping ( .gnoi.system.PingRequest ) returns ( stream .gnoi.system.PingResponse );
+  // Reboot causes the target to reboot, possibly at some point in the future.
+  // If the method of reboot is not supported then the Reboot RPC will fail.
+  // If the reboot is immediate the command will block until the subcomponents
+  // have restarted.
+  // If a reboot on the active control processor is pending the service must
+  // reject all other reboot requests.
+  // If a reboot request for active control processor is initiated with other
+  // pending reboot requests it must be rejected.
+  rpc Reboot ( .gnoi.system.RebootRequest ) returns ( .gnoi.system.RebootResponse );
+  // RebootStatus returns the status of reboot for the target.
+  rpc RebootStatus ( .gnoi.system.RebootStatusRequest ) returns ( .gnoi.system.RebootStatusResponse );
+  // SetPackage places a software package (possibly including bootable images)
+  // on the target. The file is sent in sequential messages, each message
+  // up to 64KB of data. A final message must be sent that includes the hash
+  // of the data sent. An error is returned if the location does not exist or
+  // there is an error writing the data. If no checksum is received, the target
+  // must assume the operation is incomplete and remove the partially
+  // transmitted file. The target should initially write the file to a temporary
+  // location so a failure does not destroy the original file.
+  rpc SetPackage ( stream .gnoi.system.SetPackageRequest ) returns ( .gnoi.system.SetPackageResponse );
+  // SwitchControlProcessor will switch from the current route processor to the
+  // provided route processor. If the current route processor is the same as the
+  // one provided it is a NOOP. If the target does not exist an error is
+  // returned.
+  rpc SwitchControlProcessor ( .gnoi.system.SwitchControlProcessorRequest ) returns ( .gnoi.system.SwitchControlProcessorResponse );
+  // Time returns the current time on the target.  Time is typically used to
+  // test if a target is actually responding.
+  rpc Time ( .gnoi.system.TimeRequest ) returns ( .gnoi.system.TimeResponse );
+  // Traceroute executes the traceroute command on the target and streams back
+  // the results.  Some targets may not stream any results until all
+  // results are in.  If a hop count is not explicitly provided,
+  // 30 is used.
+  rpc Traceroute ( .gnoi.system.TracerouteRequest ) returns ( stream .gnoi.system.TracerouteResponse );
+}
+</code></pre>
+<h3 id="list">List</h3>
+<h4 id="list-from-a-proto-file">List from a proto file</h4>
+<pre><code class="language-shell">$ grpcurl --plaintext  --import-path ${GOPATH}/src --proto github.com/openconfig/gnoi/system/system.proto list
+gnoi.system.System
+</code></pre>
+<pre><code class="language-shell">$ grpcurl --plaintext  --import-path ${GOPATH}/src --proto github.com/openconfig/gnoi/system/system.proto list gnoi.system.System
+gnoi.system.System.CancelReboot
+gnoi.system.System.Ping
+gnoi.system.System.Reboot
+gnoi.system.System.RebootStatus
+gnoi.system.System.SetPackage
+gnoi.system.System.SwitchControlProcessor
+gnoi.system.System.Time
+gnoi.system.System.Traceroute
+</code></pre>
+<pre><code class="language-shell">$ grpcurl --plaintext  --import-path ${GOPATH}/src --proto github.com/openconfig/gnoi/os/os.proto list gnoi.os.OS
+gnoi.os.OS.Activate
+gnoi.os.OS.Install
+gnoi.os.OS.Verify
+</code></pre>
+<h4 id="list-from-a-grpc-server-eos-device">List from a gRPC server (EOS device)</h4>
+<pre><code class="language-shell">$ grpcurl --plaintext 10.73.1.105:6030 list
+gnmi.gNMI
+gnoi.certificate.CertificateManagement
+gnoi.system.System
+grpc.reflection.v1alpha.ServerReflection
+</code></pre>
+<h3 id="execute-gnoi-rpc-with-eos">Execute gNOI RPC with EOS</h3>
+<pre><code class="language-shell">$ grpcurl -H 'username: arista'  -H 'password: arista' -d '{&quot;destination&quot;: &quot;172.31.255.0&quot;, &quot;count&quot;: 2, &quot;do_not_resolve&quot;:true}' -import-path ${GOPATH}/src -proto github.com/openconfig/gnoi/system/system.proto -plaintext 10.73.1.118:6030 gnoi.system.System/Ping
+{
+  &quot;source&quot;: &quot;172.31.255.0&quot;,
+  &quot;time&quot;: &quot;29800000&quot;,
+  &quot;bytes&quot;: 64,
+  &quot;sequence&quot;: 1,
+  &quot;ttl&quot;: 63
+}
+{
+  &quot;source&quot;: &quot;172.31.255.0&quot;,
+  &quot;time&quot;: &quot;25200000&quot;,
+  &quot;bytes&quot;: 64,
+  &quot;sequence&quot;: 2,
+  &quot;ttl&quot;: 63
+}
+{
+  &quot;source&quot;: &quot;172.31.255.0&quot;,
+  &quot;time&quot;: &quot;1001000000&quot;,
+  &quot;sent&quot;: 2,
+  &quot;received&quot;: 2,
+  &quot;minTime&quot;: &quot;25210000&quot;,
+  &quot;avgTime&quot;: &quot;27510000&quot;,
+  &quot;maxTime&quot;: &quot;29810000&quot;,
+  &quot;stdDev&quot;: &quot;2300000&quot;
+}
+</code></pre>
+<pre><code class="language-shell">$ grpcurl -H 'username: arista'  -H 'password: arista' -d '{&quot;destination&quot;: &quot;172.31.255.0&quot;, &quot;max_ttl&quot;: 50, &quot;do_not_resolve&quot;:true}' -import-path ${GOPATH}/src -proto github.com/openconfig/gnoi/system/system.proto -plaintext 10.73.1.118:6030 gnoi.system.System/Traceroute
+{
+  &quot;destinationName&quot;: &quot;172.31.255.0&quot;,
+  &quot;destinationAddress&quot;: &quot;172.31.255.0&quot;,
+  &quot;hops&quot;: 50,
+  &quot;packetSize&quot;: 60
+}
+{
+  &quot;hop&quot;: 1,
+  &quot;address&quot;: &quot;10.90.90.1&quot;,
+  &quot;rtt&quot;: &quot;16589000&quot;
+}
+{
+  &quot;hop&quot;: 1,
+  &quot;address&quot;: &quot;10.90.90.1&quot;,
+  &quot;rtt&quot;: &quot;17886000&quot;
+}
+{
+  &quot;hop&quot;: 1,
+  &quot;address&quot;: &quot;10.90.90.1&quot;,
+  &quot;rtt&quot;: &quot;23219000&quot;
+}
+{
+  &quot;hop&quot;: 2,
+  &quot;address&quot;: &quot;172.31.255.0&quot;,
+  &quot;rtt&quot;: &quot;46537000&quot;
+}
+{
+  &quot;hop&quot;: 2,
+  &quot;address&quot;: &quot;172.31.255.0&quot;,
+  &quot;rtt&quot;: &quot;47873000&quot;
+}
+{
+  &quot;hop&quot;: 2,
+  &quot;address&quot;: &quot;172.31.255.0&quot;,
+  &quot;rtt&quot;: &quot;55376000&quot;
+}
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../gnoic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNOIc" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              gNOIc
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../golang/" class="md-footer__link md-footer__link--next" aria-label="Next: Go Lang" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Go Lang
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
