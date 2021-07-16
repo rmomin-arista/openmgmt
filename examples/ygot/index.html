@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/golang/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/ygot/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
-        <title>golang - Open Management</title>
+        <title>ygot - Open Management</title>
       
     
     
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              golang
+              ygot
             
           </span>
         </div>
@@ -389,6 +389,30 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -399,12 +423,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Go Lang
+          ygot
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Go Lang
+        ygot
       </a>
       
         
@@ -427,8 +451,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#truncated-output" class="md-nav__link">
-    Truncated output
+  <a href="#the-demo-will-do-the-following" class="md-nav__link">
+    The demo will do the following.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-this-repo" class="md-nav__link">
+    Clone this repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ygot-on-your-system" class="md-nav__link">
+    Install ygot on your system
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-to-see-if-all-of-the-current-yang-files-are-accurate" class="md-nav__link">
+    Check to see if all of the current yang files are accurate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-ygot" class="md-nav__link">
+    Run ygot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-contents-of-pkgocgo" class="md-nav__link">
+    Check the contents of pkg/oc.go
+  </a>
+  
+    <nav class="md-nav" aria-label="Check the contents of pkg/oc.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-go-code" class="md-nav__link">
+    Run the go code.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-the-hostname-on-a-device" class="md-nav__link">
+    Change the hostname on a device
   </a>
   
 </li>
@@ -437,30 +516,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
-        Python
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ygot/" class="md-nav__link">
-        ygot
-      </a>
     </li>
   
 
@@ -502,8 +557,63 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#truncated-output" class="md-nav__link">
-    Truncated output
+  <a href="#the-demo-will-do-the-following" class="md-nav__link">
+    The demo will do the following.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-this-repo" class="md-nav__link">
+    Clone this repo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ygot-on-your-system" class="md-nav__link">
+    Install ygot on your system
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-to-see-if-all-of-the-current-yang-files-are-accurate" class="md-nav__link">
+    Check to see if all of the current yang files are accurate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-ygot" class="md-nav__link">
+    Run ygot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-contents-of-pkgocgo" class="md-nav__link">
+    Check the contents of pkg/oc.go
+  </a>
+  
+    <nav class="md-nav" aria-label="Check the contents of pkg/oc.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-go-code" class="md-nav__link">
+    Run the go code.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-the-hostname-on-a-device" class="md-nav__link">
+    Change the hostname on a device
   </a>
   
 </li>
@@ -521,78 +631,103 @@
               
                 
                 
-                  <h1>Go Lang</h1>
+                  <h1>ygot</h1>
                 
                 <h2 id="overview">Overview</h2>
-<p>The following example uses the <a href="https://pkg.go.dev/github.com/aristanetworks/goarista">goarista</a> go module for gNMI to
-interact with a device.  Within this very simplistic getting started example main.go will simply perform a get method to
-the device for all paths.</p>
-<pre><code class="language-golang">package main
+<p><img alt="#ygot" src="images/ygot.png?raw=true" /></p>
+<p><a href="https://github.com/openconfig/ygot">ygot</a> is a collection of Go utilities that can generate Go structures based off of yang modules.  In the demo we are going to generate go code based off of the <a href="https://github.com/openconfig/public/blob/master/release/models/system/.openconfig-system.yang">openconfig-system model</a> using ygot.</p>
+<h2 id="the-demo-will-do-the-following">The demo will do the following.</h2>
+<ul>
+<li>Leverage necessary yang files for openconfig-system to create a hostname.</li>
+<li>The hostname will be printed out and stored within the system.json file.</li>
+<li>Using the <a href="https://github.com/aristanetworks/goarista/tree/master/cmd/gnmi">Arista gNMI binary</a> we will configure a device to use the ceos1 hostname.</li>
+</ul>
+<h2 id="clone-this-repo">Clone this repo</h2>
+<pre><code>git clone https://github.com/aristanetworks/openmgmt &amp;&amp; cd openmgmt/src/ygot
+</code></pre>
+<h2 id="install-ygot-on-your-system">Install ygot on your system</h2>
+<pre><code>go get github.com/openconfig/ygot
+</code></pre>
+<h2 id="check-to-see-if-all-of-the-current-yang-files-are-accurate">Check to see if all of the current yang files are accurate</h2>
+<pre><code>tree -f yang/
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
 
-import (
-  &quot;context&quot;
-  &quot;fmt&quot;
 
-  &quot;github.com/aristanetworks/glog&quot;
-  &quot;github.com/aristanetworks/goarista/gnmi&quot;
-  pb &quot;github.com/openconfig/gnmi/proto/gnmi&quot;
-)
+<pre><code class="language-javascript">
+├── yang/openconfig-aaa-radius.yang
+├── yang/openconfig-aaa-tacacs.yang
+├── yang/openconfig-aaa-types.yang
+├── yang/openconfig-aaa.yang
+├── yang/openconfig-alarms.yang
+├── yang/openconfig-alarm-types.yang
+├── yang/openconfig-extensions.yang
+├── yang/openconfig-inet-types.yang
+├── yang/openconfig-license.yang
+├── yang/openconfig-messages.yang
+├── yang/openconfig-platform-types.yang
+├── yang/openconfig-platform.yang
+├── yang/openconfig-procmon.yang
+├── yang/openconfig-system-logging.yang
+├── yang/openconfig-system-management.yang
+├── yang/openconfig-system-terminal.yang
+├── yang/openconfig-system.yang
+├── yang/openconfig-types.yang
+└── yang/openconfig-yang-types.yang
+</code></pre>
 
-var cfg = &amp;gnmi.Config{
-    Addr:     &quot;10.20.30.67:6030&quot;,
-    Username: &quot;ansible&quot;,
-    Password: &quot;ansible&quot;,
+
+</p>
+</details>
+
+<h2 id="run-ygot">Run ygot</h2>
+<pre><code>go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go -path=yang -output_file=pkg/oc.go -package_name=oc -generate_fakeroot -fakeroot_name=device -compress_paths=true  yang/openconfig-system.yang
+</code></pre>
+<h2 id="check-the-contents-of-pkgocgo">Check the contents of pkg/oc.go</h2>
+<pre><code>pkg
+└── oc.go
+</code></pre>
+<p>oc.go is the necessary go import / package for openconfig-system.  Looking at the Device struct within pkg/oc.go</p>
+<pre><code class="language-go">type Device struct {
+    Component   map[string]*Component   `path:&quot;components/component&quot; module:&quot;openconfig-platform&quot;`
+    Messages    *Messages   `path:&quot;messages&quot; module:&quot;openconfig-messages&quot;`
+    System  *System `path:&quot;system&quot; module:&quot;openconfig-system&quot;`
 }
-
-func main() {
-    paths := []string{&quot;/&quot;}
-    var origin = &quot;openconfig&quot;
-    //var origin = &quot;eos_native&quot;
-    ctx := gnmi.NewContext(context.Background(), cfg)
-    client, err := gnmi.Dial(cfg)
-    if err != nil {
-        glog.Fatal(err)
-    }
-
-    req, err := gnmi.NewGetRequest(gnmi.SplitPaths(paths), origin)
-    if err != nil {
-        glog.Fatal(err)
-    }
-    if cfg.Addr != &quot;&quot; {
-        if req.Prefix == nil {
-            req.Prefix = &amp;pb.Path{}
-        }
-        req.Prefix.Target = cfg.Addr
-    }
-
-    err = gnmi.GetWithRequest(ctx, client, req)
-    if err != nil {
-        glog.Fatal(err)
-    }
-    fmt.Println(err)
+</code></pre>
+<p>Then looking at the System struct we can see the Hostname field.</p>
+<pre><code class="language-go">type System struct {
+    Hostname    *string `path:&quot;config/hostname&quot; module:&quot;openconfig-system&quot;`
 }
 </code></pre>
-<p>Copy the above code into a file and run via the following command.</p>
-<pre><code class="language-shell">go run main.go
+<p>We need to simply fill in the Hostname field and pass it through the <a href="https://pkg.go.dev/github.com/openconfig/ygot/ygot#EmitJSON">EmitJSON function</a> so we can render this model with the correct information which can be sounf in main.go. </p>
+<h3 id="run-the-go-code">Run the go code.</h3>
+<pre><code>go run main.go 
 </code></pre>
-<h2 id="truncated-output">Truncated output</h2>
-<pre><code class="language-javascript">{
-  &quot;openconfig-acl:acl&quot;: {
-    &quot;state&quot;: {
-      &quot;counter-capability&quot;: &quot;AGGREGATE_ONLY&quot;
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">This is the output
+{
+  &quot;openconfig-system:system&quot;: {
+    &quot;config&quot;: {
+      &quot;hostname&quot;: &quot;ceos1&quot;
     }
-  },
-  &quot;arista-exp-eos:arista&quot;: {
-    &quot;eos&quot;: {
-      &quot;arista-exp-eos-igmpsnooping:bridging&quot;: {
-        &quot;igmpsnooping&quot;: {
-          &quot;config&quot;: {}
-        }
-      },
-      &quot;arista-exp-eos-mlag:mlag&quot;: {
-        &quot;config&quot;: {
-          &quot;dual-primary-action&quot;: &quot;action-none&quot;,
+  }
+}
+Adding to config/hostname.json
 </code></pre>
+
+
+</p>
+</details>
+
+<p>The output is also within config/hostname.json which looks the same as the printed version. </p>
+<h2 id="change-the-hostname-on-a-device">Change the hostname on a device</h2>
+<pre><code>gnmi -addr deviceip:6030 -username admin -password admin update '/' config/hostname.json
+</code></pre>
+<p>The device should now have the "ceos1" hostname.</p>
                 
                   
                 
@@ -614,7 +749,7 @@ func main() {
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../gnmi-gateway/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNMI gateway" rel="prev">
+        <a href="../python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Python" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -623,26 +758,11 @@ func main() {
               <span class="md-footer__direction">
                 Previous
               </span>
-              gNMI gateway
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../python/" class="md-footer__link md-footer__link--next" aria-label="Next: Python" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               Python
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   

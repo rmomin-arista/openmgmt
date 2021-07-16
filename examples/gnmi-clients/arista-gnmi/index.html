@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnmi-clients/arista-gnmi/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -779,6 +779,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -1167,10 +1179,10 @@
 <pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista get /
 </code></pre>
 <h4 id="get-the-bgp-configuration-in-the-default-vrf">Get the BGP configuration in the default VRF</h4>
-<pre><code class="language-shell">gnmi -addr 172.28.160.219:6030 -username admin -password arista get \
-  '/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp'`
+<pre><code class="language-shell">gnmi -addr 172.28.160.219:6030 -username admin -password arista \
+  get '/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp'`
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
@@ -1415,15 +1427,14 @@
 </details>
 
 <h4 id="get-bgp-neighbors">Get BGP neighbors</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139 -username admin get \
-  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139 -username admin \
+  get '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors'
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
 
 
-<pre><code class="language-javascript">
-/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors:
+<pre><code class="language-javascript">/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors:
 {
   &quot;openconfig-network-instance:neighbor&quot;: [
     {
@@ -1551,30 +1562,28 @@
 </details>
 
 <h4 id="get-all-interface-descriptions">Get all interface descriptions</h4>
-<p><code>gnmi -addr 10.83.13.139:6030 -username admin -password arista get '/interfaces/interface/subinterfaces/subinterface/state/description'</code></p>
-<pre><code class="language-text">/interfaces/interface[name=Ethernet3]/subinterfaces/subinterface[index=0]/state/description:
-SRV01
-/interfaces/interface[name=Ethernet1]/subinterfaces/subinterface[index=0]/state/description:
-DCI
-/interfaces/interface[name=Ethernet2]/subinterfaces/subinterface[index=0]/state/description:
-To Spines
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista \
+  get '/interfaces/interface/subinterfaces/subinterface/state/description'
+</code></pre>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet3]/subinterfaces/subinterface[index=0]/state/description: SRV01
+/interfaces/interface[name=Ethernet1]/subinterfaces/subinterface[index=0]/state/description: DCI
+/interfaces/interface[name=Ethernet2]/subinterfaces/subinterface[index=0]/state/description: To Spines
 </code></pre>
 <h4 id="get-an-interfaces-description">Get an interface's description</h4>
-<pre><code class="language-shell">./gnmi -addr 10.81.117.100:6030 -username admin -password arista get \
-  'interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface/state/description'
+<pre><code class="language-shell">gnmi -addr 10.81.117.100:6030 -username admin -password arista \
+  get 'interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface/state/description'
 </code></pre>
-<pre><code class="language-text">/interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface[index=0]/state/description:
-&quot;Tyrion&quot;
+<pre><code class="language-text">/interfaces/interface[name=Ethernet1/1]/subinterfaces/subinterface[index=0]/state/description: &quot;Tyrion&quot;
 </code></pre>
 <h4 id="get-the-operational-status-of-all-interfaces">Get the operational status of all interfaces</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista get \
-  'interfaces/interface/state/oper-status'`
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username admin -password arista \
+  get 'interfaces/interface/state/oper-status'`
 </code></pre>
 <h5 id="get-all-states-of-an-interface">Get all states of an interface</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  'interfaces/interface[name=Ethernet24]/state/'`
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get 'interfaces/interface[name=Ethernet24]/state/'`
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
@@ -1616,26 +1625,26 @@ To Spines
 </details>
 
 <h4 id="get-an-interfaces-operational-status">Get an interface's operational status</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  'interfaces/interface[name=Ethernet24]/state/oper-status'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get 'interfaces/interface[name=Ethernet24]/state/oper-status'
 </code></pre>
-<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/oper-status:
-UP
+<p><strong>Output:</strong></p>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/oper-status: UP
 </code></pre>
 <h4 id="get-an-interfaces-admin-status">Get an interface's admin status</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  'interfaces/interface[name=Ethernet24]/state/admin-status'`
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get 'interfaces/interface[name=Ethernet24]/state/admin-status'`
 </code></pre>
-<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/admin-status:
-UP
+<p><strong>Output:</strong></p>
+<pre><code class="language-text">/interfaces/interface[name=Ethernet24]/state/admin-status: UP
 </code></pre>
 <h5 id="get-the-dom-metrics-of-all-interfaces">Get the DOM metrics of all interfaces</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  &quot;components/component/transceiver/physical-channels/channel/state/&quot;
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get &quot;components/component/transceiver/physical-channels/channel/state/&quot;
 </code></pre>
 <h4 id="get-the-dom-metrics-of-an-interface">Get the DOM metrics of an interface</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  &quot;components/component[name=Ethernet24 transceiver]/transceiver/physical-channels/channel/state/&quot;
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get &quot;components/component[name=Ethernet24  transceiver]/transceiver/physical-channels/channel/state/&quot;
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
@@ -1661,10 +1670,10 @@ UP
 </details>
 
 <h5 id="get-per-core-cpu-utilization">Get per core CPU utilization</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  'components/component/cpu'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get 'components/component/cpu'
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
@@ -1731,9 +1740,10 @@ UP
 </details>
 
 <h5 id="get-the-availableutilized-memory">Get the available/utilized memory</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-  'components/component/state/memory/'`
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  get 'components/component/state/memory/'
 </code></pre>
+<p><strong>Output:</strong></p>
 <pre><code class="language-text">/components/component[name=Chassis]/state/memory:
 {
   &quot;openconfig-platform:available&quot;: &quot;8298774528&quot;,
@@ -1741,51 +1751,32 @@ UP
 }
 </code></pre>
 <h5 id="get-the-system-environment-temperatures">Get the system environment temperatures</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra get \
-   'components/component/state/temperature/instant'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+   get 'components/component/state/temperature/instant'
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
-<pre><code class="language-text">/components/component[name=DomTemperatureSensor49]/state/temperature/instant:
-30.49609375
-/components/component[name=DomTemperatureSensor25]/state/temperature/instant:
-24.69921875
-/components/component[name=DomTemperatureSensor40]/state/temperature/instant:
-25.5078125
-/components/component[name=TempSensorP2/2]/state/temperature/instant:
-0.0
-/components/component[name=TempSensorP1/3]/state/temperature/instant:
-40.0
-/components/component[name=TempSensorP2/1]/state/temperature/instant:
-0.0
-/components/component[name=TempSensorP2/3]/state/temperature/instant:
-0.0
-/components/component[name=DomTemperatureSensor24]/state/temperature/instant:
-24.5
-/components/component[name=DomTemperatureSensor26]/state/temperature/instant:
-23.73046875
-/components/component[name=DomTemperatureSensor54]/state/temperature/instant:
-27.26953125
-/components/component[name=TempSensorP1/1]/state/temperature/instant:
-34.0
-/components/component[name=DomTemperatureSensor50]/state/temperature/instant:
-27.453125
-/components/component[name=TempSensorP1/2]/state/temperature/instant:
-25.0
-/components/component[name=TempSensor1]/state/temperature/instant:
-45.84278576588521
-/components/component[name=TempSensor15]/state/temperature/instant:
-33.875
-/components/component[name=TempSensor18]/state/temperature/instant:
-44.625
-/components/component[name=TempSensor16]/state/temperature/instant:
-22.75
-/components/component[name=TempSensor17]/state/temperature/instant:
-37.0
-/components/component[name=TempSensor14]/state/temperature/instant:
-37.0
+<pre><code class="language-text">/components/component[name=DomTemperatureSensor49]/state/temperature/instant: 30.49609375
+/components/component[name=DomTemperatureSensor25]/state/temperature/instant: 24.69921875
+/components/component[name=DomTemperatureSensor40]/state/temperature/instant: 25.5078125
+/components/component[name=TempSensorP2/2]/state/temperature/instant: 0.0
+/components/component[name=TempSensorP1/3]/state/temperature/instant: 40.0
+/components/component[name=TempSensorP2/1]/state/temperature/instant: 0.0
+/components/component[name=TempSensorP2/3]/state/temperature/instant: 0.0
+/components/component[name=DomTemperatureSensor24]/state/temperature/instant: 24.5
+/components/component[name=DomTemperatureSensor26]/state/temperature/instant: 23.73046875
+/components/component[name=DomTemperatureSensor54]/state/temperature/instant: 27.26953125
+/components/component[name=TempSensorP1/1]/state/temperature/instant: 34.0
+/components/component[name=DomTemperatureSensor50]/state/temperature/instant: 27.453125
+/components/component[name=TempSensorP1/2]/state/temperature/instant: 25.0
+/components/component[name=TempSensor1]/state/temperature/instant: 45.84278576588521
+/components/component[name=TempSensor15]/state/temperature/instant: 33.875
+/components/component[name=TempSensor18]/state/temperature/instant: 44.625
+/components/component[name=TempSensor16]/state/temperature/instant: 22.75
+/components/component[name=TempSensor17]/state/temperature/instant: 37.0
+/components/component[name=TempSensor14]/state/temperature/instant: 37.0
 </code></pre>
 
 
@@ -1823,9 +1814,10 @@ require changing the origin to <code>eos_native</code>.</p>
 </li>
 </ul>
 <h5 id="get-cpu-utilization">Get CPU utilization</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.130:6030 -username admin get origin=eos_native \
-  '/Kernel/proc/cpu/utilization/total'
+<pre><code class="language-shell">gnmi -addr 10.83.13.130:6030 -username admin \
+  get origin=eos_native '/Kernel/proc/cpu/utilization/total'
 </code></pre>
+<p><strong>Output:</strong></p>
 <pre><code class="language-text">/Kernel/proc/cpu/utilization/total/nice:
 38446
 /Kernel/proc/cpu/utilization/total/system:
@@ -1843,7 +1835,7 @@ total
 <pre><code class="language-shell">gnmi -addr 10.83.13.130:6030 -username admin  get origin=eos_native \
   'Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32'`
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
@@ -1855,20 +1847,13 @@ total
 {
   &quot;value&quot;: 34.88671875
 }
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/maxTemperatureTime:
-1564757444.339129
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/name:
-DomTemperatureSensor32
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/generationId:
-0
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/hwStatus:
-ok
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaised:
-false
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaisedCount:
-0
-/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/lastAlertRaisedTime:
-1564194739.259879
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/maxTemperatureTime: 1564757444.339129
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/name: DomTemperatureSensor32
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/generationId: 0
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/hwStatus: ok
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaised: false
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/alertRaisedCount: 0
+/Sysdb/environment/archer/temperature/status/system/DomTemperatureSensor32/lastAlertRaisedTime: 1564194739.259879
 </code></pre>
 
 
@@ -1882,44 +1867,29 @@ false
 <p>
 
 
-<pre><code class="language-text">/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/key/hostName:
-wls100
+<pre><code class="language-text">/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/key/hostName: wls100
 /Sysdb/connectivityMonitor/status/hostStatus/wls100_default/key/vrfName:
 {
   &quot;value&quot;: &quot;default&quot;
 }
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/name:
-wls100_default
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/packetLoss:
-0
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/httpResponseTime:
-0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/name: wls100_default
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/packetLoss: 0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/httpResponseTime: 0
 /Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/interfaceName:
-
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/jitter:
-0
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/latency:
-0
-/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/ipAddr:
-&quot;10.83.13.140&quot;
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/key/hostName:
-ats323
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/jitter: 0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/defaultStats/latency: 0
+/Sysdb/connectivityMonitor/status/hostStatus/wls100_default/ipAddr: &quot;10.83.13.140&quot;
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/key/hostName: ats323
 /Sysdb/connectivityMonitor/status/hostStatus/ats323_management/key/vrfName:
 {
   &quot;value&quot;: &quot;management&quot;
 }
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/name:
-ats323_management
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/ipAddr:
-&quot;10.83.13.138&quot;
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/latency:
-0.127
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/jitter:
-0.033
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/packetLoss:
-0
-/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/httpResponseTime:
-21.860306
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/name: ats323_management
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/ipAddr: &quot;10.83.13.138&quot;
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/latency: 0.127
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/jitter: 0.033
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/packetLoss: 0
+/Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/httpResponseTime: 21.860306
 /Sysdb/connectivityMonitor/status/hostStatus/ats323_management/defaultStats/interfaceName:
 </code></pre>
 
@@ -1931,35 +1901,41 @@ ats323_management
 <h3 id="openconfig-paths_1">OpenConfig paths</h3>
 <h4 id="configure-bgp-neighbor">Configure BGP neighbor</h4>
 <h5 id="configure-neighbor-address-and-peer-as">Configure neighbor address and peer AS</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra update \
-  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123}}'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username cvpadmin -password arastra \
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' \
+  '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123}}'
 </code></pre>
 <h5 id="configure-neighbor-address-peer-as-and-send-community">Configure neighbor address, peer AS and send-community</h5>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123, &quot;enabled&quot;: true, &quot;send-community&quot;: &quot;EXTENDED&quot;}}'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]' \
+  '{&quot;config&quot;: {&quot;neighbor-address&quot;:&quot;10.10.100.43&quot;, &quot;peer-as&quot;: 123, &quot;enabled&quot;: true, &quot;send-community&quot;: &quot;EXTENDED&quot;}}'
 </code></pre>
 <h4 id="create-peer-group">Create peer group</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista update \
-  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/peer-groups/peer-group[peer-group-name=XYZ]' '{&quot;config&quot;: {&quot;peer-group-name&quot;:&quot;XYZ&quot;, &quot;local-as&quot;: 114}}'
+  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/peer-groups/peer-group[peer-group-name=XYZ]' \
+  '{&quot;config&quot;: {&quot;peer-group-name&quot;:&quot;XYZ&quot;, &quot;local-as&quot;: 114}}'
 </code></pre>
 <h4 id="update-the-peer-as">Update the peer AS</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-
-'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]/config/peer-as' '110'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista \
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]/config/peer-as' \
+  '110'
 </code></pre>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-  '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' '{&quot;config&quot;: {&quot;peer-as&quot;: 110}}'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista \
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' \
+  '{&quot;config&quot;: {&quot;peer-as&quot;: 110}}'
 </code></pre>
 <h4 id="update-the-peer-group">Update the peer group</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]/config/peer-group' 'XYZ'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista \
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.100.43]/config/peer-group' \
+  'XYZ'
 </code></pre>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-'/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' '{&quot;config&quot;: {&quot;peer-group&quot;: &quot;XYZ&quot;,&quot;peer-as&quot;: 143}}'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista \
+  update '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.10.10.0]' \
+  '{&quot;config&quot;: {&quot;peer-group&quot;: &quot;XYZ&quot;,&quot;peer-as&quot;: 143}}'
 </code></pre>
 <h4 id="update-bgp-config-using-json-file">Update BGP config using json file</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista update \
-  /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp' bgp.json
+<pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username arista -password arista \
+  update /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp'
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
@@ -2009,7 +1985,7 @@ ats323_management
   update /acl/acl-sets acl2.json`
 cat acl2.json
 </code></pre>
-<details><summary> Reveal output</summary>
+<details><summary>Reveal output</summary>
 <p>
 
 
@@ -2057,26 +2033,29 @@ cat acl2.json
    10 deny ip any 1.0.0.0/12
 </code></pre>
 <h4 id="shutdown-an-interface">Shutdown an interface</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista update \
-   '/interfaces/interface[name=Ethernet1]/config/enabled' 'false'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista  \
+  update '/interfaces/interface[name=Ethernet1]/config/enabled' \
+  'false'
 </code></pre>
 <h4 id="bring-up-an-interface">Bring up an interface</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista update \
-  '/interfaces/interface[name=Ethernet1]/config/enabled' 'true'
+<pre><code class="language-shell">gnmi -addr 10.83.13.139:6030 -username arista -password arista  \
+  update '/interfaces/interface[name=Ethernet1]/config/enabled' \
+  'true'
 </code></pre>
 <h2 id="gnmi-subscribe-rpc-examples">gNMI SUBSCRIBE RPC Examples</h2>
 <h3 id="openconfig-paths_2">OpenConfig paths</h3>
 <h4 id="subscribe-to-all-bgp-neighbor-states">Subscribe to all BGP neighbor states</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista subscribe \
-  '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista \
+  subscribe '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor/state'
 </code></pre>
 <h4 id="subscribe-to-specific-bgp-neighbor-state">Subscribe to specific BGP neighbor state</h4>
-<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista subscribe \
-  '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor[neighbor-address=10.10.10.5]/state'
+<pre><code class="language-shell">gnmi -addr 10.83.28.203 -username arista -password arista \
+  subscribe '/network-instances/network-instance/protocols/protocol/bgp/neighbors/neighbor[neighbor-address=10.10.10.5]/state'
 </code></pre>
 <h4 id="subscribe-with-stream-mode-sample-and-interval">Subscribe with stream mode sample and interval</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.13.214:6030 -username admin -password arista \
-  -sample_interval 5s -stream_mode sample subscribe \
+  -sample_interval 5s -stream_mode sample                     \
+  subscribe                                                   \
   '/network-instances/network-instance[name=Tenant_A_WEB_Zone]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.255.251.1]/afi-safis/afi-safi[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST]/state/prefixes/received'
 </code></pre>
                 
@@ -2151,10 +2130,10 @@ cat acl2.json
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

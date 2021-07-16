@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnmi-gateway/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -467,6 +467,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -566,13 +578,13 @@ function.</p>
 └── targets.json
 </code></pre>
 <ul>
-<li><strong>gnmi-gateway</strong> - this is the binary to activate gNMI gateway</li>
+<li><strong>gnmi-gateway</strong> - The binary to activate gNMI gateway</li>
+<li><strong>server.crt</strong> / <strong>server.key</strong> - the certificate and key for gNMI gateway</li>
+<li><strong>targets.json</strong> - This file specifies the targets.  gNMI-gateway supports hot reloading of the files. So if changes
+  are made within targets.json it will reload automatically with new targets and or new paths.</li>
 </ul>
-<p><strong>server.crt</strong> / server.key - the cert for gNMI gateway</p>
-<p><strong>targets.json</strong> - This is the file where you specify the targets gNMI-gateway
-supports hot reloading of the files. So if changes are made within targets.json
-it will reload automatically with new targets and or new paths.</p>
 <h2 id="eos-configuration">EOS configuration</h2>
+<p>The following configuration will add a self signed cert to the device and start the gNMI service with the cert.</p>
 <pre><code class="language-text">management api gnmi
    transport grpc default
       ssl profile SELFSIGNED
@@ -584,16 +596,13 @@ management security
 !
 security pki certificate generate self-signed cvp.crt key cvp.key generate rsa 2048 validity 30000 parameters common-name cvp
 </code></pre>
-<p>The configuration stated here will add a self signed cert to the device and
-start the gNMI service with the cert.</p>
 <h2 id="start-gnmi-gateway">Start gNMI gateway</h2>
-<pre><code class="language-shell">
-./gnmi-gateway -EnableGNMIServer -ServerTLSCert=server.crt \
+<pre><code class="language-shell">gnmi-gateway -EnableGNMIServer -ServerTLSCert=server.crt \
   -ServerTLSKey=server.key -TargetLoaders=json -TargetJSONFile=targets.json
 
-./gnmi-gateway -EnableGNMIServer -ServerTLSCert=server.crt \
-  -ServerTLSKey=server.key -TargetLoaders=json -TargetJSONFile=targets.json
-{&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:35-04:00&quot;,&quot;message&quot;:&quot;Starting GNMI Gateway.&quot;}
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code class="language-text">{&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:35-04:00&quot;,&quot;message&quot;:&quot;Starting GNMI Gateway.&quot;}
 {&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:35-04:00&quot;,&quot;message&quot;:&quot;Clustering is NOT enabled. No locking or cluster coordination will happen.&quot;}
 {&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:35-04:00&quot;,&quot;message&quot;:&quot;Starting connection manager.&quot;}
 {&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:35-04:00&quot;,&quot;message&quot;:&quot;Starting gNMI server on 0.0.0.0:9339.&quot;}
@@ -618,13 +627,14 @@ start the gNMI service with the cert.</p>
 {&quot;level&quot;:&quot;info&quot;,&quot;time&quot;:&quot;2021-03-19T08:47:38-04:00&quot;,&quot;message&quot;:&quot;Target DC2-LEAF1A: Synced&quot;}
 
 </code></pre>
-<p>The output tells us that gNMI-gateway has started and began to serve up gNMI
-requests to the /interfaces/interface path via any gNMI external client.</p>
+<p>The output tells us that gNMI-gateway has started and began to serve up gNMI requests to the /interfaces/interface path
+via any gNMI external client.</p>
 <h2 id="requesting-a-target-managed-by-gnmi-gateway">Requesting a target managed by gNMI gateway</h2>
 <pre><code class="language-shell">gnmic subscribe -a 127.0.0.1 -u ansible -p ansible --port=9339 \
   --skip-verify --target=DC2-SP02 --path=/interfaces
-
-{
+</code></pre>
+<p><strong>Output:</strong></p>
+<pre><code class="language-javascript">{
   &quot;source&quot;: &quot;127.0.0.1:9339&quot;,
   &quot;subscription-name&quot;: &quot;default-1616158143&quot;,
   &quot;timestamp&quot;: 1605208845740882713,
@@ -641,9 +651,8 @@ requests to the /interfaces/interface path via any gNMI external client.</p>
 }
 
 </code></pre>
-<p>Since the gNMI gateway is running local on my macbook we can then query the
-service on port 9339 passing in the target value of DC2-SP02 and start to stream
-data back to the client.</p>
+<p>Since the gNMI gateway is running locally a query can be issued to the service on port 9339 passing in the target value
+of <code>DC2-SP02</code> and telemetry will start to stream data back to the client.</p>
                 
                   
                 
@@ -716,10 +725,10 @@ data back to the client.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

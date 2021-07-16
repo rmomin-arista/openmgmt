@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/configuration/security/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -459,6 +459,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -563,15 +575,15 @@ IP Access List default-control-plane-acl [readonly]
 </code></pre>
 <p>2. There are multiple ways to quickly edit and remove the unnecessary match
    outputs, in this example we'll use <code>sed</code> on EOS. Save the file to <code>/mnt/flash</code>:</p>
-<p><code>show ip access-lists  default-control-plane-acl | redirect flash:cpacl.txt</code></p>
+<pre><code class="language-text">show ip access-lists  default-control-plane-acl | redirect flash:cpacl.txt
+</code></pre>
 <p>3. Enter bash: <code>#bash</code></p>
 <p>4. Go to <code>/mnt/flash</code> and remove the match outputs</p>
 <pre><code class="language-shell">cd /mnt/flash
 sudo sed -i  &quot;s/\[.*//g&quot; cpacl.txt
 </code></pre>
-<p>5. Reading the file now should be clean without all the match outputs like below:</p>
-<pre><code class="language-text">cat cpacl.txt
-IP Access List default-control-plane-acl
+<p>5. Reading the file now should be clean without all the match counter outputs like below:</p>
+<pre><code class="language-text">IP Access List default-control-plane-acl
         counters per-entry
         10 permit icmp any any
         20 permit ip any any tracked
@@ -601,14 +613,11 @@ IP Access List default-control-plane-acl
         260 permit tcp any any eq 5541 ttl eq 255
         270 permit tcp any any eq 5542 ttl eq 255
 </code></pre>
-<p>6. Now we can just copy that ACLs content into a new ACL, add our new rules and
-   apply it on the control-plane</p>
-<pre><code class="language-text">$ exit
-logout
-(config)# ip access-list custom-cp
-(config)#
-&lt;paste the content of the default CP from the file created&gt;
-(config)# 280 permit tcp any any eq 5900
+<p>6. Now we can just copy that ACLs content into a new ACL, add our new rules and apply it on the control-plane.</p>
+<p>From <strong>config</strong> mode:</p>
+<pre><code class="language-text">ip access-list custom-cp
+   &lt;paste the content of the default CP from the file created&gt;
+   280 permit tcp any any eq 5900
 </code></pre>
 <p>7. Apply the new ACL</p>
 <p>Default VRF</p>
@@ -691,10 +700,10 @@ logout
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>
