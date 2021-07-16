@@ -1,0 +1,1200 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/pyang/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+    
+    
+      
+        <title>pyang examples - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1fe995fd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-4V8W728SS9"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-4V8W728SS9",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V8W728SS9"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about-pyang" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              pyang examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/openconfig/" class="md-nav__link">
+        OpenConfig
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/netconf/" class="md-nav__link">
+        NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/mtls/" class="md-nav__link">
+        Certificate Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration/security/" class="md-nav__link">
+        Security Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        gNMI clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNMI clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          gNMI clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnmi-clients/arista-gnmi/" class="md-nav__link">
+        gnmi (Arista)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnmi-clients/gnmic/" class="md-nav__link">
+        gnmic
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnmi-gateway/" class="md-nav__link">
+        gNMI gateway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        gNOI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNOI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          gNOI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnoi/gnoic/" class="md-nav__link">
+        gNOIc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnoi/grpcurl/" class="md-nav__link">
+        gRPCurl
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pygnmi/" class="md-nav__link">
+        Pygnmi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pyang
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pyang
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-pyang" class="md-nav__link">
+    About Pyang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-pyang" class="md-nav__link">
+    Install Pyang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#we-need-yang-modules" class="md-nav__link">
+    we need yang modules
+  </a>
+  
+    <nav class="md-nav" aria-label="we need yang modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-directory" class="md-nav__link">
+    Create a directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-openconfig-repository" class="md-nav__link">
+    Clone the openconfig repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-all-the-yang-files-from-openconfig-to-the-yang_modules-directory" class="md-nav__link">
+    Copy all the YANG files from OpenConfig to the yang_modules directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#move-to-the-yang_modules-directory" class="md-nav__link">
+    Move to the yang_modules directory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-yang-modules" class="md-nav__link">
+    Validate YANG modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Validate YANG modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-yang-module-into-an-equivalent-yin-module" class="md-nav__link">
+    Convert a YANG module into an equivalent YIN module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-a-tree-representation-of-yang-modules-for-quick-visualization" class="md-nav__link">
+    Generate a tree representation of YANG modules for quick visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-pyang" class="md-nav__link">
+    About Pyang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-pyang" class="md-nav__link">
+    Install Pyang
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#we-need-yang-modules" class="md-nav__link">
+    we need yang modules
+  </a>
+  
+    <nav class="md-nav" aria-label="we need yang modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-directory" class="md-nav__link">
+    Create a directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-openconfig-repository" class="md-nav__link">
+    Clone the openconfig repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-all-the-yang-files-from-openconfig-to-the-yang_modules-directory" class="md-nav__link">
+    Copy all the YANG files from OpenConfig to the yang_modules directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#move-to-the-yang_modules-directory" class="md-nav__link">
+    Move to the yang_modules directory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-yang-modules" class="md-nav__link">
+    Validate YANG modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Validate YANG modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#convert-a-yang-module-into-an-equivalent-yin-module" class="md-nav__link">
+    Convert a YANG module into an equivalent YIN module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate-a-tree-representation-of-yang-modules-for-quick-visualization" class="md-nav__link">
+    Generate a tree representation of YANG modules for quick visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Pyang</h1>
+                
+                <h2 id="about-pyang">About Pyang</h2>
+<p>pyang is a python program.</p>
+<p>We can use it to:</p>
+<ul>
+<li>Validate YANG modules against YANG RFCs</li>
+<li>Convert YANG modules into equivalent YIN module (XML)</li>
+<li>Generate a tree representation of YANG models for quick visualization</li>
+</ul>
+<h2 id="install-pyang">Install Pyang</h2>
+<pre><code class="language-shell">pip install pyang
+pip3 freeze | grep pyang
+</code></pre>
+<pre><code class="language-shell">pip3 freeze | grep pyang
+</code></pre>
+<h2 id="we-need-yang-modules">we need yang modules</h2>
+<h3 id="create-a-directory">Create a directory</h3>
+<pre><code class="language-shell">mkdir yang_modules
+</code></pre>
+<h3 id="clone-the-openconfig-repository">Clone the openconfig repository</h3>
+<p>From the root of this repository:</p>
+<pre><code class="language-shell">git clone https://github.com/openconfig/public.git
+</code></pre>
+<pre><code>ls public
+</code></pre>
+<h3 id="copy-all-the-yang-files-from-openconfig-to-the-yang_modules-directory">Copy all the YANG files from OpenConfig to the yang_modules directory</h3>
+<pre><code class="language-shell">cp public/release/models/*.yang yang_modules/.
+cp -R public/release/models/*/*.yang yang_modules/.
+cp public/third_party/ietf/*.yang yang_modules/.
+</code></pre>
+<h3 id="move-to-the-yang_modules-directory">Move to the yang_modules directory</h3>
+<p>It has all the YANG files published on the OpenConfig repository</p>
+<pre><code class="language-shell">cd yang_modules/
+ls
+</code></pre>
+<h2 id="validate-yang-modules">Validate YANG modules</h2>
+<pre><code class="language-shell">pyang openconfig-bgp.yang
+pyang openconfig-interfaces.yang
+</code></pre>
+<h3 id="convert-a-yang-module-into-an-equivalent-yin-module">Convert a YANG module into an equivalent YIN module</h3>
+<p>A YANG module can be translated into an XML syntax called YIN. The translated module is called a YIN module. The YANG and YIN formats contain equivalent information using different notations: YIN is YANG in XML. A YANG module can be translated into YIN syntax without losing any information.</p>
+<p>Example (openconfig-bgp.yin is the YIN equivalent of openconfig-bgp.yang)</p>
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f yin -o openconfig-bgp.yin
+ls *.yin
+</code></pre>
+<h3 id="generate-a-tree-representation-of-yang-modules-for-quick-visualization">Generate a tree representation of YANG modules for quick visualization</h3>
+<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-interfaces
+  +--rw interfaces
+     +--rw interface* [name]
+        +--rw name             -&gt; ../config/name
+        +--rw config
+        |  +--rw name?            string
+        |  +--rw type             identityref
+        |  +--rw mtu?             uint16
+        |  +--rw loopback-mode?   boolean
+        |  +--rw description?     string
+        |  +--rw enabled?         boolean
+        +--ro state
+        |  +--ro name?            string
+        |  +--ro type             identityref
+        |  +--ro mtu?             uint16
+        |  +--ro loopback-mode?   boolean
+        |  +--ro description?     string
+        |  +--ro enabled?         boolean
+        |  +--ro ifindex?         uint32
+        |  +--ro admin-status     enumeration
+        |  +--ro oper-status      enumeration
+        |  +--ro last-change?     oc-types:timeticks64
+        |  +--ro logical?         boolean
+        |  +--ro management?      boolean
+        |  +--ro cpu?             boolean
+        |  +--ro counters
+        |     +--ro in-octets?             oc-yang:counter64
+        |     +--ro in-pkts?               oc-yang:counter64
+        |     +--ro in-unicast-pkts?       oc-yang:counter64
+        |     +--ro in-broadcast-pkts?     oc-yang:counter64
+        |     +--ro in-multicast-pkts?     oc-yang:counter64
+        |     +--ro in-discards?           oc-yang:counter64
+        |     +--ro in-errors?             oc-yang:counter64
+        |     +--ro in-unknown-protos?     oc-yang:counter64
+        |     +--ro in-fcs-errors?         oc-yang:counter64
+        |     +--ro out-octets?            oc-yang:counter64
+        |     +--ro out-pkts?              oc-yang:counter64
+        |     +--ro out-unicast-pkts?      oc-yang:counter64
+        |     +--ro out-broadcast-pkts?    oc-yang:counter64
+        |     +--ro out-multicast-pkts?    oc-yang:counter64
+        |     +--ro out-discards?          oc-yang:counter64
+        |     +--ro out-errors?            oc-yang:counter64
+        |     +--ro carrier-transitions?   oc-yang:counter64
+        |     +--ro last-clear?            oc-types:timeticks64
+        +--rw hold-time
+        |  +--rw config
+        |  |  +--rw up?     uint32
+        |  |  +--rw down?   uint32
+        |  +--ro state
+        |     +--ro up?     uint32
+        |     +--ro down?   uint32
+        +--rw subinterfaces
+           +--rw subinterface* [index]
+              +--rw index     -&gt; ../config/index
+              +--rw config
+              |  +--rw index?         uint32
+              |  +--rw description?   string
+              |  +--rw enabled?       boolean
+              +--ro state
+                 +--ro index?          uint32
+                 +--ro description?    string
+                 +--ro enabled?        boolean
+                 +--ro name?           string
+                 +--ro ifindex?        uint32
+                 +--ro admin-status    enumeration
+                 +--ro oper-status     enumeration
+                 +--ro last-change?    oc-types:timeticks64
+                 +--ro logical?        boolean
+                 +--ro management?     boolean
+                 +--ro cpu?            boolean
+                 +--ro counters
+                    +--ro in-octets?             oc-yang:counter64
+                    +--ro in-pkts?               oc-yang:counter64
+                    +--ro in-unicast-pkts?       oc-yang:counter64
+                    +--ro in-broadcast-pkts?     oc-yang:counter64
+                    +--ro in-multicast-pkts?     oc-yang:counter64
+                    +--ro in-discards?           oc-yang:counter64
+                    +--ro in-errors?             oc-yang:counter64
+                    +--ro in-unknown-protos?     oc-yang:counter64
+                    +--ro in-fcs-errors?         oc-yang:counter64
+                    +--ro out-octets?            oc-yang:counter64
+                    +--ro out-pkts?              oc-yang:counter64
+                    +--ro out-unicast-pkts?      oc-yang:counter64
+                    +--ro out-broadcast-pkts?    oc-yang:counter64
+                    +--ro out-multicast-pkts?    oc-yang:counter64
+                    +--ro out-discards?          oc-yang:counter64
+                    +--ro out-errors?            oc-yang:counter64
+                    +--ro carrier-transitions?   oc-yang:counter64
+                    +--ro last-clear?            oc-types:timeticks64
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree --tree-path=/interfaces/interface/state
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-interfaces
+  +--rw interfaces
+     +--rw interface* [name]
+        +--ro state
+           +--ro name?            string
+           +--ro type             identityref
+           +--ro mtu?             uint16
+           +--ro loopback-mode?   boolean
+           +--ro description?     string
+           +--ro enabled?         boolean
+           +--ro ifindex?         uint32
+           +--ro admin-status     enumeration
+           +--ro oper-status      enumeration
+           +--ro last-change?     oc-types:timeticks64
+           +--ro logical?         boolean
+           +--ro management?      boolean
+           +--ro cpu?             boolean
+           +--ro counters
+              +--ro in-octets?             oc-yang:counter64
+              +--ro in-pkts?               oc-yang:counter64
+              +--ro in-unicast-pkts?       oc-yang:counter64
+              +--ro in-broadcast-pkts?     oc-yang:counter64
+              +--ro in-multicast-pkts?     oc-yang:counter64
+              +--ro in-discards?           oc-yang:counter64
+              +--ro in-errors?             oc-yang:counter64
+              +--ro in-unknown-protos?     oc-yang:counter64
+              +--ro in-fcs-errors?         oc-yang:counter64
+              +--ro out-octets?            oc-yang:counter64
+              +--ro out-pkts?              oc-yang:counter64
+              +--ro out-unicast-pkts?      oc-yang:counter64
+              +--ro out-broadcast-pkts?    oc-yang:counter64
+              +--ro out-multicast-pkts?    oc-yang:counter64
+              +--ro out-discards?          oc-yang:counter64
+              +--ro out-errors?            oc-yang:counter64
+              +--ro carrier-transitions?   oc-yang:counter64
+              +--ro last-clear?            oc-types:timeticks64
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree --tree-depth=4
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-interfaces
+  +--rw interfaces
+     +--rw interface* [name]
+        +--rw name             -&gt; ../config/name
+        +--rw config
+        |  +--rw name?            string
+        |  +--rw type             identityref
+        |  +--rw mtu?             uint16
+        |  +--rw loopback-mode?   boolean
+        |  +--rw description?     string
+        |  +--rw enabled?         boolean
+        +--ro state
+        |  +--ro name?            string
+        |  +--ro type             identityref
+        |  +--ro mtu?             uint16
+        |  +--ro loopback-mode?   boolean
+        |  +--ro description?     string
+        |  +--ro enabled?         boolean
+        |  +--ro ifindex?         uint32
+        |  +--ro admin-status     enumeration
+        |  +--ro oper-status      enumeration
+        |  +--ro last-change?     oc-types:timeticks64
+        |  +--ro logical?         boolean
+        |  +--ro management?      boolean
+        |  +--ro cpu?             boolean
+        |  +--ro counters
+        |        ...
+        +--rw hold-time
+        |  +--rw config
+        |  |     ...
+        |  +--ro state
+        |        ...
+        +--rw subinterfaces
+           +--rw subinterface* [index]
+                 ...
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors --tree-depth=4
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-bgp
+  +--rw bgp
+     +--rw neighbors
+        +--rw neighbor* [neighbor-address]
+           +--rw neighbor-address      -&gt; ../config/neighbor-address
+           +--rw config
+           |     ...
+           +--ro state
+           |     ...
+           +--rw timers
+           |     ...
+           +--rw transport
+           |     ...
+           +--rw error-handling
+           |     ...
+           +--rw graceful-restart
+           |     ...
+           +--rw logging-options
+           |     ...
+           +--rw ebgp-multihop
+           |     ...
+           +--rw route-reflector
+           |     ...
+           +--rw as-path-options
+           |     ...
+           +--rw use-multiple-paths
+           |     ...
+           +--rw apply-policy
+           |     ...
+           +--rw afi-safis
+           |     ...
+           +--rw enable-bfd
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/config
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-bgp
+  +--rw bgp
+     +--rw neighbors
+        +--rw neighbor* [neighbor-address]
+           +--rw config
+              +--rw peer-group?           -&gt; ../../../../peer-groups/peer-group/peer-group-name
+              +--rw neighbor-address?     oc-inet:ip-address
+              +--rw enabled?              boolean
+              +--rw peer-as?              oc-inet:as-number
+              +--rw local-as?             oc-inet:as-number
+              +--rw peer-type?            oc-bgp-types:peer-type
+              +--rw auth-password?        oc-types:routing-password
+              +--rw remove-private-as?    oc-bgp-types:remove-private-as-option
+              +--rw route-flap-damping?   boolean
+              +--rw send-community?       oc-bgp-types:community-type
+              +--rw description?          string
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/state --tree-depth=5
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-bgp
+  +--rw bgp
+     +--rw neighbors
+        +--rw neighbor* [neighbor-address]
+           +--ro state
+              +--ro peer-group?                -&gt; ../../../../peer-groups/peer-group/peer-group-name
+              +--ro neighbor-address?          oc-inet:ip-address
+              +--ro enabled?                   boolean
+              +--ro peer-as?                   oc-inet:as-number
+              +--ro local-as?                  oc-inet:as-number
+              +--ro peer-type?                 oc-bgp-types:peer-type
+              +--ro auth-password?             oc-types:routing-password
+              +--ro remove-private-as?         oc-bgp-types:remove-private-as-option
+              +--ro route-flap-damping?        boolean
+              +--ro send-community?            oc-bgp-types:community-type
+              +--ro description?               string
+              +--ro session-state?             enumeration
+              +--ro last-established?          oc-types:timeticks64
+              +--ro established-transitions?   oc-yang:counter64
+              +--ro supported-capabilities*    identityref
+              +--ro messages
+              |     ...
+              +--ro queues
+              |     ...
+              +--ro dynamically-configured?    boolean
+</code></pre>
+
+</p>
+</details>
+
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/afi-safis --tree-depth=6
+</code></pre>
+<details>
+<summary> Reveal output</summary>
+<p>
+
+<pre><code class="language-shell">module: openconfig-bgp
+  +--rw bgp
+     +--rw neighbors
+        +--rw neighbor* [neighbor-address]
+           +--rw afi-safis
+              +--rw afi-safi* [afi-safi-name]
+                 +--rw afi-safi-name           -&gt; ../config/afi-safi-name
+                 +--rw config
+                 |     ...
+                 +--ro state
+                 |     ...
+                 +--rw graceful-restart
+                 |     ...
+                 +--rw add-paths
+                 |     ...
+                 +--rw apply-policy
+                 |     ...
+                 +--rw ipv4-unicast
+                 |     ...
+                 +--rw ipv6-unicast
+                 |     ...
+                 +--rw ipv4-labeled-unicast
+                 |     ...
+                 +--rw ipv6-labeled-unicast
+                 |     ...
+                 +--rw l3vpn-ipv4-unicast
+                 |     ...
+                 +--rw l3vpn-ipv6-unicast
+                 |     ...
+                 +--rw l3vpn-ipv4-multicast
+                 |     ...
+                 +--rw l3vpn-ipv6-multicast
+                 |     ...
+                 +--rw l2vpn-vpls
+                 |     ...
+                 +--rw l2vpn-evpn
+                 |     ...
+                 +--rw srte-policy-ipv4
+                 |     ...
+                 +--rw srte-policy-ipv6
+                 |     ...
+                 +--rw use-multiple-paths
+</code></pre>
+
+</p>
+</details>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../pygnmi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pygnmi" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Pygnmi
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ygot/" class="md-footer__link md-footer__link--next" aria-label="Next: ygot" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ygot
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
