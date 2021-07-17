@@ -510,10 +510,10 @@
       
         <li class="md-nav__item">
   <a href="#we-need-yang-modules" class="md-nav__link">
-    we need yang modules
+    We need yang modules
   </a>
   
-    <nav class="md-nav" aria-label="we need yang modules">
+    <nav class="md-nav" aria-label="We need yang modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -525,7 +525,7 @@
         
           <li class="md-nav__item">
   <a href="#clone-the-openconfig-repository" class="md-nav__link">
-    Clone the openconfig repository
+    Clone the OpenConfig repository
   </a>
   
 </li>
@@ -641,10 +641,10 @@
       
         <li class="md-nav__item">
   <a href="#we-need-yang-modules" class="md-nav__link">
-    we need yang modules
+    We need yang modules
   </a>
   
-    <nav class="md-nav" aria-label="we need yang modules">
+    <nav class="md-nav" aria-label="We need yang modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -656,7 +656,7 @@
         
           <li class="md-nav__item">
   <a href="#clone-the-openconfig-repository" class="md-nav__link">
-    Clone the openconfig repository
+    Clone the OpenConfig repository
   </a>
   
 </li>
@@ -736,11 +736,11 @@ pip3 freeze | grep pyang
 </code></pre>
 <pre><code class="language-shell">pip3 freeze | grep pyang
 </code></pre>
-<h2 id="we-need-yang-modules">we need yang modules</h2>
+<h2 id="we-need-yang-modules">We need yang modules</h2>
 <h3 id="create-a-directory">Create a directory</h3>
 <pre><code class="language-shell">mkdir yang_modules
 </code></pre>
-<h3 id="clone-the-openconfig-repository">Clone the openconfig repository</h3>
+<h3 id="clone-the-openconfig-repository">Clone the OpenConfig repository</h3>
 <p>From the root of this repository:</p>
 <pre><code class="language-shell">git clone https://github.com/openconfig/public.git
 </code></pre>
@@ -772,6 +772,7 @@ ls *.yin
 <details>
 <summary> Reveal output</summary>
 <p>
+
 
 <pre><code class="language-shell">module: openconfig-interfaces
   +--rw interfaces
@@ -873,6 +874,7 @@ ls *.yin
 <summary> Reveal output</summary>
 <p>
 
+
 <pre><code class="language-shell">module: openconfig-interfaces
   +--rw interfaces
      +--rw interface* [name]
@@ -920,6 +922,7 @@ ls *.yin
 <summary> Reveal output</summary>
 <p>
 
+
 <pre><code class="language-shell">module: openconfig-interfaces
   +--rw interfaces
      +--rw interface* [name]
@@ -966,6 +969,7 @@ ls *.yin
 <summary> Reveal output</summary>
 <p>
 
+
 <pre><code class="language-shell">module: openconfig-bgp
   +--rw bgp
      +--rw neighbors
@@ -1009,6 +1013,7 @@ ls *.yin
 <summary> Reveal output</summary>
 <p>
 
+
 <pre><code class="language-shell">module: openconfig-bgp
   +--rw bgp
      +--rw neighbors
@@ -1030,11 +1035,13 @@ ls *.yin
 </p>
 </details>
 
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/state --tree-depth=5
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/state \
+    --tree-depth=5
 </code></pre>
 <details>
 <summary> Reveal output</summary>
 <p>
+
 
 <pre><code class="language-shell">module: openconfig-bgp
   +--rw bgp
@@ -1066,11 +1073,13 @@ ls *.yin
 </p>
 </details>
 
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/afi-safis --tree-depth=6
+<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/afi-safis \
+   --tree-depth=6
 </code></pre>
 <details>
 <summary> Reveal output</summary>
 <p>
+
 
 <pre><code class="language-shell">module: openconfig-bgp
   +--rw bgp
