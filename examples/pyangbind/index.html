@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/pyang/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/pyangbind/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
-        <title>pyang examples - Open Management</title>
+        <title>Pyangbind - Open Management</title>
       
     
     
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              pyang examples
+              Pyangbind
             
           </span>
         </div>
@@ -464,6 +464,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../pyang/" class="md-nav__link">
+        Pyang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -474,12 +486,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pyang
+          Pyangbind
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Pyang
+        Pyangbind
       </a>
       
         
@@ -502,18 +514,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-pyang" class="md-nav__link">
-    Install Pyang
+  <a href="#about-pyangbind" class="md-nav__link">
+    About PyangBind
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#we-need-yang-modules" class="md-nav__link">
-    We need yang modules
+  <a href="#install-pyang-and-pyangbind" class="md-nav__link">
+    Install Pyang and Pyangbind
   </a>
   
-    <nav class="md-nav" aria-label="We need yang modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-yang-modules" class="md-nav__link">
+    Get YANG modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Get YANG modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -550,24 +569,72 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validate-yang-modules" class="md-nav__link">
-    Validate YANG modules
+  <a href="#use-pyangbind-to-generate-a-python-module-from-a-yang-module" class="md-nav__link">
+    Use Pyangbind to generate a Python module from a YANG module
   </a>
   
-    <nav class="md-nav" aria-label="Validate YANG modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-new-python-module-to-generate-an-openconfig-configuration-file" class="md-nav__link">
+    Use the new python module to generate an OpenConfig configuration file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-gnmi-set-rpc-to-configure-a-device" class="md-nav__link">
+    Use gNMI SET RPC to configure a device
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gNMI SET RPC to configure a device">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#convert-a-yang-module-into-an-equivalent-yin-module" class="md-nav__link">
-    Convert a YANG module into an equivalent YIN module
+  <a href="#install-gnmic" class="md-nav__link">
+    Install gNMIc
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#generate-a-tree-representation-of-yang-modules-for-quick-visualization" class="md-nav__link">
-    Generate a tree representation of YANG modules for quick visualization
+  <a href="#required-device-configuration" class="md-nav__link">
+    Required device configuration
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-gnmic-to-configure-the-swicth" class="md-nav__link">
+    Use gNMIc to configure the swicth
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gNMIc to configure the swicth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-device-configuration-before" class="md-nav__link">
+    Check the device configuration before
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-gnmic-to-configure-the-swicth_1" class="md-nav__link">
+    Use gNMIc to configure the swicth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-device-configuration-after" class="md-nav__link">
+    Check the device configuration after
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -580,18 +647,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pyangbind/" class="md-nav__link">
-        Pyangbind
-      </a>
     </li>
   
 
@@ -645,18 +700,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-pyang" class="md-nav__link">
-    Install Pyang
+  <a href="#about-pyangbind" class="md-nav__link">
+    About PyangBind
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#we-need-yang-modules" class="md-nav__link">
-    We need yang modules
+  <a href="#install-pyang-and-pyangbind" class="md-nav__link">
+    Install Pyang and Pyangbind
   </a>
   
-    <nav class="md-nav" aria-label="We need yang modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-yang-modules" class="md-nav__link">
+    Get YANG modules
+  </a>
+  
+    <nav class="md-nav" aria-label="Get YANG modules">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -693,24 +755,72 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validate-yang-modules" class="md-nav__link">
-    Validate YANG modules
+  <a href="#use-pyangbind-to-generate-a-python-module-from-a-yang-module" class="md-nav__link">
+    Use Pyangbind to generate a Python module from a YANG module
   </a>
   
-    <nav class="md-nav" aria-label="Validate YANG modules">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-new-python-module-to-generate-an-openconfig-configuration-file" class="md-nav__link">
+    Use the new python module to generate an OpenConfig configuration file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-gnmi-set-rpc-to-configure-a-device" class="md-nav__link">
+    Use gNMI SET RPC to configure a device
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gNMI SET RPC to configure a device">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#convert-a-yang-module-into-an-equivalent-yin-module" class="md-nav__link">
-    Convert a YANG module into an equivalent YIN module
+  <a href="#install-gnmic" class="md-nav__link">
+    Install gNMIc
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#generate-a-tree-representation-of-yang-modules-for-quick-visualization" class="md-nav__link">
-    Generate a tree representation of YANG modules for quick visualization
+  <a href="#required-device-configuration" class="md-nav__link">
+    Required device configuration
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-gnmic-to-configure-the-swicth" class="md-nav__link">
+    Use gNMIc to configure the swicth
+  </a>
+  
+    <nav class="md-nav" aria-label="Use gNMIc to configure the swicth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-the-device-configuration-before" class="md-nav__link">
+    Check the device configuration before
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-gnmic-to-configure-the-swicth_1" class="md-nav__link">
+    Use gNMIc to configure the swicth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-device-configuration-after" class="md-nav__link">
+    Check the device configuration after
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -732,30 +842,30 @@
               
                 
                 
-                  <h1>Pyang</h1>
+                  <h1>Pyangbind</h1>
                 
-                <h2 id="about-pyang">About Pyang</h2>
-<p>pyang is a python program.</p>
-<p>We can use it to:</p>
-<ul>
-<li>Validate YANG modules against YANG RFCs</li>
-<li>Convert YANG modules into equivalent YIN module (XML)</li>
-<li>Generate a tree representation of YANG models for quick visualization</li>
-</ul>
-<h2 id="install-pyang">Install Pyang</h2>
+                <p>PyangBind is a pyang plugin.</p>
+<h2 id="about-pyang">About Pyang</h2>
+<p>Please visit <a href="../pyang/">this link</a> if you need help about Pyang.</p>
+<h2 id="about-pyangbind">About PyangBind</h2>
+<p>It generates Python classes from a YANG module.</p>
+<p>It converts YANG module into a Python module.
+This Python module can be then used to generate data which conforms with the data model defined in YANG.</p>
+<h2 id="install-pyang-and-pyangbind">Install Pyang and Pyangbind</h2>
 <pre><code class="language-shell">pip install pyang
-pip3 freeze | grep pyang
+pip install pyangbind
 </code></pre>
 <pre><code class="language-shell">pip3 freeze | grep pyang
 </code></pre>
-<h2 id="we-need-yang-modules">We need yang modules</h2>
+<h2 id="get-yang-modules">Get YANG modules</h2>
 <h3 id="create-a-directory">Create a directory</h3>
 <pre><code class="language-shell">mkdir yang_modules
 </code></pre>
 <h3 id="clone-the-openconfig-repository">Clone the OpenConfig repository</h3>
 <pre><code class="language-shell">git clone https://github.com/openconfig/public.git
 </code></pre>
-<pre><code>ls public
+<p>Run this command to verify</p>
+<pre><code class="language-shell">ls public
 </code></pre>
 <h3 id="copy-all-the-yang-files-from-openconfig-to-the-yang_modules-directory">Copy all the YANG files from OpenConfig to the yang_modules directory</h3>
 <pre><code class="language-shell">cp public/release/models/*.yang yang_modules/.
@@ -763,383 +873,45 @@ cp -R public/release/models/*/*.yang yang_modules/.
 cp public/third_party/ietf/*.yang yang_modules/.
 </code></pre>
 <h3 id="move-to-the-yang_modules-directory">Move to the yang_modules directory</h3>
-<p>It has all the YANG files published on the OpenConfig repository</p>
 <pre><code class="language-shell">cd yang_modules/
-ls
 </code></pre>
-<h2 id="validate-yang-modules">Validate YANG modules</h2>
-<pre><code class="language-shell">pyang openconfig-bgp.yang
-pyang openconfig-interfaces.yang
+<p>Verify it has all the YANG files published on the OpenConfig repository</p>
+<pre><code class="language-shell">ls
 </code></pre>
-<h3 id="convert-a-yang-module-into-an-equivalent-yin-module">Convert a YANG module into an equivalent YIN module</h3>
-<p>A YANG module can be translated into an XML syntax called YIN. The translated module is called a YIN module. The YANG and YIN formats contain equivalent information using different notations: YIN is YANG in XML. A YANG module can be translated into YIN syntax without losing any information.</p>
-<p>Example (openconfig-bgp.yin is the YIN equivalent of openconfig-bgp.yang)</p>
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f yin -o openconfig-bgp.yin
-ls *.yin
+<h2 id="use-pyangbind-to-generate-a-python-module-from-a-yang-module">Use Pyangbind to generate a Python module from a YANG module</h2>
+<pre><code class="language-shell">pyang --plugindir $HOME/.local/lib/python3.6/site-packages/pyangbind/plugin/ -f pybind -o oc_bgp.py openconfig-bgp.yang
 </code></pre>
-<h3 id="generate-a-tree-representation-of-yang-modules-for-quick-visualization">Generate a tree representation of YANG modules for quick visualization</h3>
-<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree
+<p>The above command generated the python module <code>oc_bgp.py</code> from the <code>openconfig-bgp.yang</code> file.
+Run this command to verify:</p>
+<pre><code class="language-shell">ls oc_bgp.py
 </code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-interfaces
-  +--rw interfaces
-     +--rw interface* [name]
-        +--rw name             -&gt; ../config/name
-        +--rw config
-        |  +--rw name?            string
-        |  +--rw type             identityref
-        |  +--rw mtu?             uint16
-        |  +--rw loopback-mode?   boolean
-        |  +--rw description?     string
-        |  +--rw enabled?         boolean
-        +--ro state
-        |  +--ro name?            string
-        |  +--ro type             identityref
-        |  +--ro mtu?             uint16
-        |  +--ro loopback-mode?   boolean
-        |  +--ro description?     string
-        |  +--ro enabled?         boolean
-        |  +--ro ifindex?         uint32
-        |  +--ro admin-status     enumeration
-        |  +--ro oper-status      enumeration
-        |  +--ro last-change?     oc-types:timeticks64
-        |  +--ro logical?         boolean
-        |  +--ro management?      boolean
-        |  +--ro cpu?             boolean
-        |  +--ro counters
-        |     +--ro in-octets?             oc-yang:counter64
-        |     +--ro in-pkts?               oc-yang:counter64
-        |     +--ro in-unicast-pkts?       oc-yang:counter64
-        |     +--ro in-broadcast-pkts?     oc-yang:counter64
-        |     +--ro in-multicast-pkts?     oc-yang:counter64
-        |     +--ro in-discards?           oc-yang:counter64
-        |     +--ro in-errors?             oc-yang:counter64
-        |     +--ro in-unknown-protos?     oc-yang:counter64
-        |     +--ro in-fcs-errors?         oc-yang:counter64
-        |     +--ro out-octets?            oc-yang:counter64
-        |     +--ro out-pkts?              oc-yang:counter64
-        |     +--ro out-unicast-pkts?      oc-yang:counter64
-        |     +--ro out-broadcast-pkts?    oc-yang:counter64
-        |     +--ro out-multicast-pkts?    oc-yang:counter64
-        |     +--ro out-discards?          oc-yang:counter64
-        |     +--ro out-errors?            oc-yang:counter64
-        |     +--ro carrier-transitions?   oc-yang:counter64
-        |     +--ro last-clear?            oc-types:timeticks64
-        +--rw hold-time
-        |  +--rw config
-        |  |  +--rw up?     uint32
-        |  |  +--rw down?   uint32
-        |  +--ro state
-        |     +--ro up?     uint32
-        |     +--ro down?   uint32
-        +--rw subinterfaces
-           +--rw subinterface* [index]
-              +--rw index     -&gt; ../config/index
-              +--rw config
-              |  +--rw index?         uint32
-              |  +--rw description?   string
-              |  +--rw enabled?       boolean
-              +--ro state
-                 +--ro index?          uint32
-                 +--ro description?    string
-                 +--ro enabled?        boolean
-                 +--ro name?           string
-                 +--ro ifindex?        uint32
-                 +--ro admin-status    enumeration
-                 +--ro oper-status     enumeration
-                 +--ro last-change?    oc-types:timeticks64
-                 +--ro logical?        boolean
-                 +--ro management?     boolean
-                 +--ro cpu?            boolean
-                 +--ro counters
-                    +--ro in-octets?             oc-yang:counter64
-                    +--ro in-pkts?               oc-yang:counter64
-                    +--ro in-unicast-pkts?       oc-yang:counter64
-                    +--ro in-broadcast-pkts?     oc-yang:counter64
-                    +--ro in-multicast-pkts?     oc-yang:counter64
-                    +--ro in-discards?           oc-yang:counter64
-                    +--ro in-errors?             oc-yang:counter64
-                    +--ro in-unknown-protos?     oc-yang:counter64
-                    +--ro in-fcs-errors?         oc-yang:counter64
-                    +--ro out-octets?            oc-yang:counter64
-                    +--ro out-pkts?              oc-yang:counter64
-                    +--ro out-unicast-pkts?      oc-yang:counter64
-                    +--ro out-broadcast-pkts?    oc-yang:counter64
-                    +--ro out-multicast-pkts?    oc-yang:counter64
-                    +--ro out-discards?          oc-yang:counter64
-                    +--ro out-errors?            oc-yang:counter64
-                    +--ro carrier-transitions?   oc-yang:counter64
-                    +--ro last-clear?            oc-types:timeticks64
+<h2 id="use-the-new-python-module-to-generate-an-openconfig-configuration-file">Use the new python module to generate an OpenConfig configuration file</h2>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/pyangbind/pyangbind_demo.py">pyangbind_demo.py</a> uses the new python module <code>oc_bgp.py</code> and generates this OpenConfig configuration file <a href="demo.json">demo.json</a></p>
+<pre><code class="language-shell">python3 pyangbind_demo.py
 </code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree --tree-path=/interfaces/interface/state
+<h2 id="use-gnmi-set-rpc-to-configure-a-device">Use gNMI SET RPC to configure a device</h2>
+<p>This OpenConfig configuration file <a href="demo.json">demo.json</a> can be loaded on a switch using the gNMI Set RPC</p>
+<h3 id="install-gnmic">Install gNMIc</h3>
+<p>Please visit <a href="../gnmi-clients/gnmic/">this link</a> if you need help with gNMIc installation</p>
+<h3 id="required-device-configuration">Required device configuration</h3>
+<p>Please visit <a href="../gnmi-clients/gnmic/">this link</a> if you need help to configure EOS for gNMI</p>
+<h3 id="use-gnmic-to-configure-the-swicth">Use gNMIc to configure the swicth</h3>
+<h4 id="check-the-device-configuration-before">Check the device configuration before</h4>
+<pre><code class="language-shell">gnmic -a 10.73.1.117:6030 --insecure -u arista -p arista get   \
+    --path '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp'
 </code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-interfaces
-  +--rw interfaces
-     +--rw interface* [name]
-        +--ro state
-           +--ro name?            string
-           +--ro type             identityref
-           +--ro mtu?             uint16
-           +--ro loopback-mode?   boolean
-           +--ro description?     string
-           +--ro enabled?         boolean
-           +--ro ifindex?         uint32
-           +--ro admin-status     enumeration
-           +--ro oper-status      enumeration
-           +--ro last-change?     oc-types:timeticks64
-           +--ro logical?         boolean
-           +--ro management?      boolean
-           +--ro cpu?             boolean
-           +--ro counters
-              +--ro in-octets?             oc-yang:counter64
-              +--ro in-pkts?               oc-yang:counter64
-              +--ro in-unicast-pkts?       oc-yang:counter64
-              +--ro in-broadcast-pkts?     oc-yang:counter64
-              +--ro in-multicast-pkts?     oc-yang:counter64
-              +--ro in-discards?           oc-yang:counter64
-              +--ro in-errors?             oc-yang:counter64
-              +--ro in-unknown-protos?     oc-yang:counter64
-              +--ro in-fcs-errors?         oc-yang:counter64
-              +--ro out-octets?            oc-yang:counter64
-              +--ro out-pkts?              oc-yang:counter64
-              +--ro out-unicast-pkts?      oc-yang:counter64
-              +--ro out-broadcast-pkts?    oc-yang:counter64
-              +--ro out-multicast-pkts?    oc-yang:counter64
-              +--ro out-discards?          oc-yang:counter64
-              +--ro out-errors?            oc-yang:counter64
-              +--ro carrier-transitions?   oc-yang:counter64
-              +--ro last-clear?            oc-types:timeticks64
+<pre><code class="language-shell">show run section bgp
 </code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-interfaces.yang -f tree --tree-depth=4
+<h4 id="use-gnmic-to-configure-the-swicth_1">Use gNMIc to configure the swicth</h4>
+<pre><code class="language-shell">gnmic -a 10.73.1.117:6030 --insecure -u arista -p arista set  \
+    --replace-path '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp' --replace-file demo.json
 </code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-interfaces
-  +--rw interfaces
-     +--rw interface* [name]
-        +--rw name             -&gt; ../config/name
-        +--rw config
-        |  +--rw name?            string
-        |  +--rw type             identityref
-        |  +--rw mtu?             uint16
-        |  +--rw loopback-mode?   boolean
-        |  +--rw description?     string
-        |  +--rw enabled?         boolean
-        +--ro state
-        |  +--ro name?            string
-        |  +--ro type             identityref
-        |  +--ro mtu?             uint16
-        |  +--ro loopback-mode?   boolean
-        |  +--ro description?     string
-        |  +--ro enabled?         boolean
-        |  +--ro ifindex?         uint32
-        |  +--ro admin-status     enumeration
-        |  +--ro oper-status      enumeration
-        |  +--ro last-change?     oc-types:timeticks64
-        |  +--ro logical?         boolean
-        |  +--ro management?      boolean
-        |  +--ro cpu?             boolean
-        |  +--ro counters
-        |        ...
-        +--rw hold-time
-        |  +--rw config
-        |  |     ...
-        |  +--ro state
-        |        ...
-        +--rw subinterfaces
-           +--rw subinterface* [index]
-                 ...
+<h4 id="check-the-device-configuration-after">Check the device configuration after</h4>
+<pre><code class="language-shell">gnmic -a 10.73.1.117:6030 --insecure -u arista -p arista get  \
+    --path '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp'
 </code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors --tree-depth=4
+<pre><code class="language-shell">show run section bgp
 </code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-bgp
-  +--rw bgp
-     +--rw neighbors
-        +--rw neighbor* [neighbor-address]
-           +--rw neighbor-address      -&gt; ../config/neighbor-address
-           +--rw config
-           |     ...
-           +--ro state
-           |     ...
-           +--rw timers
-           |     ...
-           +--rw transport
-           |     ...
-           +--rw error-handling
-           |     ...
-           +--rw graceful-restart
-           |     ...
-           +--rw logging-options
-           |     ...
-           +--rw ebgp-multihop
-           |     ...
-           +--rw route-reflector
-           |     ...
-           +--rw as-path-options
-           |     ...
-           +--rw use-multiple-paths
-           |     ...
-           +--rw apply-policy
-           |     ...
-           +--rw afi-safis
-           |     ...
-           +--rw enable-bfd
-</code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/config
-</code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-bgp
-  +--rw bgp
-     +--rw neighbors
-        +--rw neighbor* [neighbor-address]
-           +--rw config
-              +--rw peer-group?           -&gt; ../../../../peer-groups/peer-group/peer-group-name
-              +--rw neighbor-address?     oc-inet:ip-address
-              +--rw enabled?              boolean
-              +--rw peer-as?              oc-inet:as-number
-              +--rw local-as?             oc-inet:as-number
-              +--rw peer-type?            oc-bgp-types:peer-type
-              +--rw auth-password?        oc-types:routing-password
-              +--rw remove-private-as?    oc-bgp-types:remove-private-as-option
-              +--rw route-flap-damping?   boolean
-              +--rw send-community?       oc-bgp-types:community-type
-              +--rw description?          string
-</code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/state \
-    --tree-depth=5
-</code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-bgp
-  +--rw bgp
-     +--rw neighbors
-        +--rw neighbor* [neighbor-address]
-           +--ro state
-              +--ro peer-group?                -&gt; ../../../../peer-groups/peer-group/peer-group-name
-              +--ro neighbor-address?          oc-inet:ip-address
-              +--ro enabled?                   boolean
-              +--ro peer-as?                   oc-inet:as-number
-              +--ro local-as?                  oc-inet:as-number
-              +--ro peer-type?                 oc-bgp-types:peer-type
-              +--ro auth-password?             oc-types:routing-password
-              +--ro remove-private-as?         oc-bgp-types:remove-private-as-option
-              +--ro route-flap-damping?        boolean
-              +--ro send-community?            oc-bgp-types:community-type
-              +--ro description?               string
-              +--ro session-state?             enumeration
-              +--ro last-established?          oc-types:timeticks64
-              +--ro established-transitions?   oc-yang:counter64
-              +--ro supported-capabilities*    identityref
-              +--ro messages
-              |     ...
-              +--ro queues
-              |     ...
-              +--ro dynamically-configured?    boolean
-</code></pre>
-
-</p>
-</details>
-
-<pre><code class="language-shell">pyang openconfig-bgp.yang -f tree --tree-path=/bgp/neighbors/neighbor/afi-safis \
-   --tree-depth=6
-</code></pre>
-<details>
-<summary> Reveal output</summary>
-<p>
-
-
-<pre><code class="language-shell">module: openconfig-bgp
-  +--rw bgp
-     +--rw neighbors
-        +--rw neighbor* [neighbor-address]
-           +--rw afi-safis
-              +--rw afi-safi* [afi-safi-name]
-                 +--rw afi-safi-name           -&gt; ../config/afi-safi-name
-                 +--rw config
-                 |     ...
-                 +--ro state
-                 |     ...
-                 +--rw graceful-restart
-                 |     ...
-                 +--rw add-paths
-                 |     ...
-                 +--rw apply-policy
-                 |     ...
-                 +--rw ipv4-unicast
-                 |     ...
-                 +--rw ipv6-unicast
-                 |     ...
-                 +--rw ipv4-labeled-unicast
-                 |     ...
-                 +--rw ipv6-labeled-unicast
-                 |     ...
-                 +--rw l3vpn-ipv4-unicast
-                 |     ...
-                 +--rw l3vpn-ipv6-unicast
-                 |     ...
-                 +--rw l3vpn-ipv4-multicast
-                 |     ...
-                 +--rw l3vpn-ipv6-multicast
-                 |     ...
-                 +--rw l2vpn-vpls
-                 |     ...
-                 +--rw l2vpn-evpn
-                 |     ...
-                 +--rw srte-policy-ipv4
-                 |     ...
-                 +--rw srte-policy-ipv6
-                 |     ...
-                 +--rw use-multiple-paths
-</code></pre>
-
-</p>
-</details>
-                
-                  
                 
               
               
@@ -1159,7 +931,7 @@ ls *.yin
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../pygnmi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pygnmi" rel="prev">
+        <a href="../pyang/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pyang" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1168,20 +940,20 @@ ls *.yin
               <span class="md-footer__direction">
                 Previous
               </span>
-              Pygnmi
+              Pyang
             </div>
           </div>
         </a>
       
       
         
-        <a href="../pyangbind/" class="md-footer__link md-footer__link--next" aria-label="Next: Pyangbind" rel="next">
+        <a href="../ygot/" class="md-footer__link md-footer__link--next" aria-label="Next: ygot" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Pyangbind
+              ygot
             </div>
           </div>
           <div class="md-footer__button md-icon">
