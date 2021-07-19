@@ -9,14 +9,14 @@
       
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnoi/gnoic/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/netconf/ncclient/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>gNOIc examples - Open Management</title>
+        <title>ncclient examples - Open Management</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-grpc" class="md-skip">
+        <a href="#about-netconf" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              gNOIc examples
+              ncclient examples
             
           </span>
         </div>
@@ -389,14 +389,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
       
       <label class="md-nav__link" for="__nav_3_4">
         gNOI
@@ -412,89 +410,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          gNOIc
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../gnoi/gnoic/" class="md-nav__link">
         gNOIc
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-grpc" class="md-nav__link">
-    About gRPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi" class="md-nav__link">
-    About gNOI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
-    About gNOI support on EOS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnoic-overview" class="md-nav__link">
-    gNOIc overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-install-gnoic" class="md-nav__link">
-    Download &amp; install gNOIc
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#device-config" class="md-nav__link">
-    Device config
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnoi-demo-with-arista-using-gnoic" class="md-nav__link">
-    gNOI demo with Arista using gNOIc
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -504,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grpcurl/" class="md-nav__link">
+      <a href="../../gnoi/grpcurl/" class="md-nav__link">
         gRPCurl
       </a>
     </li>
@@ -532,12 +452,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" checked>
       
       <label class="md-nav__link" for="__nav_3_6">
         NETCONF
@@ -553,11 +475,88 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../netconf/ncclient/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ncclient
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         ncclient
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-netconf" class="md-nav__link">
+    About NETCONF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ncclient" class="md-nav__link">
+    Install ncclient
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-on-the-eos-device" class="md-nav__link">
+    Requirements on the EOS device
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ncclient-demo" class="md-nav__link">
+    ncclient demo
+  </a>
+  
+    <nav class="md-nav" aria-label="ncclient demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-python-session" class="md-nav__link">
+    interactive python session
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-demos" class="md-nav__link">
+    other demos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -567,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../netconf/netconf_over_ssh/" class="md-nav__link">
+      <a href="../netconf_over_ssh/" class="md-nav__link">
         NETCONF over SSH
       </a>
     </li>
@@ -658,51 +657,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-grpc" class="md-nav__link">
-    About gRPC
+  <a href="#about-netconf" class="md-nav__link">
+    About NETCONF
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#about-gnoi" class="md-nav__link">
-    About gNOI
+  <a href="#install-ncclient" class="md-nav__link">
+    Install ncclient
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
-    About gNOI support on EOS
+  <a href="#requirements-on-the-eos-device" class="md-nav__link">
+    Requirements on the EOS device
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#gnoic-overview" class="md-nav__link">
-    gNOIc overview
+  <a href="#ncclient-demo" class="md-nav__link">
+    ncclient demo
+  </a>
+  
+    <nav class="md-nav" aria-label="ncclient demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-python-session" class="md-nav__link">
+    interactive python session
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#download-install-gnoic" class="md-nav__link">
-    Download &amp; install gNOIc
+        
+          <li class="md-nav__item">
+  <a href="#other-demos" class="md-nav__link">
+    other demos
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#device-config" class="md-nav__link">
-    Device config
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gnoi-demo-with-arista-using-gnoic" class="md-nav__link">
-    gNOI demo with Arista using gNOIc
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -719,159 +717,136 @@
               
                 
                 
-                  <h1>gNOIc</h1>
+                  <h1>ncclient</h1>
                 
-                <h2 id="about-grpc">About gRPC</h2>
-<p>gRPC - Google Remote Procedure Call</p>
-<p>gRPC uses protobuf and HTTP/2</p>
-<h2 id="about-gnoi">About gNOI</h2>
-<p>gNOI - gRPC Network Operations Interface</p>
-<p>gNOI defines a set of gRPC-based microservices for executing operational commands on network devices.</p>
-<p>gNOI <a href="https://github.com/openconfig/gnoi">github repository</a></p>
-<p>As example, <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto">this gNOI proto file</a> defines the service <code>System</code> with the RPC <code>Traceroute</code> and <code>Ping</code></p>
-<ul>
-<li>Ping executes the ping command on the target and streams back the results</li>
-<li>Traceroute executes the traceroute command on the target and streams back the results</li>
-<li>As you can see in the proto file, the field VRF is not defined for these messages</li>
-</ul>
-<h2 id="about-gnoi-support-on-eos">About gNOI support on EOS</h2>
-<p>Please refer to this <a href="https://eos.arista.com/eos-4-24-2f/gnoi/">link</a> for the gNOI support by EOS.</p>
-<p>Examples:</p>
-<ul>
-<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-ping/">gnoi ping</a></li>
-<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-traceroute/">gnoi traceroute</a></li>
-</ul>
-<h2 id="gnoic-overview">gNOIc overview</h2>
-<p>gNOIc is a gNOI CLI client:</p>
-<ul>
-<li><a href="https://github.com/karimra/gnoic">source code</a></li>
-<li><a href="https://gnoic.kmrd.dev/">documentation</a></li>
-</ul>
-<p>The following examples shows various gNOIc commands with Arista EOS devices.</p>
-<h2 id="download-install-gnoic">Download &amp; install gNOIc</h2>
-<p>To install run:</p>
-<pre><code class="language-shell">bash -c &quot;$(curl -sL https://get-gnoic.kmrd.dev)&quot;
+                <h2 id="about-netconf">About NETCONF</h2>
+<p>NETCONF is a protocol defined in the <a href="https://tools.ietf.org/html/rfc6241">RFC 6241</a></p>
+<h2 id="install-ncclient">Install ncclient</h2>
+<pre><code class="language-shell">pip install ncclient
 </code></pre>
-<p>To get the version run:</p>
-<pre><code class="language-shell">gnoic version
+<pre><code class="language-shell">pip3 freeze | grep ncclient
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-shell">version : 0.0.5
- commit : 26c6248
-   date : 2021-05-12T10:12:55Z
- gitURL : https://github.com/karimra/gnoic
-   docs : https://gnoic.kmrd.dev
-</code></pre>
-<h2 id="device-config">Device config</h2>
-<pre><code class="language-shell">interface Management1
-   description oob_management
-   vrf MGMT
-   ip address 10.73.1.118/24
-
-username arista secret 0 arista
-
-management api gnmi
-   transport grpc def
+<h2 id="requirements-on-the-eos-device">Requirements on the EOS device</h2>
+<pre><code class="language-shell">switch1#show running-config section netconf
+management api netconf
+   transport ssh test
       vrf MGMT
 </code></pre>
-<pre><code class="language-shell">DC1-L2LEAF2A#show management api gnmi
+<pre><code class="language-shell">switch1#sh management api netconf
 Enabled:            Yes
-Server:             running on port 6030, in MGMT VRF
-SSL Profile:        none
-QoS DSCP:           none
-DC1-L2LEAF2A#
+Server:             running on port 830, in MGMT VRF
 </code></pre>
-<p>Before to use gNOI ping and traceroute, lets run these commands locally:</p>
-<pre><code class="language-shell">$ ssh arista@10.73.1.118
-Password:
-Last login: Thu Jun  3 12:06:25 2021 from 10.73.1.3
-DC1-L2LEAF2A&gt;en
-DC1-L2LEAF2A#bash
-
-Arista Networks EOS shell
-
-[arista@DC1-L2LEAF2A ~]$ ping  172.31.255.0 -c 2
-PING 172.31.255.0 (172.31.255.0) 56(84) bytes of data.
-64 bytes from 172.31.255.0: icmp_seq=1 ttl=63 time=24.6 ms
-64 bytes from 172.31.255.0: icmp_seq=2 ttl=63 time=18.8 ms
-
---- 172.31.255.0 ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss, time 1001ms
-rtt min/avg/max/mdev = 18.861/21.738/24.616/2.881 ms
-[arista@DC1-L2LEAF2A ~]$
-[arista@DC1-L2LEAF2A ~]$ traceroute -A 172.31.255.0
-traceroute to 172.31.255.0 (172.31.255.0), 30 hops max, 60 byte packets
- 1  10.90.90.1 (10.90.90.1) [!!]  26.636 ms  29.420 ms  32.113 ms
- 2  172.31.255.0 (172.31.255.0) [!!]  52.764 ms  53.881 ms  63.213 ms
-[arista@DC1-L2LEAF2A ~]$
-[arista@DC1-L2LEAF2A ~]$ exit
-logout
-DC1-L2LEAF2A#exit
-Connection to 10.73.1.118 closed.
+<h2 id="ncclient-demo">ncclient demo</h2>
+<h3 id="interactive-python-session">interactive python session</h3>
+<pre><code class="language-python">&gt;&gt;&gt; from ncclient import manager
+&gt;&gt;&gt; eos=manager.connect(host=&quot;10.83.28.221&quot;, port=&quot;830&quot;, timeout=30, username=&quot;arista&quot;, password=&quot;arista&quot;, hostkey_verify=False)
+&gt;&gt;&gt;
+&gt;&gt;&gt; eos.connected
+True
+&gt;&gt;&gt; eos.timeout
+30
+&gt;&gt;&gt; eos.session_id
+'1292406600'
+&gt;&gt;&gt;
+&gt;&gt;&gt; assert(&quot;urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring&quot; in eos.server_capabilities), &quot;NetConf server not compliant with https://tools.ietf.org/html/rfc6022&quot;
+&gt;&gt;&gt;
+&gt;&gt;&gt; conf = '''
+... &lt;config&gt;
+...     &lt;system xmlns=&quot;http://openconfig.net/yang/system&quot;&gt;
+...         &lt;config&gt;
+...             &lt;domain-name&gt;abc.xyz&lt;/domain-name&gt;
+...         &lt;/config&gt;
+...     &lt;/system&gt;
+... &lt;/config&gt;
+... '''
+&gt;&gt;&gt;
+&gt;&gt;&gt; eos.edit_config(target = &quot;running&quot;, config = conf, default_operation=&quot;merge&quot;)
+&lt;rpc-reply xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;urn:uuid:33ca18d3-43b5-4277-a6ce-9a751f74cada&quot;&gt;&lt;ok&gt;&lt;/ok&gt;&lt;/rpc-reply&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; domain_name='''
+... &lt;system xmlns=&quot;http://openconfig.net/yang/system&quot;&gt;
+...     &lt;config&gt;
+...         &lt;domain-name&gt;
+...         &lt;/domain-name&gt;
+...     &lt;/config&gt;
+... &lt;/system&gt;
+... '''
+&gt;&gt;&gt;
+&gt;&gt;&gt; domain_name_conf = eos.get_config(source=&quot;running&quot;, filter=(&quot;subtree&quot;, domain_name))
+&gt;&gt;&gt; print (domain_name_conf)
+&lt;rpc-reply xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;urn:uuid:a43cfae5-3215-4f99-97ce-ff61ca1e285c&quot;&gt;&lt;data time-modified=&quot;2021-07-11T12:29:49.133333939Z&quot;&gt;&lt;system xmlns=&quot;http://openconfig.net/yang/system&quot;&gt;&lt;config&gt;&lt;domain-name&gt;abc.xyz&lt;/domain-name&gt;&lt;/config&gt;&lt;/system&gt;&lt;/data&gt;&lt;/rpc-reply&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; eos.close_session()
+&lt;rpc-reply xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;urn:uuid:1841896a-9c97-467d-aef8-9a405b51d298&quot;&gt;&lt;ok&gt;&lt;/ok&gt;&lt;/rpc-reply&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; eos.connected
+False
+&gt;&gt;&gt;
+&gt;&gt;&gt; exit()
 </code></pre>
-<h2 id="gnoi-demo-with-arista-using-gnoic">gNOI demo with Arista using gNOIc</h2>
-<pre><code class="language-shell">gnoic -a 10.73.1.118:6030 -u arista -p arista --insecure  system ping \
-   --destination 172.31.255.0 --count 2 --do-not-resolve
+<pre><code class="language-python">&gt;&gt;&gt; from lxml import etree
+&gt;&gt;&gt;
+&gt;&gt;&gt; system_e = etree.Element(&quot;system&quot;)
+&gt;&gt;&gt; dns_e = etree.SubElement(system_e, &quot;dns&quot;)
+&gt;&gt;&gt; servers_e = etree.SubElement(dns_e, &quot;servers&quot;)
+&gt;&gt;&gt; server_e = etree.SubElement(servers_e, &quot;server&quot;)
+&gt;&gt;&gt; address_e = etree.SubElement(server_e, &quot;address&quot;)
+&gt;&gt;&gt; config_e = etree.SubElement(server_e, &quot;config&quot;)
+&gt;&gt;&gt; address_e.text = &quot;8.8.8.8&quot;
+&gt;&gt;&gt;
+&gt;&gt;&gt; address_e.text
+'8.8.8.8'
+&gt;&gt;&gt;
+&gt;&gt;&gt; etree.tostring(system_e)
+b'&lt;system&gt;&lt;dns&gt;&lt;servers&gt;&lt;server&gt;&lt;address&gt;8.8.8.8&lt;/address&gt;&lt;config/&gt;&lt;/server&gt;&lt;/servers&gt;&lt;/dns&gt;&lt;/system&gt;'
+&gt;&gt;&gt;
+&gt;&gt;&gt; etree.tostring(system_e, pretty_print = True)
+b'&lt;system&gt;\n  &lt;dns&gt;\n    &lt;servers&gt;\n      &lt;server&gt;\n        &lt;address&gt;8.8.8.8&lt;/address&gt;\n        &lt;config/&gt;\n      &lt;/server&gt;\n    &lt;/servers&gt;\n  &lt;/dns&gt;\n&lt;/system&gt;\n'
+&gt;&gt;&gt;
+&gt;&gt;&gt; etree.dump(system_e)
+&lt;system&gt;
+  &lt;dns&gt;
+    &lt;servers&gt;
+      &lt;server&gt;
+        &lt;address&gt;8.8.8.8&lt;/address&gt;
+        &lt;config/&gt;
+      &lt;/server&gt;
+    &lt;/servers&gt;
+  &lt;/dns&gt;
+&lt;/system&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; from ncclient import manager
+&gt;&gt;&gt; eos=manager.connect(host=&quot;10.83.28.221&quot;, port=&quot;830&quot;, timeout=30, username=&quot;arista&quot;, password=&quot;arista&quot;, hostkey_verify=False)
+&gt;&gt;&gt; eos.connected
+True
+&gt;&gt;&gt;
+&gt;&gt;&gt; print(eos.get_config(source=&quot;running&quot;, filter=(&quot;subtree&quot;, system_e)))
+&lt;rpc-reply xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;urn:uuid:ab16e734-04df-4d4f-8efe-27963ece586c&quot;&gt;&lt;data time-modified=&quot;2021-07-11T12:29:49.138275819Z&quot;&gt;&lt;system xmlns=&quot;http://openconfig.net/yang/system&quot;&gt;&lt;dns&gt;&lt;servers&gt;&lt;server&gt;&lt;address&gt;8.8.8.8&lt;/address&gt;&lt;config&gt;&lt;address&gt;8.8.8.8&lt;/address&gt;&lt;/config&gt;&lt;/server&gt;&lt;/servers&gt;&lt;/dns&gt;&lt;/system&gt;&lt;/data&gt;&lt;/rpc-reply&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; eos.close_session()
+&lt;rpc-reply xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;urn:uuid:2eed88ee-106b-44d1-b196-f79611512b25&quot;&gt;&lt;ok&gt;&lt;/ok&gt;&lt;/rpc-reply&gt;
+&gt;&gt;&gt;
+&gt;&gt;&gt; exit()
 </code></pre>
-<p>Output:</p>
-<pre><code class="language-shell">WARN[0000] &quot;10.73.1.118:6030&quot; could not lookup hostname: lookup 118.1.73.10.in-addr.arpa. on 127.0.0.53:53: no such host
-source: &quot;172.31.255.0&quot;
-time: 31200000
-bytes: 64
-sequence: 1
-ttl: 63
-source: &quot;172.31.255.0&quot;
-time: 33900000
-bytes: 64
-sequence: 2
-ttl: 63
-source: &quot;172.31.255.0&quot;
-time: 1001000000
-sent: 2
-received: 2
-min_time: 31251000
-avg_time: 32590000
-max_time: 33930000
-std_dev: 1351000
-</code></pre>
-<pre><code class="language-shell"> gnoic -a 10.73.1.118:6030 -u arista -p arista --insecure  system traceroute \
-    --destination 172.31.255.0 --do-not-resolve
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-shell">WARN[0000] &quot;10.73.1.118:6030&quot; could not lookup hostname: lookup 118.1.73.10.in-addr.arpa. on 127.0.0.53:53: no such host
-destination_name: &quot;172.31.255.0&quot;
-destination_address: &quot;172.31.255.0&quot;
-hops: 30
-packet_size: 60
-hop: 1
-address: &quot;10.90.90.1&quot;
-rtt: 21440000
-hop: 1
-address: &quot;10.90.90.1&quot;
-rtt: 23011000
-hop: 1
-address: &quot;10.90.90.1&quot;
-rtt: 31135000
-hop: 2
-address: &quot;172.31.255.0&quot;
-rtt: 62216000
-hop: 2
-address: &quot;172.31.255.0&quot;
-rtt: 63213000
-hop: 2
-address: &quot;172.31.255.0&quot;
-rtt: 71079000
-</code></pre>
-<pre><code class="language-shell">gnoic -a 10.73.1.118:6030 -u arista -p arista --insecure cert can-generate-csr
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-shell">WARN[0000] &quot;10.73.1.118:6030&quot; could not lookup hostname: lookup 118.1.73.10.in-addr.arpa. on 127.0.0.53:53: no such host
-INFO[0000] &quot;10.73.1.118:6030&quot; key-type=KT_RSA, cert-type=CT_X509, key-size=2048: can_generate: true
-+------------------+------------------+
-|   Target Name    | Can Generate CSR |
-+------------------+------------------+
-| 10.73.1.118:6030 | true             |
-+------------------+------------------+
+<h3 id="other-demos">other demos</h3>
+<p>There are many python scripts using ncclient in this <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/">directory</a>:</p>
+<ul>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_client_capabilities.py">print_client_capabilities.py</a> prints the NETCONF client capabilities.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_server_capabilities.py">print_server_capabilities.py</a> prints the NETCONF server capabilities.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get.py">get.py</a> uses the <code>get</code> operation to retrieve the configuration and state data. It uses a filter to specify the portion of the configuration and state data to retrieve.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get_config.py">get_config.py</a> uses the <code>get-config</code> operation with a filter to retrieve part of the configuration.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/parse_xml_output.py">parse_xml_output.py</a> uses the <code>get</code> operation to retrieve data from the device and then parse this data.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_merge.py">edit_config_merge.py</a> uses the <code>edit-config</code> operation with the <code>merge</code> operation (which is the default operation for <code>edit-config</code>)</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_replace.py">edit_config_replace.py</a> uses the <code>edit-config</code> operation with the <code>replace</code> operation</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_delete.py">edit_config_delete.py</a>
+uses the <code>edit-config</code> operation with the <code>delete</code> operation</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/EOS_commands_with_NETCONF.py">EOS_commands_with_NETCONF.py</a> configures a device using the <code>edit-config</code> operation and EOS data model</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_commit.py">candidate_configuration_commit.py</a> uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>commit</code> operation.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_discard_changes.py">candidate_configuration_discard_changes.py</a>. uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>discard_change</code> operation to revert the candidate configuration to the current running configuration (insteaf of commiting the candidate configuration).</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/rpc.py">rpc.py</a> sends RPCs to configure EOS devices.</li>
+</ul>
+<p>To execute one of these scripts, run as example this command:</p>
+<pre><code class="language-shell">python3 print_server_capabilities.py
 </code></pre>
                 
                   
@@ -894,7 +869,7 @@ INFO[0000] &quot;10.73.1.118:6030&quot; key-type=KT_RSA, cert-type=CT_X509, key-
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../gnmi-gateway/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNMI gateway" rel="prev">
+        <a href="../../golang/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Go Lang" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -903,20 +878,20 @@ INFO[0000] &quot;10.73.1.118:6030&quot; key-type=KT_RSA, cert-type=CT_X509, key-
               <span class="md-footer__direction">
                 Previous
               </span>
-              gNMI gateway
+              Go Lang
             </div>
           </div>
         </a>
       
       
         
-        <a href="../grpcurl/" class="md-footer__link md-footer__link--next" aria-label="Next: gRPCurl" rel="next">
+        <a href="../netconf_over_ssh/" class="md-footer__link md-footer__link--next" aria-label="Next: NETCONF over SSH" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              gRPCurl
+              NETCONF over SSH
             </div>
           </div>
           <div class="md-footer__button md-icon">
