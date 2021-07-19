@@ -577,8 +577,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-demo-will-do-the-following" class="md-nav__link">
-    The demo will do the following.
+  <a href="#demo-actions" class="md-nav__link">
+    Demo Actions
   </a>
   
 </li>
@@ -591,15 +591,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-ygot-on-your-system" class="md-nav__link">
-    Install ygot on your system
+  <a href="#install-ygot" class="md-nav__link">
+    Install ygot
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#check-to-see-if-all-of-the-current-yang-files-are-accurate" class="md-nav__link">
-    Check to see if all of the current yang files are accurate
+    Check to see if all of the current YANG files are accurate
   </a>
   
 </li>
@@ -621,7 +621,7 @@
         
           <li class="md-nav__item">
   <a href="#run-the-go-code" class="md-nav__link">
-    Run the go code.
+    Run the go code
   </a>
   
 </li>
@@ -683,8 +683,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-demo-will-do-the-following" class="md-nav__link">
-    The demo will do the following.
+  <a href="#demo-actions" class="md-nav__link">
+    Demo Actions
   </a>
   
 </li>
@@ -697,15 +697,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-ygot-on-your-system" class="md-nav__link">
-    Install ygot on your system
+  <a href="#install-ygot" class="md-nav__link">
+    Install ygot
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#check-to-see-if-all-of-the-current-yang-files-are-accurate" class="md-nav__link">
-    Check to see if all of the current yang files are accurate
+    Check to see if all of the current YANG files are accurate
   </a>
   
 </li>
@@ -727,7 +727,7 @@
         
           <li class="md-nav__item">
   <a href="#run-the-go-code" class="md-nav__link">
-    Run the go code.
+    Run the go code
   </a>
   
 </li>
@@ -761,28 +761,30 @@
                 
                 <h2 id="overview">Overview</h2>
 <p><img alt="#ygot" src="images/ygot.png?raw=true" /></p>
-<p><a href="https://github.com/openconfig/ygot">ygot</a> is a collection of Go utilities that can generate Go structures based off of yang modules.  In the demo we are going to generate go code based off of the <a href="https://github.com/openconfig/public/blob/master/release/models/system/.openconfig-system.yang">openconfig-system model</a> using ygot.</p>
-<h2 id="the-demo-will-do-the-following">The demo will do the following.</h2>
+<p><a href="https://github.com/openconfig/ygot">ygot</a> is a collection of Go utilities that can generate Go structures based off of
+YANG modules.  In the demo we are going to generate go code based off of the <a href="https://github.com/openconfig/public/blob/master/release/models/system/openconfig-system.yang">openconfig-system
+model</a> using ygot.</p>
+<h2 id="demo-actions">Demo Actions</h2>
 <ul>
-<li>Leverage necessary yang files for openconfig-system to create a hostname.</li>
+<li>Import the necessary YANG files for openconfig-system to create a hostname.</li>
 <li>The hostname will be printed out and stored within the system.json file.</li>
-<li>Using the <a href="https://github.com/aristanetworks/goarista/tree/master/cmd/gnmi">Arista gNMI binary</a> we will configure a device to use the ceos1 hostname.</li>
+<li>Using the <a href="https://github.com/aristanetworks/goarista/tree/master/cmd/gnmi">Arista gNMI binary</a> we will configure a
+  device with the <strong>ceos1</strong> hostname.</li>
 </ul>
 <h2 id="clone-this-repo">Clone this repo</h2>
-<pre><code>git clone https://github.com/aristanetworks/openmgmt &amp;&amp; cd openmgmt/src/ygot
+<pre><code class="language-shell">git clone https://github.com/aristanetworks/openmgmt &amp;&amp; cd openmgmt/src/ygot
 </code></pre>
-<h2 id="install-ygot-on-your-system">Install ygot on your system</h2>
-<pre><code>go get github.com/openconfig/ygot
+<h2 id="install-ygot">Install ygot</h2>
+<pre><code class="language-shell">go get github.com/openconfig/ygot
 </code></pre>
-<h2 id="check-to-see-if-all-of-the-current-yang-files-are-accurate">Check to see if all of the current yang files are accurate</h2>
-<pre><code>tree -f yang/
+<h2 id="check-to-see-if-all-of-the-current-yang-files-are-accurate">Check to see if all of the current YANG files are accurate</h2>
+<pre><code class="language-shell">tree -f yang/
 </code></pre>
 <details><summary> Reveal output</summary>
 <p>
 
 
-<pre><code class="language-javascript">
-├── yang/openconfig-aaa-radius.yang
+<pre><code class="language-text">├── yang/openconfig-aaa-radius.yang
 ├── yang/openconfig-aaa-tacacs.yang
 ├── yang/openconfig-aaa-types.yang
 ├── yang/openconfig-aaa.yang
@@ -808,52 +810,56 @@
 </details>
 
 <h2 id="run-ygot">Run ygot</h2>
-<pre><code>go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go -path=yang -output_file=pkg/oc.go -package_name=oc -generate_fakeroot -fakeroot_name=device -compress_paths=true  yang/openconfig-system.yang
+<pre><code class="language-shell">go run $GOPATH/src/github.com/openconfig/ygot/generator/generator.go      \
+  -path=yang -output_file=pkg/oc.go -package_name=oc -generate_fakeroot   \
+  -fakeroot_name=device -compress_paths=true  yang/openconfig-system.yang
 </code></pre>
 <h2 id="check-the-contents-of-pkgocgo">Check the contents of pkg/oc.go</h2>
-<pre><code>pkg
+<pre><code class="language-text">pkg
 └── oc.go
 </code></pre>
-<p>oc.go is the necessary go import / package for openconfig-system.  Looking at the Device struct within pkg/oc.go</p>
+<p><code>oc.go</code> is the necessary go import / package for openconfig-system.  Looking at the Device struct within <code>pkg/oc.go</code></p>
 <pre><code class="language-go">type Device struct {
-    Component   map[string]*Component   `path:&quot;components/component&quot; module:&quot;openconfig-platform&quot;`
-    Messages    *Messages   `path:&quot;messages&quot; module:&quot;openconfig-messages&quot;`
-    System  *System `path:&quot;system&quot; module:&quot;openconfig-system&quot;`
+  Component map[string]*Component `path:&quot;components/component&quot; module:&quot;openconfig-platform&quot;`
+  Messages  *Messages `path:&quot;messages&quot; module:&quot;openconfig-messages&quot;`
+  System *System `path:&quot;system&quot; module:&quot;openconfig-system&quot;`
 }
 </code></pre>
-<p>Then looking at the System struct we can see the Hostname field.</p>
+<p>Looking at the <code>System</code> struct we can see the <code>Hostname</code> field.</p>
 <pre><code class="language-go">type System struct {
-    Hostname    *string `path:&quot;config/hostname&quot; module:&quot;openconfig-system&quot;`
+  Hostname *string `path:&quot;config/hostname&quot; module:&quot;openconfig-system&quot;`
 }
 </code></pre>
-<p>We need to simply fill in the Hostname field and pass it through the <a href="https://pkg.go.dev/github.com/openconfig/ygot/ygot#EmitJSON">EmitJSON function</a> so we can render this model with the correct information which can be sounf in main.go. </p>
-<h3 id="run-the-go-code">Run the go code.</h3>
-<pre><code>go run main.go 
+<p>We need to fill in the Hostname field and pass it through the <a href="https://pkg.go.dev/github.com/openconfig/ygot/ygot#EmitJSON">EmitJSON
+function</a> so we can render this model with the correct
+information which can be found in <code>main.go</code>.</p>
+<h3 id="run-the-go-code">Run the go code</h3>
+<pre><code class="language-shell">go run main.go
 </code></pre>
-<details><summary> Reveal output</summary>
+<p><strong>Output:</strong></p>
+<details><summary>Reveal output</summary>
 <p>
 
 
-<pre><code class="language-javascript">This is the output
-{
+<pre><code class="language-javascript">{
   &quot;openconfig-system:system&quot;: {
     &quot;config&quot;: {
       &quot;hostname&quot;: &quot;ceos1&quot;
     }
   }
 }
-Adding to config/hostname.json
 </code></pre>
 
+
+The output is also within `config/hostname.json` which is the same as the printed version.
 
 </p>
 </details>
 
-<p>The output is also within config/hostname.json which looks the same as the printed version. </p>
 <h2 id="change-the-hostname-on-a-device">Change the hostname on a device</h2>
-<pre><code>gnmi -addr deviceip:6030 -username admin -password admin update '/' config/hostname.json
+<pre><code class="language-shell">gnmi -addr ${DEVICEIP}:6030 -username admin -password admin update '/' config/hostname.json
 </code></pre>
-<p>The device should now have the "ceos1" hostname.</p>
+<p>The device should now have the <strong>ceos1</strong> hostname.</p>
                 
                   
                 

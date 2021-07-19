@@ -806,7 +806,7 @@ pip3 freeze | grep pyang
 <h3 id="clone-the-openconfig-repository">Clone the OpenConfig repository</h3>
 <pre><code class="language-shell">git clone https://github.com/openconfig/public.git
 </code></pre>
-<pre><code>ls public
+<pre><code class="language-shell">ls public
 </code></pre>
 <h3 id="copy-all-the-yang-files-from-openconfig-to-the-yang_modules-directory">Copy all the YANG files from OpenConfig to the yang_modules directory</h3>
 <pre><code class="language-shell">cp public/release/models/*.yang yang_modules/.
@@ -823,7 +823,9 @@ ls
 pyang openconfig-interfaces.yang
 </code></pre>
 <h3 id="convert-a-yang-module-into-an-equivalent-yin-module">Convert a YANG module into an equivalent YIN module</h3>
-<p>A YANG module can be translated into an XML syntax called YIN. The translated module is called a YIN module. The YANG and YIN formats contain equivalent information using different notations: YIN is YANG in XML. A YANG module can be translated into YIN syntax without losing any information.</p>
+<p>A YANG module can be translated into an XML syntax called YIN. The translated module is called a YIN module. The YANG
+and YIN formats contain equivalent information using different notations: YIN is YANG in XML. A YANG module can be
+translated into YIN syntax without losing any information.</p>
 <p>Example (openconfig-bgp.yin is the YIN equivalent of openconfig-bgp.yang)</p>
 <pre><code class="language-shell">pyang openconfig-bgp.yang -f yin -o openconfig-bgp.yin
 ls *.yin
@@ -927,6 +929,7 @@ ls *.yin
                     +--ro last-clear?            oc-types:timeticks64
 </code></pre>
 
+
 </p>
 </details>
 
@@ -975,6 +978,7 @@ ls *.yin
               +--ro last-clear?            oc-types:timeticks64
 </code></pre>
 
+
 </p>
 </details>
 
@@ -1022,6 +1026,7 @@ ls *.yin
                  ...
 </code></pre>
 
+
 </p>
 </details>
 
@@ -1066,6 +1071,7 @@ ls *.yin
            +--rw enable-bfd
 </code></pre>
 
+
 </p>
 </details>
 
@@ -1093,6 +1099,7 @@ ls *.yin
               +--rw send-community?       oc-bgp-types:community-type
               +--rw description?          string
 </code></pre>
+
 
 </p>
 </details>
@@ -1131,6 +1138,7 @@ ls *.yin
               |     ...
               +--ro dynamically-configured?    boolean
 </code></pre>
+
 
 </p>
 </details>
@@ -1186,6 +1194,7 @@ ls *.yin
                  |     ...
                  +--rw use-multiple-paths
 </code></pre>
+
 
 </p>
 </details>
