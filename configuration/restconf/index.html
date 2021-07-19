@@ -283,12 +283,40 @@
     Overview
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restconf-configuration-on-eos" class="md-nav__link">
+    RESTCONF configuration on EOS
+  </a>
+  
+    <nav class="md-nav" aria-label="RESTCONF configuration on EOS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#restconf" class="md-nav__link">
-    RESTCONF
+  <a href="#certificate" class="md-nav__link">
+    Certificate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restconf-api" class="md-nav__link">
+    RESTCONF API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-acl" class="md-nav__link">
+    Control-plane ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-check" class="md-nav__link">
+    Status check
   </a>
   
 </li>
@@ -590,6 +618,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../../examples/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../examples/ygot/" class="md-nav__link">
         ygot
       </a>
@@ -631,12 +671,40 @@
     Overview
   </a>
   
-    <nav class="md-nav" aria-label="Overview">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restconf-configuration-on-eos" class="md-nav__link">
+    RESTCONF configuration on EOS
+  </a>
+  
+    <nav class="md-nav" aria-label="RESTCONF configuration on EOS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#restconf" class="md-nav__link">
-    RESTCONF
+  <a href="#certificate" class="md-nav__link">
+    Certificate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restconf-api" class="md-nav__link">
+    RESTCONF API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-acl" class="md-nav__link">
+    Control-plane ACL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-check" class="md-nav__link">
+    Status check
   </a>
   
 </li>
@@ -663,7 +731,9 @@
                 
                 <h2 id="overview">Overview</h2>
 <p>EOS provides support for RESTCONF and the necessary transport services to support it.</p>
-<h3 id="restconf">RESTCONF</h3>
+<p>The RESTCONF server is in the EOS device.</p>
+<h2 id="restconf-configuration-on-eos">RESTCONF configuration on EOS</h2>
+<h3 id="certificate">Certificate</h3>
 <p>Certificate-based authentication is required for RESTCONF to operate.  You should follow the instructions in the
 <a href="/configuration/mtls.html">Certificate Authentication</a> section in order to generate and install a certificate to support
 RESTCONF in your environment.  Alternately, a self-signed certificate may be generated on the switch and certificate
@@ -676,6 +746,7 @@ validation can be handled appropriately by remote RESTCONF clients.</p>
    ssl profile restconf
    certificate restconf.crt key restconf.key
 </code></pre>
+<h3 id="restconf-api">RESTCONF API</h3>
 <p>Configure RESTCONF:</p>
 <p>Default VRF:</p>
 <pre><code class="language-text">management api restconf
@@ -701,7 +772,11 @@ validation can be handled appropriately by remote RESTCONF clients.</p>
 <blockquote>
 <p>Note The ACL should be a standard ACL allowing hosts or subnets.</p>
 </blockquote>
-<p>Status check</p>
+<h3 id="control-plane-acl">Control-plane ACL</h3>
+<p>The default RESTCONF port on Arista devices is TCP 6020.</p>
+<p>We need to change the default control-plane ACL on EOS in order to allow TCP 6020 (or to allow the configured RESTCONF port).</p>
+<p>Please refer to <a href="../security/">this link</a></p>
+<h3 id="status-check">Status check</h3>
 <pre><code class="language-text">#show management api restconf
 Enabled:            Yes
 Server:             running on port 6020, in management VRF
