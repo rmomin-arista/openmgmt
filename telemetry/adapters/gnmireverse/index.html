@@ -1,0 +1,978 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Arista Open Management repository documentation">
+      
+      
+      
+        <meta name="author" content="Arista Networks">
+      
+      
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/telemetry/adapters/gnmireverse/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>gNMIReverse Examples - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-4V8W728SS9"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-4V8W728SS9",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V8W728SS9"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              gNMIReverse Examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aristanetworks/openmgmt/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openmgmt on Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aristanetworks/openmgmt/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openmgmt on Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/openconfig/" class="md-nav__link">
+        OpenConfig
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/netconf/" class="md-nav__link">
+        NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/mtls/" class="md-nav__link">
+        Certificate Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/security/" class="md-nav__link">
+        Security Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        gNMI clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNMI clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          gNMI clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
+        gnmi (Arista)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-clients/gnmic/" class="md-nav__link">
+        gnmic
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-gateway/" class="md-nav__link">
+        gNMI gateway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        gNOI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNOI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          gNOI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnoi/gnoic/" class="md-nav__link">
+        gNOIc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnoi/grpcurl/" class="md-nav__link">
+        gRPCurl
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      <label class="md-nav__link" for="__nav_3_6">
+        NETCONF
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="NETCONF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          NETCONF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/netconf/ncclient/" class="md-nav__link">
+        ncclient
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/netconf/netconf_over_ssh/" class="md-nav__link">
+        NETCONF over SSH
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pygnmi/" class="md-nav__link">
+        Pygnmi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pyang/" class="md-nav__link">
+        Pyang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pyangbind/" class="md-nav__link">
+        Pyangbind
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    Prerequisite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-gnmireverse-client" class="md-nav__link">
+    Installing and configuring gNMIReverse client
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing and configuring gNMIReverse client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#building-the-client-and-server-binaries" class="md-nav__link">
+    Building the client and server binaries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnmireverse-client-daemon-configuration" class="md-nav__link">
+    gNMIReverse client daemon Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="gNMIReverse client daemon Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#non-default-vrf" class="md-nav__link">
+    Non-default VRF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-vrf" class="md-nav__link">
+    Default VRF
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-gnmireverse-server" class="md-nav__link">
+    Running the gNMIReverse Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribing-to-eos_native-paths" class="md-nav__link">
+    Subscribing to eos_native paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscribing-to-smash-paths" class="md-nav__link">
+    Subscribing to Smash paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/telemetry/adapters/gnmireverse/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>gNMIReverse Examples</h1>
+                
+                <h2 id="introduction">Introduction</h2>
+<p>gNMIReverse is a Dial-Out gRPC service (available on our <a href="https://github.com/aristanetworks/goarista/tree/master/gnmireverse">Github</a>
+page) that reverses the direction of the dial for gNMI Subscriptions.
+The gNMIReverse client (running along with gNMI target) on the switch sends data to the gNMIReverse Server.</p>
+<p>This article contains steps on how to build the gNMIReverse client and server binaries 
+and examples on how to configure, the daemon to run the gNMIReverse client on EOS.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<p>The following tools are required to proceed with this setup including cloning the repository and compiling client binary for EOS.</p>
+<ul>
+<li><a href="https://golang.org/doc/install">Go</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/install-git">Git</a></li>
+</ul>
+<h2 id="installing-and-configuring-gnmireverse-client">Installing and configuring gNMIReverse client</h2>
+<h3 id="building-the-client-and-server-binaries">Building the client and server binaries</h3>
+<p>Pull the repository from GitHub (or you can use git clone)</p>
+<pre><code class="language-shell">go get -u github.com/aristanetworks/goarista/gnmireverse
+</code></pre>
+<p>Go to the gNMIReverse directory (or the directory to which you have cloned the repo using git clone)</p>
+<pre><code class="language-shell">cd $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/
+</code></pre>
+<p>Compile the package for both server and client</p>
+<pre><code class="language-shell">cd $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/client
+GOOS=linux GOARCH=386 go build
+
+cd $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/server
+GOOS=linux GOARCH=386 go build
+</code></pre>
+<p><strong>NOTE</strong>: For EOS with x86_64 architecture, compile the package as follows for the client:</p>
+<pre><code>
+cd $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/client
+GOOS=linux GOARCH=<span style="color: red;">amd64</span> go build
+
+cd $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/server
+GOOS=linux GOARCH=<span style="color: red;">amd64</span> go build
+</code></pre>
+
+<p>Copy the client binary file to switch <strong>/mnt/flash/</strong> directory</p>
+<pre><code class="language-shell">scp $GOPATH/src/github.com/aristanetworks/goarista/gnmireverse/client/client admin@&lt;switch-MGMT-IP&gt;:/mnt/flash/
+</code></pre>
+<h2 id="gnmireverse-client-daemon-configuration">gNMIReverse client daemon Configuration</h2>
+<p>First enable gNMI server on the switch (<a href="https://eos.arista.com/eos-4-22-1f/octa-single-port-for-gnmi/">Octa</a> can be
+enabled if required, as discussed later in this article)</p>
+<h3 id="non-default-vrf">Non-default VRF</h3>
+<pre><code>!
+management api gnmi
+   transport grpc def
+       <span style="color: red;">vrf management</span>
+   provider eos-native
+!</code></pre>
+
+<p>In the above example, we have the gNMI server running on default port 6030 in VRF management on the switch.</p>
+<pre><code># show management api gnmi
+Octa:               enabled
+Enabled:            Yes
+<span style="color: red;">Server:             running on port 6030, in management VRF</span>
+SSL Profile:        none
+QoS DSCP:           none
+Authorization Required:No
+</code></pre>
+
+<p>gNMIReverse client daemon configuration (non-default VRF):</p>
+<pre><code>daemon gnmi_reverse_client_1
+   exec /mnt/flash/client -username cvpadmin -password arista <span style="color: red;">-target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000</span> -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
+   no shutdown
+</code></pre>
+
+<h3 id="default-vrf">Default VRF</h3>
+<pre><code class="language-shell">!
+management api gnmi
+   transport grpc def
+   provider eos-native
+!
+</code></pre>
+<p>gNMI server running on default port 6030 in default VRF on the switch.</p>
+<pre><code class="language-shell"># show management api gnmi
+Octa:               enabled
+Enabled:            Yes
+Server:             running on port 6030, in default VRF
+SSL Profile:        none
+QoS DSCP:           none
+Authorization Required:No
+</code></pre>
+<p>gNMIReverse client daemon configuration (default VRF):</p>
+<pre><code>daemon gnmi_reverse_client_1
+   exec /mnt/flash/client -username cvpadmin -password arista <span style="color: red;">-target_addr=127.0.0.1:6030 -collector_addr=10.85.129.115:6000</span> -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
+   no shutdown
+</code></pre>
+
+<p>The gNMIReverse client flags are explained below.</p>
+<table>
+<thead>
+<tr>
+<th align="left">flag</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">username</td>
+<td align="left">Username to authenticate with the target (gNMI server)</td>
+</tr>
+<tr>
+<td align="left">password</td>
+<td align="left">Password to authenticate with the target (gNMI server)</td>
+</tr>
+<tr>
+<td align="left">target_addr</td>
+<td align="left">Address of the gNMI server running on the switch. <code>[&lt;vrf-name&gt;/]address:port</code></td>
+</tr>
+<tr>
+<td align="left">collector_addr</td>
+<td align="left">Address of the gNMIReverse server. <code>[&lt;vrf-name&gt;/]host:port</code></td>
+</tr>
+<tr>
+<td align="left">collector_tls</td>
+<td align="left">use TLS in connection with collector (default true)</td>
+</tr>
+<tr>
+<td align="left">target_value</td>
+<td align="left">To include the device name</td>
+</tr>
+<tr>
+<td align="left">sample</td>
+<td align="left">Path to subscribe with SAMPLE subscription mode. <code>&lt;path&gt;@&lt;time-interval&gt;</code> <br> Ex. <code>-sample /interfaces/interface/state/counters@30s</code></td>
+</tr>
+<tr>
+<td align="left">subscribe</td>
+<td align="left">Path to subscribe with TARGET_DEFINED subscription mode if there are any changes on the subscribe path</td>
+</tr>
+</tbody>
+</table>
+<h2 id="running-the-gnmireverse-server">Running the gNMIReverse Server</h2>
+<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+
+[2020-12-28T10:52:17.990029143Z] (gb421) /system/processes/process[pid=1919]/state/cpu-usage-system = 89538
+[2020-12-28T10:52:27.990635976Z] (gb421) /system/processes/process[pid=1919]/state/cpu-usage-user = 312674
+[2020-12-28T10:52:27.990681209Z] (gb421) /system/processes/process[pid=1919]/state/cpu-utilization = 0
+[2020-12-28T10:52:07.990565267Z] (gb421) /system/processes/process[pid=1919]/state/memory-usage = 403599360
+[2020-12-28T09:28:37.99397Z] (gb421) /system/processes/process[pid=1919]/state/name = ConfigAgent
+[2020-12-28T09:28:27.975545302Z] (gb421) /system/processes/process[pid=1919]/state/pid = 1919
+[2020-12-28T09:28:38.058955133Z] (gb421) /system/processes/process[pid=1919]/state/start-time = 1608564420584540928
+</code></pre>
+<p>We can see samples from switch gb421 (gNMIReverse client) for the path “/system/processes/process[pid=*]/state” which
+will be updated every 15 seconds based on the client daemon configuration.</p>
+<h2 id="subscribing-to-eos_native-paths">Subscribing to eos_native paths</h2>
+<p>Enable <a href="https://eos.arista.com/eos-4-22-1f/octa-single-port-for-gnmi/">Octa</a></p>
+<pre><code>!
+management api gnmi
+   transport grpc def
+      vrf management
+   <span style="color: red;">provider eos-native</span>
+!
+</code></pre>
+
+<p>Configure the daemon to subscribe to the eos_native path as in following example:</p>
+<pre><code>daemon gnmi_reverse_client_1
+   exec /mnt/flash/client -username cvpadmin -password arista -target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000 -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@30s <span style="color: red;">-origin eos_native -subscribe /Kernel/proc/meminfo/</span>
+   no shutdown
+</code></pre>
+
+<p>On the server side we can see the updates from the same subscription path:</p>
+<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+
+[2020-12-29T06:55:15.29120758Z] (gb421) /Kernel/proc/meminfo/memFree = 2482671616
+[2020-12-29T06:55:15.29121703Z] (gb421) /Kernel/proc/meminfo/memAvailable = 6465200128
+[2020-12-29T06:55:15.29122834Z] (gb421) /Kernel/proc/meminfo/active = 3750023168
+[2020-12-29T06:55:15.291235635Z] (gb421) /Kernel/proc/meminfo/activeAnon = 1048485888
+[2020-12-29T06:55:15.291254147Z] (gb421) /Kernel/proc/meminfo/anonPages = 991825920
+[2020-12-29T06:55:15.291261051Z] (gb421) /Kernel/proc/meminfo/slab = 398680064
+[2020-12-29T06:55:15.291265299Z] (gb421) /Kernel/proc/meminfo/sUnreclaim = 218755072
+[2020-12-29T06:55:15.291275563Z] (gb421) /Kernel/proc/meminfo/committedAS = 3991588864
+
+[2020-12-29T06:55:25.290455551Z] (gb421) /Kernel/proc/meminfo/memFree = 2482679808
+[2020-12-29T06:55:25.29046483Z] (gb421) /Kernel/proc/meminfo/memAvailable = 6465232896
+[2020-12-29T06:55:25.290476436Z] (gb421) /Kernel/proc/meminfo/active = 3750035456
+[2020-12-29T06:55:25.290486217Z] (gb421) /Kernel/proc/meminfo/activeAnon = 1048498176
+[2020-12-29T06:55:25.290507211Z] (gb421) /Kernel/proc/meminfo/anonPages = 991838208
+[2020-12-29T06:55:25.290517806Z] (gb421) /Kernel/proc/meminfo/sReclaimable = 179949568
+[2020-12-29T06:55:25.290523744Z] (gb421) /Kernel/proc/meminfo/sUnreclaim = 218730496
+</code></pre>
+<h2 id="subscribing-to-smash-paths">Subscribing to Smash paths</h2>
+<p>Enable Smash paths for Octa under <strong>management api models</strong> as follows:</p>
+<pre><code>!
+management api models
+   provider smash
+      <span style="color: red;">path routing/status</span>
+!
+</code></pre>
+
+<p>Configure the gNMIReverse client daemon:</p>
+<pre><code>daemon gnmi_reverse_client_1
+   exec /mnt/flash/client -username cvpadmin -password arista -target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000 -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@30s <span style="color: red;">-origin eos_native</span> -subscribe /Kernel/proc/meminfo/ <span style="color: red;">-subscribe /Smash/routing/status/</span>
+   no shutdown
+</code></pre>
+
+<p>On server side we can see updates as follows:</p>
+<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+
+[2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/storage = 4294967240
+[2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/routeType = ebgp
+[2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/fecId = {&quot;value&quot;:12884901894}
+[2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/key = &quot;1.1.1.1/32&quot;
+[2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/metric = {&quot;value&quot;:0}
+</code></pre>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/aristanetworks/goarista/tree/master/gnmireverse">Github</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
