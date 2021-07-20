@@ -13,21 +13,21 @@
         <meta name="author" content="Arista Networks">
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/restconf/python/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/netconf/">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
     
     
       
-        <title>RESTCONF with Python - Open Management</title>
+        <title>About NETCONF - Open Management</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.3754935a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3754935a.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -74,7 +74,7 @@
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#requirement-on-the-restconf-client" class="md-skip">
+        <a href="#about-netconf" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RESTCONF with Python
+              About NETCONF
             
           </span>
         </div>
@@ -186,7 +186,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -218,7 +218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -254,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/openconfig/" class="md-nav__link">
+      <a href="../../configuration/openconfig/" class="md-nav__link">
         OpenConfig
       </a>
     </li>
@@ -266,7 +266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/netconf/" class="md-nav__link">
+      <a href="../../configuration/netconf/" class="md-nav__link">
         NETCONF
       </a>
     </li>
@@ -278,7 +278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/restconf/" class="md-nav__link">
+      <a href="../../configuration/restconf/" class="md-nav__link">
         RESTCONF
       </a>
     </li>
@@ -290,7 +290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/mtls/" class="md-nav__link">
+      <a href="../../configuration/mtls/" class="md-nav__link">
         Certificate Authentication
       </a>
     </li>
@@ -302,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../configuration/security/" class="md-nav__link">
+      <a href="../../configuration/security/" class="md-nav__link">
         Security Configuration
       </a>
     </li>
@@ -346,7 +346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ansible/" class="md-nav__link">
+      <a href="../ansible/" class="md-nav__link">
         Ansible
       </a>
     </li>
@@ -379,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gnmi-clients/arista-gnmi/" class="md-nav__link">
+      <a href="../gnmi-clients/arista-gnmi/" class="md-nav__link">
         gnmi (Arista)
       </a>
     </li>
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gnmi-clients/gnmic/" class="md-nav__link">
+      <a href="../gnmi-clients/gnmic/" class="md-nav__link">
         gnmic
       </a>
     </li>
@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gnmi-gateway/" class="md-nav__link">
+      <a href="../gnmi-gateway/" class="md-nav__link">
         gNMI gateway
       </a>
     </li>
@@ -442,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gnoi/gnoic/" class="md-nav__link">
+      <a href="../gnoi/gnoic/" class="md-nav__link">
         gNOIc
       </a>
     </li>
@@ -454,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gnoi/grpcurl/" class="md-nav__link">
+      <a href="../gnoi/grpcurl/" class="md-nav__link">
         gRPCurl
       </a>
     </li>
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/" class="md-nav__link">
+      <a href="../golang/" class="md-nav__link">
         Go Lang
       </a>
     </li>
@@ -482,12 +482,14 @@
             
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" checked>
       
       <label class="md-nav__link" for="__nav_3_6">
         NETCONF
@@ -503,11 +505,47 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../netconf/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          About NETCONF
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         About NETCONF
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-netconf" class="md-nav__link">
+    About NETCONF
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -517,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../netconf/ncclient/" class="md-nav__link">
+      <a href="ncclient/" class="md-nav__link">
         ncclient
       </a>
     </li>
@@ -529,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../netconf/netconf_over_ssh/" class="md-nav__link">
+      <a href="netconf_over_ssh/" class="md-nav__link">
         NETCONF over SSH
       </a>
     </li>
@@ -547,7 +585,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pygnmi/" class="md-nav__link">
+      <a href="../pygnmi/" class="md-nav__link">
         Pygnmi
       </a>
     </li>
@@ -559,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pyang/" class="md-nav__link">
+      <a href="../pyang/" class="md-nav__link">
         Pyang
       </a>
     </li>
@@ -571,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pyangbind/" class="md-nav__link">
+      <a href="../pyangbind/" class="md-nav__link">
         Pyangbind
       </a>
     </li>
@@ -581,14 +619,12 @@
             
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
       
       <label class="md-nav__link" for="__nav_3_10">
         RESTCONF
@@ -606,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../restconf/" class="md-nav__link">
         About RESTCONF
       </a>
     </li>
@@ -618,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../curl/" class="md-nav__link">
+      <a href="../restconf/curl/" class="md-nav__link">
         cURL
       </a>
     </li>
@@ -628,81 +664,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Python
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../restconf/python/" class="md-nav__link">
         Python
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requirement-on-the-restconf-client" class="md-nav__link">
-    Requirement on the RESTCONF client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restconf-examples-with-python" class="md-nav__link">
-    RESTCONF examples with Python
-  </a>
-  
-    <nav class="md-nav" aria-label="RESTCONF examples with Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    GET
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#head" class="md-nav__link">
-    HEAD
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    DELETE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -718,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ygot/" class="md-nav__link">
+      <a href="../ygot/" class="md-nav__link">
         ygot
       </a>
     </li>
@@ -760,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../telemetry/adapters/gnmireverse/" class="md-nav__link">
+      <a href="../../telemetry/adapters/gnmireverse/" class="md-nav__link">
         gNMIReverse
       </a>
     </li>
@@ -781,7 +747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../models/" class="md-nav__link">
+      <a href="../../models/" class="md-nav__link">
         Models
       </a>
     </li>
@@ -812,43 +778,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirement-on-the-restconf-client" class="md-nav__link">
-    Requirement on the RESTCONF client
+  <a href="#about-netconf" class="md-nav__link">
+    About NETCONF
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restconf-examples-with-python" class="md-nav__link">
-    RESTCONF examples with Python
-  </a>
-  
-    <nav class="md-nav" aria-label="RESTCONF examples with Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    GET
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#head" class="md-nav__link">
-    HEAD
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    DELETE
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -864,104 +796,15 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/restconf/python.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/netconf/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Python</h1>
+                  <h1>About NETCONF</h1>
                 
-                <h2 id="requirement-on-the-restconf-client">Requirement on the RESTCONF client</h2>
-<pre><code class="language-shell">sudo apt-get update
-sudo apt-get -y upgrade
-pip install requests
-</code></pre>
-<pre><code class="language-shell">pip3 freeze | grep requests
-</code></pre>
-<h2 id="restconf-examples-with-python">RESTCONF examples with Python</h2>
-<h3 id="get">GET</h3>
-<pre><code class="language-python">$ python3
-Python 3.6.9 (default, Jan 26 2021, 15:33:00)
-[GCC 8.4.0] on linux
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-&gt;&gt;&gt; import requests
-&gt;&gt;&gt; from requests.auth import HTTPBasicAuth
-&gt;&gt;&gt; import json
-&gt;&gt;&gt; USER = 'arista'
-&gt;&gt;&gt; PASS = 'arista'
-&gt;&gt;&gt; requests.packages.urllib3.disable_warnings()
-&gt;&gt;&gt; headers = {'Content-Type': 'application/yang-data+json', 'Accept': 'application/yang-data+json'}
-&gt;&gt;&gt; headers = {'Accept': 'application/yang-data+json'}
-&gt;&gt;&gt; api_call = &quot;https://10.73.1.105:6020/restconf/data/openconfig-interfaces:interfaces/interface=Ethernet1/state&quot;
-&gt;&gt;&gt; result = requests.get(api_call, auth=HTTPBasicAuth(USER, PASS), headers=headers, verify=False)
-&gt;&gt;&gt; result.status_code
-200
-&gt;&gt;&gt; result.ok
-True
-&gt;&gt;&gt; result.url
-'https://10.73.1.105:6020/restconf/data/openconfig-interfaces:interfaces/interface=Ethernet1/state'
-&gt;&gt;&gt; result.content
-b'{&quot;openconfig-interfaces:admin-status&quot;:&quot;UP&quot;,&quot;openconfig-interfaces:counters&quot;:{&quot;in-broadcast-pkts&quot;:&quot;0&quot;,&quot;in-discards&quot;:&quot;0&quot;,&quot;in-errors&quot;:&quot;0&quot;,&quot;in-fcs-errors&quot;:&quot;0&quot;,&quot;in-multicast-pkts&quot;:&quot;972&quot;,&quot;in-octets&quot;:&quot;116602&quot;,&quot;in-unicast-pkts&quot;:&quot;131&quot;,&quot;out-broadcast-pkts&quot;:&quot;1&quot;,&quot;out-discards&quot;:&quot;0&quot;,&quot;out-errors&quot;:&quot;0&quot;,&quot;out-multicast-pkts&quot;:&quot;1761&quot;,&quot;out-octets&quot;:&quot;199997&quot;,&quot;out-unicast-pkts&quot;:&quot;122&quot;},&quot;openconfig-interfaces:description&quot;:&quot;restconf_test&quot;,&quot;openconfig-interfaces:enabled&quot;:true,&quot;openconfig-platform-port:hardware-port&quot;:&quot;Port1&quot;,&quot;openconfig-interfaces:ifindex&quot;:1,&quot;arista-intf-augments:inactive&quot;:false,&quot;openconfig-interfaces:last-change&quot;:&quot;1624966430515012864&quot;,&quot;openconfig-interfaces:loopback-mode&quot;:false,&quot;openconfig-interfaces:mtu&quot;:0,&quot;openconfig-interfaces:name&quot;:&quot;Ethernet1&quot;,&quot;openconfig-interfaces:oper-status&quot;:&quot;UP&quot;,&quot;openconfig-vlan:tpid&quot;:&quot;openconfig-vlan-types:TPID_0X8100&quot;,&quot;openconfig-interfaces:type&quot;:&quot;iana-if-type:ethernetCsmacd&quot;}\n'
-&gt;&gt;&gt; result.json()
-{'openconfig-interfaces:admin-status': 'UP', 'openconfig-interfaces:counters': {'in-broadcast-pkts': '0', 'in-discards': '0', 'in-errors': '0', 'in-fcs-errors': '0', 'in-multicast-pkts': '972', 'in-octets': '116602', 'in-unicast-pkts': '131', 'out-broadcast-pkts': '1', 'out-discards': '0', 'out-errors': '0', 'out-multicast-pkts': '1761', 'out-octets': '199997', 'out-unicast-pkts': '122'}, 'openconfig-interfaces:description': 'restconf_test', 'openconfig-interfaces:enabled': True, 'openconfig-platform-port:hardware-port': 'Port1', 'openconfig-interfaces:ifindex': 1, 'arista-intf-augments:inactive': False, 'openconfig-interfaces:last-change': '1624966430515012864', 'openconfig-interfaces:loopback-mode': False, 'openconfig-interfaces:mtu': 0, 'openconfig-interfaces:name': 'Ethernet1', 'openconfig-interfaces:oper-status': 'UP', 'openconfig-vlan:tpid': 'openconfig-vlan-types:TPID_0X8100', 'openconfig-interfaces:type': 'iana-if-type:ethernetCsmacd'}
-&gt;&gt;&gt; result.json()['openconfig-interfaces:oper-status']
-'UP'
-&gt;&gt;&gt; result.json()['openconfig-interfaces:counters']['out-octets']
-'199997'
-&gt;&gt;&gt; exit()
-</code></pre>
-<p>Execute the python script <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/restconf/get_eth1_status.py">get_eth1_status.py</a></p>
-<pre><code class="language-shell">python3 get_eth1_status.py
-</code></pre>
-<p>output</p>
-<pre><code class="language-javascript">{'arista-intf-augments:inactive': False,
- 'openconfig-interfaces:admin-status': 'UP',
- 'openconfig-interfaces:counters': {'in-broadcast-pkts': '0',
-                                    'in-discards': '0',
-                                    'in-errors': '0',
-                                    'in-fcs-errors': '0',
-                                    'in-multicast-pkts': '1762',
-                                    'in-octets': '202553',
-                                    'in-unicast-pkts': '183',
-                                    'out-broadcast-pkts': '1',
-                                    'out-discards': '0',
-                                    'out-errors': '0',
-                                    'out-multicast-pkts': '2552',
-                                    'out-octets': '284793',
-                                    'out-unicast-pkts': '174'},
- 'openconfig-interfaces:description': 'restconf_test',
- 'openconfig-interfaces:enabled': True,
- 'openconfig-interfaces:ifindex': 1,
- 'openconfig-interfaces:last-change': '1624966430515012864',
- 'openconfig-interfaces:loopback-mode': False,
- 'openconfig-interfaces:mtu': 0,
- 'openconfig-interfaces:name': 'Ethernet1',
- 'openconfig-interfaces:oper-status': 'UP',
- 'openconfig-interfaces:type': 'iana-if-type:ethernetCsmacd',
- 'openconfig-platform-port:hardware-port': 'Port1',
- 'openconfig-vlan:tpid': 'openconfig-vlan-types:TPID_0X8100'}
-</code></pre>
-<h3 id="head">HEAD</h3>
-<p>Execute the python script <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/restconf/head.py">head.py</a></p>
-<pre><code class="language-shell">python3 head.py
-</code></pre>
-<p>output</p>
-<pre><code class="language-shell">url is https://10.73.1.105:6020/restconf/data/openconfig-interfaces:interfaces/interface=Ethernet1/state
-status_code is 200
-headers are {'Content-Type': 'application/yang.data+json', 'Date': 'Sun, 18 Jul 2021 08:49:52 GMT'}
-content is b''
-</code></pre>
-<h3 id="delete">DELETE</h3>
-<p>Execute the python script <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/restconf/delete_lo100.py">delete_lo100.py</a></p>
-<pre><code class="language-shell">python3 delete_lo100.py
-</code></pre>
-<p>output</p>
-<pre><code class="language-shell">get int lo100
-status_code is 200
-content is {'openconfig-interfaces:config': {'description': '222', 'enabled': True, 'arista-intf-augments:load-interval': 300, 'loopback-mode': True, 'name': 'Loopback100', 'openconfig-vlan:tpid': 'openconfig-vlan-types:TPID_0X8100', 'type': 'iana-if-type:softwareLoopback'}, 'openconfig-interfaces:hold-time': {'config': {'down': 0, 'up': 0}, 'state': {'down': 0, 'up': 0}}, 'openconfig-interfaces:name': 'Loopback100', 'openconfig-interfaces:state': {'enabled': True, 'loopback-mode': False, 'openconfig-vlan:tpid': 'openconfig-vlan-types:TPID_0X8100'}, 'openconfig-interfaces:subinterfaces': {'subinterface': [{'config': {'description': '222', 'enabled': True, 'index': 0}, 'index': 0, 'openconfig-if-ip:ipv4': {'config': {'dhcp-client': False, 'enabled': True, 'mtu': 1500}, 'state': {'dhcp-client': False, 'enabled': True, 'mtu': 1500}}, 'openconfig-if-ip:ipv6': {'config': {'dhcp-client': False, 'enabled': False, 'mtu': 1500}, 'state': {'dhcp-client': False, 'enabled': False, 'mtu': 1500}}, 'state': {'enabled': True, 'index': 0}}]}}
-deleting int lo100
-status_code is 200
-</code></pre>
+                <h2 id="about-netconf">About NETCONF</h2>
+<p>NETCONF is a protocol defined in the <a href="https://tools.ietf.org/html/rfc6241">RFC 6241</a></p>
                 
                   
                 
@@ -983,7 +826,7 @@ status_code is 200
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../curl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: cURL" rel="prev">
+        <a href="../golang/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Go Lang" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -992,20 +835,20 @@ status_code is 200
               <span class="md-footer__direction">
                 Previous
               </span>
-              cURL
+              Go Lang
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../ygot/" class="md-footer__link md-footer__link--next" aria-label="Next: ygot" rel="next">
+        <a href="ncclient/" class="md-footer__link md-footer__link--next" aria-label="Next: ncclient" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              ygot
+              ncclient
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1034,10 +877,10 @@ status_code is 200
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
     
   </body>

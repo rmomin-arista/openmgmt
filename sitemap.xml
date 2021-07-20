@@ -71,6 +71,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://aristanetworks.github.io/openmgmt/examples/netconf/</loc>
+         <lastmod>2021-07-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://aristanetworks.github.io/openmgmt/examples/netconf/ncclient/</loc>
          <lastmod>2021-07-20</lastmod>
          <changefreq>daily</changefreq>
