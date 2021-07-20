@@ -569,6 +569,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../examples/python/index.md" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../examples/restconf/" class="md-nav__link">
         RESTCONF
       </a>
@@ -590,6 +602,127 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Telemetry
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Telemetry" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Telemetry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../telemetry/adapters/gnmireverse/" class="md-nav__link">
+        gNMIReverse
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Models
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ietf-models" class="md-nav__link">
+    IETF models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openconfig-models" class="md-nav__link">
+    OpenConfig models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vendor-specific-models" class="md-nav__link">
+    Vendor-Specific Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references-resources" class="md-nav__link">
+    References / Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -619,14 +752,7 @@
       
         <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
-    overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openconfig-models" class="md-nav__link">
-    OpenConfig models
+    Overview
   </a>
   
 </li>
@@ -639,8 +765,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#openconfig-models" class="md-nav__link">
+    OpenConfig models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vendor-specific-models" class="md-nav__link">
-    vendor-specific models
+    Vendor-Specific Models
   </a>
   
 </li>
@@ -669,18 +802,48 @@
                   </a>
                 
                 
-                  <h1>Device Models</h1>
+                  <h1>Models</h1>
                 
-                <h2 id="overview">overview</h2>
-<p>What are device models and why should I care?</p>
-<h2 id="openconfig-models">OpenConfig models</h2>
+                <h2 id="overview">Overview</h2>
+<p>What are YANG models and why should I care?</p>
+<p>Models are structured representations of network elements and their associated configured and operational state.</p>
+<p>YANG (Yet Another Next Generation - <a href="https://datatracker.ietf.org/doc/html/rfc6020">RFC6020</a>) is a data modeling
+language.  YANG is used to describe the configured and operational state of network elements.  This allows for the
+consistent and structured representation of device and protocol attributes.  The model definition typically includes the
+low level data types used to represent operational attributes as well as constraints that should be enforced in
+configuration.</p>
+<p>These modeled representations provide a consistent mechanism for device configuration as well as validating the device
+state through streaming telemetry or other device interrogation methods.  These modeled device representations can also
+be transformed into data structures that can be used by configuration systems to dynamically control device
+configuration or state.</p>
+<p>YANG has been adopted as the official modeling language of the IETF and the OpenConfig group.</p>
 <h2 id="ietf-models">IETF models</h2>
-<h2 id="vendor-specific-models">vendor-specific models</h2>
+<p>The for the past few years the IETF has been providing models for previously standardized technologies as well as
+protocols and technologies which are under active standardization.  These models are commonly used with complementary
+IETF standardized network management protocols (e.g.: NETCONF and RESTCONF) and have been selectively incorporated into
+other modeling initiatives.</p>
+<h2 id="openconfig-models">OpenConfig models</h2>
+<p><a href="https://www.openconfig.net">OpenConfig</a> is an operator led group defining models for network devices.  Their models
+have been widely adopted by a number of vendors including Arista and an ecosystem of open source tooling has emerged to
+utilize these models for telemetry and configuration applications.</p>
+<p>In addition to defining device and protocol models the OpenConfig group has defined complementary network management
+protocols which leverage these models for telemetry (gNMI), configuration (gNMI), operational activities (gNOI) and
+RIB manipulation (gRIBI).  Though it bears noting that OpenConfig models can also be used with NETCONF and RESTCONF
+protocols as well.</p>
+<p>Details regarding the OpenConfig model support within Arista's EOS software can be found online.</p>
+<h2 id="vendor-specific-models">Vendor-Specific Models</h2>
+<p>While standard models provide a wide range of feature coverage there is commonly a need to model vendor-specific device
+or feature operation.  Examples of this may include device specific behaviors (hardware configuration details) or
+pre-standard functionality that is deployed in operator networks that needs to be managed using the same tooling.</p>
+<p>Vendors may opt to define all new models which are published independently.  Alternately, vendors may choose to leverage
+an existing standardized model and add vendor-specific elements to the standard models these are known as model
+augments.  These augments are commonly published to allow integration into operator tooling.</p>
+<p>Arista publishes augments associated with a given EOS release on <a href="https://github.com/aristanetworks/yang">GitHub</a>.</p>
 <h2 id="references-resources">References / Resources</h2>
 <ul>
-<li>YANG RFC: <a href="https://tools.ietf.org/html/rfc6020">https://tools.ietf.org/html/rfc6020</a></li>
-<li>Repository of OpenConfig YANG models: <a href="https://github.com/openconfig/public">https://github.com/openconfig/public</a></li>
-<li>Arista Networks YANG Repository: <a href="https://github.com/aristanetworks/yang">https://github.com/aristanetworks/yang</a></li>
+<li><a href="https://tools.ietf.org/html/rfc6020">YANG RFC</a></li>
+<li><a href="https://github.com/openconfig/public">Repository of OpenConfig YANG models</a></li>
+<li><a href="https://github.com/aristanetworks/yang">Arista Networks YANG Repository</a></li>
 </ul>
                 
                   
@@ -699,6 +862,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../telemetry/adapters/gnmireverse/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNMIReverse" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              gNMIReverse
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
