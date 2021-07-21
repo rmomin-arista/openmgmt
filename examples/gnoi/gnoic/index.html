@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-grpc" class="md-skip">
+        <a href="#gnoic-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -446,6 +446,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        About gNOI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -475,27 +487,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-grpc" class="md-nav__link">
-    About gRPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi" class="md-nav__link">
-    About gNOI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
-    About gNOI support on EOS
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#gnoic-overview" class="md-nav__link">
@@ -824,27 +815,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-grpc" class="md-nav__link">
-    About gRPC
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi" class="md-nav__link">
-    About gNOI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-gnoi-support-on-eos" class="md-nav__link">
-    About gNOI support on EOS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#gnoic-overview" class="md-nav__link">
     gNOIc overview
   </a>
@@ -884,35 +854,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/gnoi/gnoic/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/gnoi/gnoic.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                   <h1>gNOIc</h1>
                 
-                <h2 id="about-grpc">About gRPC</h2>
-<p>gRPC - Google Remote Procedure Call</p>
-<p>gRPC uses protobuf and HTTP/2</p>
-<h2 id="about-gnoi">About gNOI</h2>
-<p>gNOI - gRPC Network Operations Interface</p>
-<p>gNOI defines a set of gRPC-based microservices for executing operational commands on network devices.</p>
-<p>gNOI <a href="https://github.com/openconfig/gnoi">github repository</a></p>
-<p>As example, <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto">this gNOI proto file</a> defines the
-service <code>System</code> with the RPC <code>Traceroute</code> and <code>Ping</code></p>
-<ul>
-<li>Ping executes the ping command on the target and streams back the results</li>
-<li>Traceroute executes the traceroute command on the target and streams back the results</li>
-<li>As you can see in the proto file, the field VRF is not defined for these messages</li>
-</ul>
-<h2 id="about-gnoi-support-on-eos">About gNOI support on EOS</h2>
-<p>Please refer to this <a href="https://eos.arista.com/eos-4-24-2f/gnoi/">link</a> for the gNOI support by EOS.</p>
-<p>Examples:</p>
-<ul>
-<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-ping/">gnoi ping</a></li>
-<li><a href="https://eos.arista.com/eos-4-22-1f/gnoi-traceroute/">gnoi traceroute</a></li>
-</ul>
-<h2 id="gnoic-overview">gNOIc overview</h2>
+                <h2 id="gnoic-overview">gNOIc overview</h2>
 <p>gNOIc is a gNOI CLI client:</p>
 <ul>
 <li><a href="https://github.com/karimra/gnoic">source code</a></li>
@@ -1065,7 +1014,7 @@ INFO[0000] &quot;10.73.1.118:6030&quot; key-type=KT_RSA, cert-type=CT_X509, key-
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../gnmi-gateway/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNMI gateway" rel="prev">
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: About gNOI" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1074,7 +1023,7 @@ INFO[0000] &quot;10.73.1.118:6030&quot; key-type=KT_RSA, cert-type=CT_X509, key-
               <span class="md-footer__direction">
                 Previous
               </span>
-              gNMI gateway
+              About gNOI
             </div>
           </div>
         </a>
