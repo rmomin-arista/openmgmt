@@ -582,8 +582,56 @@
         
           <li class="md-nav__item">
   <a href="#other-demos" class="md-nav__link">
-    other demos
+    Other demos
   </a>
+  
+    <nav class="md-nav" aria-label="Other demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operation" class="md-nav__link">
+    get operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-config-operation" class="md-nav__link">
+    get-config operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-config-operation" class="md-nav__link">
+    edit-config operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-output-parsing" class="md-nav__link">
+    XML output parsing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    RPC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -846,8 +894,56 @@
         
           <li class="md-nav__item">
   <a href="#other-demos" class="md-nav__link">
-    other demos
+    Other demos
   </a>
+  
+    <nav class="md-nav" aria-label="Other demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capabilities" class="md-nav__link">
+    Capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operation" class="md-nav__link">
+    get operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-config-operation" class="md-nav__link">
+    get-config operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-config-operation" class="md-nav__link">
+    edit-config operation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-output-parsing" class="md-nav__link">
+    XML output parsing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rpc" class="md-nav__link">
+    RPC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -982,14 +1078,26 @@ True
 &gt;&gt;&gt;
 &gt;&gt;&gt; exit()
 </code></pre>
-<h3 id="other-demos">other demos</h3>
-<p>There are many python scripts using ncclient in this <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/">directory</a>:</p>
+<h3 id="other-demos">Other demos</h3>
+<p>There are many python scripts using ncclient in this <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/">directory</a>.</p>
+<p>To execute one of these scripts, run as example this command:</p>
+<pre><code class="language-shell">python3 print_server_capabilities.py
+</code></pre>
+<h4 id="capabilities">Capabilities</h4>
 <ul>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_client_capabilities.py">print_client_capabilities.py</a> prints the NETCONF client capabilities.</li>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_server_capabilities.py">print_server_capabilities.py</a> prints the NETCONF server capabilities.</li>
+</ul>
+<h4 id="get-operation">get operation</h4>
+<ul>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get.py">get.py</a> uses the <code>get</code> operation to retrieve the configuration and state data. It uses a filter to specify the portion of the configuration and state data to retrieve.</li>
+</ul>
+<h4 id="get-config-operation">get-config operation</h4>
+<ul>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get_config.py">get_config.py</a> uses the <code>get-config</code> operation with a filter to retrieve part of the configuration.</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/parse_xml_output.py">parse_xml_output.py</a> uses the <code>get</code> operation to retrieve data from the device and then parse this data.</li>
+</ul>
+<h4 id="edit-config-operation">edit-config operation</h4>
+<ul>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_merge.py">edit_config_merge.py</a> uses the <code>edit-config</code> operation with the <code>merge</code> operation (which is the default operation for <code>edit-config</code>)</li>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_replace.py">edit_config_replace.py</a> uses the <code>edit-config</code> operation with the <code>replace</code> operation</li>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_delete.py">edit_config_delete.py</a>
@@ -997,11 +1105,15 @@ uses the <code>edit-config</code> operation with the <code>delete</code> operati
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/EOS_commands_with_NETCONF.py">EOS_commands_with_NETCONF.py</a> configures a device using the <code>edit-config</code> operation and EOS data model</li>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_commit.py">candidate_configuration_commit.py</a> uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>commit</code> operation.</li>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_discard_changes.py">candidate_configuration_discard_changes.py</a>. uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>discard_change</code> operation to revert the candidate configuration to the current running configuration (insteaf of commiting the candidate configuration).</li>
+</ul>
+<h4 id="xml-output-parsing">XML output parsing</h4>
+<ul>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/parse_xml_output.py">parse_xml_output.py</a> uses the <code>get</code> operation to retrieve data from the device and then parse this data.</li>
+</ul>
+<h4 id="rpc">RPC</h4>
+<ul>
 <li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/rpc.py">rpc.py</a> sends RPCs to configure EOS devices.</li>
 </ul>
-<p>To execute one of these scripts, run as example this command:</p>
-<pre><code class="language-shell">python3 print_server_capabilities.py
-</code></pre>
                 
                   
                 
