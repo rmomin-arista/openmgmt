@@ -1,0 +1,2598 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Arista Open Management repository documentation">
+      
+      
+      
+        <meta name="author" content="Arista Networks">
+      
+      
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/telemetry/adapters/ocprometheus/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Streaming EOS telemetry states to Prometheus - Open Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ba0d045b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+  
+
+
+  
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-4V8W728SS9"),document.addEventListener("DOMContentLoaded",function(){"undefined"!=typeof location$&&location$.subscribe(function(t){gtag("config","G-4V8W728SS9",{page_path:t.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V8W728SS9"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Open Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Streaming EOS telemetry states to Prometheus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/aristanetworks/openmgmt/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openmgmt on Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Open Management
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/aristanetworks/openmgmt/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openmgmt on Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Configuration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/openconfig/" class="md-nav__link">
+        OpenConfig
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/netconf/" class="md-nav__link">
+        NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/restconf/" class="md-nav__link">
+        RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/mtls/" class="md-nav__link">
+        Certificate Authentication
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../configuration/security/" class="md-nav__link">
+        Security Configuration
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        gNMI clients
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNMI clients" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          gNMI clients
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-clients/arista-gnmi/" class="md-nav__link">
+        gnmi (Arista)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-clients/gnmic/" class="md-nav__link">
+        gnmic
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnmi-gateway/" class="md-nav__link">
+        gNMI gateway
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        gNOI
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="gNOI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          gNOI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnoi/" class="md-nav__link">
+        About gNOI
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnoi/gnoic/" class="md-nav__link">
+        gNOIc
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/gnoi/grpcurl/" class="md-nav__link">
+        gRPCurl
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/golang/" class="md-nav__link">
+        Go Lang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      <label class="md-nav__link" for="__nav_3_6">
+        NETCONF
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="NETCONF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          NETCONF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/netconf/" class="md-nav__link">
+        About NETCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/netconf/ncclient/" class="md-nav__link">
+        ncclient
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/netconf/netconf_over_ssh/" class="md-nav__link">
+        NETCONF over SSH
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pygnmi/" class="md-nav__link">
+        Pygnmi
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pyang/" class="md-nav__link">
+        Pyang
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/pyangbind/" class="md-nav__link">
+        Pyangbind
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+      
+      <label class="md-nav__link" for="__nav_3_10">
+        RESTCONF
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="RESTCONF" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_10">
+          <span class="md-nav__icon md-icon"></span>
+          RESTCONF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/restconf/" class="md-nav__link">
+        About RESTCONF
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/restconf/curl/" class="md-nav__link">
+        cURL
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/restconf/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/ygot/" class="md-nav__link">
+        ygot
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        Telemetry
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Telemetry" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Telemetry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gnmireverse/" class="md-nav__link">
+        gNMIReverse
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ocprometheus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ocprometheus
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-prometheus-and-grafana" class="md-nav__link">
+    Installing Prometheus and Grafana
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Prometheus and Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-prometheus" class="md-nav__link">
+    Installing Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-new-targets" class="md-nav__link">
+    Add new targets
+  </a>
+  
+    <nav class="md-nav" aria-label="Add new targets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1" class="md-nav__link">
+    Option 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2" class="md-nav__link">
+    Option 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3" class="md-nav__link">
+    Option 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-grafana" class="md-nav__link">
+    Installing Grafana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-ocprometheus" class="md-nav__link">
+    Installing and configuring ocprometheus
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing and configuring ocprometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-clone-the-arista-go-library" class="md-nav__link">
+    Git Clone the Arista GO library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-ocprometheus-in-go" class="md-nav__link">
+    Compile ocprometheus in GO
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile ocprometheus in GO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-using-the-binary" class="md-nav__link">
+    Option 1) Using the binary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-it-as-a-swix" class="md-nav__link">
+    Option 2) Install it as a swix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flags-cheat-sheet" class="md-nav__link">
+    Flags cheat sheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-eos-configuration" class="md-nav__link">
+    Sample EOS Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample EOS Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-and-streaming-to-both-cvp-and-prometheus" class="md-nav__link">
+    No VRF and streaming to both CVP and Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-and-only-prometheus" class="md-nav__link">
+    No VRF and only Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-management-and-streaming-to-both-cvp-and-prometheus" class="md-nav__link">
+    VRF management and streaming to both CVP and Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-and-only-prometheus" class="md-nav__link">
+    VRF and only Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-and-only-prometheus-using-authentication" class="md-nav__link">
+    VRF and only Prometheus using authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdp-vrf-and-only-prometheus" class="md-nav__link">
+    PDP: VRF and only Prometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-dashboards-in-grafana" class="md-nav__link">
+    Creating dashboards in Grafana
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating dashboards in Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-graph-data-only-for-specific-interface" class="md-nav__link">
+    How to graph data only for specific interface?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-defined-dashboard" class="md-nav__link">
+    Pre-defined dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rule-records-in-prometheus-for-eos-paths" class="md-nav__link">
+    Using rule records in Prometheus for EOS paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Using rule records in Prometheus for EOS paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ocprometheusyml-on-eos" class="md-nav__link">
+    Ocprometheus.yml on EOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheusyml-on-the-server" class="md-nav__link">
+    Prometheus.yml on the server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel_rulesyml-on-the-server" class="md-nav__link">
+    Kernel_rules.yml on the server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-ocprometheus-with-the-openconfigocta-agent-management-api-gnmi" class="md-nav__link">
+    Using ocprometheus with the OpenConfig/OCTA agent (management api gnmi)
+  </a>
+  
+    <nav class="md-nav" aria-label="Using ocprometheus with the OpenConfig/OCTA agent (management api gnmi)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-configurations" class="md-nav__link">
+    Example configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Example configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-gnmiocta-ocprometheus" class="md-nav__link">
+    No VRF - gnmi/OCTA + ocprometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-gnmiocta-ocprometheus" class="md-nav__link">
+    VRF - gnmi/OCTA + ocprometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cert-based-authentification-with-ocprometheus" class="md-nav__link">
+    Cert-based authentification with ocprometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-tips" class="md-nav__link">
+    Troubleshooting tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-logs-and-troubleshooting" class="md-nav__link">
+    Checking Logs and troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    Common issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Common issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context_deadline_exceeded" class="md-nav__link">
+    Context_deadline_exceeded
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-seeing-any-streams-on-prometheus" class="md-nav__link">
+    Not seeing any streams on Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broken-paths-due-to-incorrect-regexp" class="md-nav__link">
+    Broken paths due to incorrect regexp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-failed" class="md-nav__link">
+    Authentication failed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-refused" class="md-nav__link">
+    Connection refused
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscription-paths" class="md-nav__link">
+    Subscription paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../models/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-prometheus-and-grafana" class="md-nav__link">
+    Installing Prometheus and Grafana
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Prometheus and Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-prometheus" class="md-nav__link">
+    Installing Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-new-targets" class="md-nav__link">
+    Add new targets
+  </a>
+  
+    <nav class="md-nav" aria-label="Add new targets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1" class="md-nav__link">
+    Option 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2" class="md-nav__link">
+    Option 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3" class="md-nav__link">
+    Option 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-grafana" class="md-nav__link">
+    Installing Grafana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-and-configuring-ocprometheus" class="md-nav__link">
+    Installing and configuring ocprometheus
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing and configuring ocprometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-clone-the-arista-go-library" class="md-nav__link">
+    Git Clone the Arista GO library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-ocprometheus-in-go" class="md-nav__link">
+    Compile ocprometheus in GO
+  </a>
+  
+    <nav class="md-nav" aria-label="Compile ocprometheus in GO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-using-the-binary" class="md-nav__link">
+    Option 1) Using the binary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-it-as-a-swix" class="md-nav__link">
+    Option 2) Install it as a swix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flags-cheat-sheet" class="md-nav__link">
+    Flags cheat sheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-eos-configuration" class="md-nav__link">
+    Sample EOS Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Sample EOS Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-and-streaming-to-both-cvp-and-prometheus" class="md-nav__link">
+    No VRF and streaming to both CVP and Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-and-only-prometheus" class="md-nav__link">
+    No VRF and only Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-management-and-streaming-to-both-cvp-and-prometheus" class="md-nav__link">
+    VRF management and streaming to both CVP and Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-and-only-prometheus" class="md-nav__link">
+    VRF and only Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-and-only-prometheus-using-authentication" class="md-nav__link">
+    VRF and only Prometheus using authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdp-vrf-and-only-prometheus" class="md-nav__link">
+    PDP: VRF and only Prometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-dashboards-in-grafana" class="md-nav__link">
+    Creating dashboards in Grafana
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating dashboards in Grafana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-graph-data-only-for-specific-interface" class="md-nav__link">
+    How to graph data only for specific interface?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-defined-dashboard" class="md-nav__link">
+    Pre-defined dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rule-records-in-prometheus-for-eos-paths" class="md-nav__link">
+    Using rule records in Prometheus for EOS paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Using rule records in Prometheus for EOS paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ocprometheusyml-on-eos" class="md-nav__link">
+    Ocprometheus.yml on EOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheusyml-on-the-server" class="md-nav__link">
+    Prometheus.yml on the server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel_rulesyml-on-the-server" class="md-nav__link">
+    Kernel_rules.yml on the server
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-ocprometheus-with-the-openconfigocta-agent-management-api-gnmi" class="md-nav__link">
+    Using ocprometheus with the OpenConfig/OCTA agent (management api gnmi)
+  </a>
+  
+    <nav class="md-nav" aria-label="Using ocprometheus with the OpenConfig/OCTA agent (management api gnmi)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-configurations" class="md-nav__link">
+    Example configurations
+  </a>
+  
+    <nav class="md-nav" aria-label="Example configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-vrf-gnmiocta-ocprometheus" class="md-nav__link">
+    No VRF - gnmi/OCTA + ocprometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vrf-gnmiocta-ocprometheus" class="md-nav__link">
+    VRF - gnmi/OCTA + ocprometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cert-based-authentification-with-ocprometheus" class="md-nav__link">
+    Cert-based authentification with ocprometheus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-tips" class="md-nav__link">
+    Troubleshooting tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-logs-and-troubleshooting" class="md-nav__link">
+    Checking Logs and troubleshooting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    Common issues
+  </a>
+  
+    <nav class="md-nav" aria-label="Common issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context_deadline_exceeded" class="md-nav__link">
+    Context_deadline_exceeded
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-seeing-any-streams-on-prometheus" class="md-nav__link">
+    Not seeing any streams on Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broken-paths-due-to-incorrect-regexp" class="md-nav__link">
+    Broken paths due to incorrect regexp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-failed" class="md-nav__link">
+    Authentication failed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-refused" class="md-nav__link">
+    Connection refused
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subscription-paths" class="md-nav__link">
+    Subscription paths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    Useful links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/telemetry/adapters/ocprometheus/index.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>ocprometheus</h1>
+                
+                <h2 id="introduction">Introduction</h2>
+<p>Prometheus is one of the most popular open-source monitoring and alerting systems, which scrapes and stores numeric
+time series data over HTTP. It has a very flexible query language, can send alerts via alertmanager to various platform
+ and can be integrated easily with many open-source tools. For more details and use cases, please visit <a href="https://prometheus.io/docs/introduction/overview/">https://prometheus.io/docs/introduction/overview/</a>.</p>
+<p>The purpose of this article is to show how easy it is to deploy and configure Prometheus and Grafana and
+configure Arista switches to send telemetry states to Prometheus using TerminAttr ( EOS streaming telemetry agent )
+and one of the OpenConfig connectors that you can find on our official github page.</p>
+<blockquote>
+<p>Please note, that these apps were written as proof-of-concept and are supported on a best-effort basis.
+The projects can be forked and modified to suit your needs. Feedbacks are always welcomed and issues can be filed
+like for any other projects on github.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following tools will be necessary to be able to install Prometheus and Grafana, clone our project from github
+and compile ocprometheus.</p>
+<ul>
+<li><a href="https://brew.sh/">Homebrew</a> (for macOS users)</li>
+<li><a href="https://golang.org/doc/install">Go</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/install-git">Git</a></li>
+<li><a href="https://docs.docker.com/install/">docker</a></li>
+</ul>
+<h2 id="installing-prometheus-and-grafana">Installing Prometheus and Grafana</h2>
+<p>There are several ways to install Prometheus and Grafana, the docker approach being the most popular and easiest.</p>
+<h3 id="installing-prometheus">Installing Prometheus</h3>
+<p>First, create a minimal Prometheus configuration file on the host filesystem at <code>~/prometheus.yml</code>:</p>
+<p><code>vi ~/prometheus.yml</code></p>
+<p>Add your targets (network devices IP/hostname + port number) to the ‘scrape configs’ session</p>
+<p>Example<code>prometheus.yml</code></p>
+<pre><code class="language-yaml"># my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - &quot;first_rules.yml&quot;
+  # - &quot;second_rules.yml&quot;
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'arista'
+    static_configs:
+      - targets: ['10.83.13.139:8080']
+</code></pre>
+<p>Start the Prometheus Docker container with an external configuration file:</p>
+<pre><code class="language-shell">docker run -d \
+     -p 9090:9090 -v ~/prometheus.yml:/etc/prometheus/prometheus.yml \
+     prom/prometheus \
+     -config.file=/etc/prometheus/prometheus.yml
+</code></pre>
+<p>If the above doesn’t work, check the latest docker command on the <a href="https://prometheus.io/docs/prometheus/latest/installation/">official Prometheus website</a>.</p>
+<pre><code class="language-shell">docker run \
+    -p 9090:9090 \
+    -v /tmp/prometheus.yml:/etc/prometheus/prometheus.yml \
+    prom/prometheus
+</code></pre>
+<h3 id="add-new-targets">Add new targets</h3>
+<p>In our case, targets are switches, but a target can be any type of device. By default if you are adding new targets by
+editing the <code>prometheus.yml</code> file on the host, it won’t update the config file in the Docker VM, that is because
+every time you insert new characters with VIM and save the file, the inode will change.</p>
+<h4 id="option-1">Option 1</h4>
+<p>Change the file permission to <code>664</code> (<code>rw-rw-r–</code>)</p>
+<p><code>chmod 664 prometheus.yml</code></p>
+<p>Check if the permissions have been changed</p>
+<pre><code class="language-shell">ls -l prometheus.yml
+
+-rw-rw-r--  1 root root 1076 May 14 12:25 prometheus.yml
+</code></pre>
+<p>This will modify the file in your docker VM as well, but the configuration won’t be updated until you restart the
+service, which you can do with a one-liner:</p>
+<pre><code class="language-shell">sudo docker exec -i -t eager_kapitsa kill -HUP 1
+</code></pre>
+<p>Where eager_kapitsa is the name of the container, which you can find out with the docker ps command:</p>
+<pre><code class="language-shell">root@tac-prometheus-ire:~# docker ps
+
+CONTAINER ID        IMAGE COMMAND                  CREATED STATUS PORTS                    NAMES
+
+47f52778b492        prom/prometheus &quot;/bin/prometheus --c…&quot;   13 days ago Up 6 minutes 0.0.0.0:9090-&gt;9090/tcp   eager_kapitsa
+3e880f9a951e        grafana/grafana &quot;/run.sh&quot;                3 weeks ago Up 3 weeks 0.0.0.0:3000-&gt;3000/tcp   grafana
+</code></pre>
+<p>You can always check if the configuration has been updated with the following curl command:</p>
+<pre><code class="language-shell">root@tac-prometheus-ire:~# curl localhost:9090/config
+
+&lt;ommited&gt;
+  static_configs:
+  - targets:
+    - 10.83.13.132:8080
+    - 10.83.13.139:8080
+    - 10.83.12.109:8080
+    - 10.83.13.138:8080
+&lt;ommited&gt;
+</code></pre>
+<p>Forum that explains this <a href="https://forums.docker.com/t/modify-a-file-which-mount-as-a-data-volume-but-it-didnt-change-in-container/2813/13">behavior</a>.</p>
+<h4 id="option-2">Option 2</h4>
+<blockquote>
+<p>NOTE If you don’t want to change the file permission, you can use the <code>:set backupcopy=yes</code> option in VIM, which will make
+sure to not change the inode of the file when saving it.</p>
+</blockquote>
+<p>And restart the service again:</p>
+<pre><code class="language-shell">sudo docker exec -i -t eager_kapitsa kill -HUP 1
+</code></pre>
+<h4 id="option-3">Option 3</h4>
+<p>Use the <code>–web.enable-lifecycle</code> flag when running the container.</p>
+<h3 id="installing-grafana">Installing Grafana</h3>
+<p>You can use the following docker command to deploy Grafana in couple of seconds:</p>
+<pre><code class="language-shell">$ docker run \
+  -d \
+  -p 3000:3000 \
+  --name=grafana \
+  -e &quot;GF_SERVER_ROOT_URL=http://grafana.server.name&quot; \
+  -e &quot;GF_SECURITY_ADMIN_PASSWORD=secret&quot; \
+  grafana/grafana
+</code></pre>
+<blockquote>
+<p>Note: In newer versions of Grafana there are no more implicit volumes for</p>
+</blockquote>
+<ul>
+<li>/var/lib/grafana</li>
+<li>/var/log/grafana</li>
+<li>/etc/grafana</li>
+</ul>
+<p>For more details see what’s new in <a href="https://grafana.com/docs/grafana/latest/installation/docker/#migration-from-a-previous-version-of-the-docker-container-to-5-1-or-later">Grafana 5.1 and later</a>
+ and recommended steps to migrate from older releases.</p>
+<p>There’s also a ready-to-go combo of Prometheus/Grafana/docker-stack which you can find at
+https://github.com/vegasbrianc/prometheus (credit to Brian Christner)</p>
+<p>Now that we have Prometheus and Grafana running, we’re ready to configure our switches and start drawing nice graphs from
+ the queried data.</p>
+<h2 id="installing-and-configuring-ocprometheus">Installing and configuring ocprometheus</h2>
+<p>There are a couple of ways to install ocprometheus, and all require for you to compile it with GO.</p>
+<h3 id="git-clone-the-arista-go-library">Git Clone the Arista GO library</h3>
+<p>First you’ll need to git clone the goarista repository.</p>
+<pre><code class="language-shell">tamas:~ tamas$ git clone https://github.com/aristanetworks/goarista.git
+
+Cloning into 'goarista'...
+remote: Counting objects: 2584, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 2584 (delta 1), reused 2 (delta 0), pack-reused 2574
+Receiving objects: 100% (2584/2584), 945.38 KiB | 767.00 KiB/s, done.
+Resolving deltas: 100% (1529/1529), done.
+Checking connectivity... done.
+</code></pre>
+<p>This will download all the files from that github page and we can then go ahead and compile ocprometheus.</p>
+<blockquote>
+<p>LPT In case the project you’ve cloned has dependencies on other git project
+you can use the <code>–recurse-submodules</code> flag while cloning which will also clone the submodules.</p>
+</blockquote>
+<p>E.g.:</p>
+<pre><code class="language-shell">git clone --recurse-submodules -j8 git://github.com/foo/bar.git
+</code></pre>
+<h3 id="compile-ocprometheus-in-go">Compile ocprometheus in GO</h3>
+<p>1. Go to your ocprometheus folder on your PC/laptop/server</p>
+<pre><code class="language-shell">cd git/goarista/cmd/ocprometheus
+</code></pre>
+<p>2. Compile ocprometheus with the following paramethers:</p>
+<pre><code class="language-shell">GOOS=linux GOARCH=386 go build
+</code></pre>
+<p>3. Copy the binary with SCP to the switch</p>
+<pre><code class="language-shell">scp ocprometheus admin@10.83.13.139://mnt/flash
+</code></pre>
+<p>Since EOS has a linux kernel, the OS has to be set to linux and the architecture to 32 bit (386) with GOOS and GOARCH
+variables respectively. Starting 4.22.0 we’ve introduced a 64-bit EOS () and you can also compile ocprometheus for
+64-bit architecture with the following command:</p>
+<pre><code class="language-shell">GOOS=linux GOARCH=amd64 go build
+</code></pre>
+<h4 id="option-1-using-the-binary">Option 1) Using the binary</h4>
+<p>From this point you can just SCP the binary to a persistent storage on the switch (e.g. <code>/mnt/flash/</code>) and
+just configure the daemon and point it to <code>/mnt/flash/ocprometheus</code></p>
+<h4 id="option-2-install-it-as-a-swix">Option 2) Install it as a swix</h4>
+<p>You can also install it as a swix, which requires a bit more effort, however it’s easier to manage swix packages,
+and you’ll be able to see the ocprometheus extension in the <code>show extensions</code> output.</p>
+<p>In order to create a swix file, we first have to compile this binary as an RPM. Building RPMs can be tedious, especially
+for networking guys, who are not used to doing things like this.
+There are various tutorials online on how to use rpmbuild, but instead of wasting half an hour to create all
+the necessary folders and your spec file, etc we can create RPMs with just one line, using FPM (Effing Package Management).</p>
+<p>You can download FPM from the following github page:</p>
+<p>https://github.com/jordansissel/fpm ( credit to Jordan and all the people who contributed to this project – you’ve made
+ our lives easier! Thanks!)</p>
+<p>The following was done on a Devuan VM ( which is basically a lightweight Debian without systemd )
+using the following steps:</p>
+<p>1. Create a new folder:</p>
+<pre><code class="language-shell">mkdir fpmbuild
+</code></pre>
+<p>2. Copy the compiled <code>ocprometheus</code> and the <code>sampleconfig.yml</code> (in this example it was renamed to <code>ocprometheus.yml</code>)
+downloaded from github:</p>
+<pre><code class="language-shell">cp ~/git/goarista/cmd/ocprometheus/ocprometheus /backup/fpmbuild/
+
+cp ~/git/goarista/cmd/ocprometheus/sampleconfig_above_4.20.yml /backup/fpmbuild/ocprometheus.yml
+</code></pre>
+<p>3. Compile it with fpm:</p>
+<p>This one liner will create the RPM package without the need to create all the folders and specs that you’d need to do
+with the usual rpmbuild:</p>
+<pre><code class="language-shell">sudo fpm -s dir -t rpm -a all -n &quot;ocprometheus-$(date +%m_%d.%H%M)&quot; \
+   -v1.5.6 --prefix /usr/bin/ \
+   -C /backup/fpmbuild/ ocprometheus ocprometheus.yml
+</code></pre>
+<h4 id="flags-cheat-sheet">Flags cheat sheet</h4>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-s dir</td>
+<td>Source is a directory</td>
+</tr>
+<tr>
+<td>-t rpm</td>
+<td>Target is an RPM file</td>
+</tr>
+<tr>
+<td>-a all</td>
+<td>User noarch instead of x86_64</td>
+</tr>
+<tr>
+<td>-n “ocprometheus-$(date +%m_%d.%H%M)“</td>
+<td>the name of the RPM</td>
+</tr>
+<tr>
+<td>-v 1.5.5</td>
+<td>the version of the RPM will be 1.0</td>
+</tr>
+<tr>
+<td>–prefix /usr/bin/</td>
+<td>The files will be installed in this directory</td>
+</tr>
+<tr>
+<td>-C /backup/fpmbuild/ ocprometheus ocprometheus.yml</td>
+<td>Change directory to here before searching for files</td>
+</tr>
+</tbody>
+</table>
+<p>4. Copy the generated file to the switch and install it as a swix:</p>
+<pre><code class="language-shell">root@devuan:/backup# ls -al ocpr*
+
+-rw-r--r--  1 root root 6462872 Jun 17 22:55 oocprometheus-06_17.2255-1.5.6-1.noarch.rpm
+
+root@devuan:/backup# scp ocprom* admin@ats323://mnt/flash/
+</code></pre>
+<p>4.1. SSH to the switch and create the swix, e.g.:</p>
+<pre><code class="language-shell">ssh admin@ats323
+
+ats323...16:13:36# bash
+
+Arista Networks EOS shell
+
+[admin@ats323 ~]$ cd /mnt/flash
+
+
+[admin@ats323 flash]$ swix create ocprometheus-1.5.6.swix ocprometheus-06_17.2255-1.5.6-1.noarch.rpm
+
+  adding: manifest.txt (stored 0%)
+
+  adding: ocprometheus-06_17.2255-1.5.6-1.noarch.rpm (stored 0%)
+</code></pre>
+<p>4.2. Install it as a swix extension</p>
+<pre><code class="language-shell">copy flash:ocprometheus-1.5.6.swix extension:
+
+extension ocprometheus-1.5.6.swix
+</code></pre>
+<p>4.3. Make it persistent across reloads</p>
+<pre><code class="language-shell">copy installed-extensions boot-extensions
+</code></pre>
+<p>4.4. Check your extensions</p>
+<pre><code class="language-shell">show extensions
+
+Name                            Version/Release Status Extension
+------------------------------- -------------------- ----------- ---------
+
+TerminAttr-1.5.5-1.swix         v1.5.5/1 A, I 25
+ocprometheus-1.5.6.swix         1.5.6/1 A, I 1
+
+
+A: available | NA: not available | I: installed | NI: not installed | F: forced
+</code></pre>
+<p>Finally you’ll need to copy the configuration file, which contains the subscription paths.
+You’ll find the yaml file on our github page. You can find more details about subscriptions/metrics and
+how they are constructed in <a href="https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming">https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming</a></p>
+<p>For macOS it’ll be similar with few modifications (tested on macOS Mojave and newer):</p>
+<p>1. Install FPM and RPM</p>
+<pre><code class="language-shell">brew install gnu-tar
+gem install --no-ri --no-rdoc fpm
+brew install rpm
+</code></pre>
+<blockquote>
+<p>Note: on macOS Catalina you might need to use <code>–user-install</code> when installing gem packages, and instead of <code>–no-rdoc</code>
+use <code>–no-document</code> .</p>
+</blockquote>
+<p>Xcode might need to be reinstalled if you’ve upgraded from Mojave.</p>
+<p>e.g.</p>
+<pre><code class="language-shell">gem install --no-document fpm --user-install
+</code></pre>
+<p>2. Similarly as before, create a folder from where you’ll build your package and copy the compiled binary there</p>
+<pre><code class="language-shell">mkdir fpmbuild
+
+cp ~/git/goarista/cmd/ocprometheus/ocprometheus ~/backup/fpmbuild/
+
+cp ~/git/goarista/cmd/ocprometheus/sampleconfig_above_4.20.yml ~/backup/fpmbuild/ocprometheus.yml
+</code></pre>
+<p>3. Build the rpm with fpm using the following command</p>
+<pre><code class="language-shell">sudo fpm -s dir -t rpm -a noarch --rpm-os linux \
+   -n &quot;ocprometheus-$(date +%m_%d.%H%M)&quot; -v1.5.6 \
+   --prefix /usr/bin/ -C ~/backup/fpmbuild/ ocprometheus ocprometheus.yml
+</code></pre>
+<p>The only difference when using macOS to build your rpm using fpm is that you’ll need to add the <code>–rpm-os</code> linux flag,
+otherwise it’ll build the rpm for OSX.</p>
+<blockquote>
+<p>Note: If you are using CVP and maintain your images and extensions with Image bundles, you’ll have to
+add your ocprometheus.swix to Image bundles, otherwise they’ll get removed during an image push operation.</p>
+</blockquote>
+<p>Now it’s time to configure TerminAttr and ocprometheus.</p>
+<h3 id="sample-eos-configuration">Sample EOS Configuration</h3>
+<p>Here’s a sample config for pre EOS-4.19 and post EOS-4.20.7M (CP-ACL) when using VRF MGMT</p>
+<pre><code class="language-shell">!
+
+vrf instance MGMT
+!
+interface Management1
+   vrf forwarding MGMT
+   ip address 192.168.58.16/24
+!
+system control-plane
+   ip access-group def2 in
+   ip access-group def2 vrf MGMT in
+!
+daemon TerminAttr
+   exec /usr/bin/TerminAttr -disableaaa -grpcaddr MGMT/0.0.0.0:6042
+   no shutdown
+!
+daemon ocprometheus
+   exec /sbin/ip netns exec ns-MGMT /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+   no shutdown
+!
+</code></pre>
+<p>You’ll need at least 3 things to configure ocprometheus:</p>
+<ul>
+<li>Location of the binary</li>
+<li>Location of the config file, configured by the -config flag</li>
+<li>gNMI socket of TerminAttr, which can be specified by the <code>-addr</code> flag</li>
+</ul>
+<p>TerminAttr is running a gRPC server locally on TCP <code>6042</code>, which you can check by looking at the logs:</p>
+<pre><code class="language-shell">bash cat /var/log/agents/TerminAttr-`pidof TerminAttr`
+</code></pre>
+<blockquote>
+<p>NOTE: when installing ocprometheus as a swix file, the binary will be put in <code>/usr/bin</code> directory by default
+(you can change that in the RPM making process).</p>
+</blockquote>
+<p>If you compile it in go and copy it to flash you can just change that daemon config to refer to that path
+(this way it won’t be installed as a swix).</p>
+<p>e.g.</p>
+<pre><code class="language-shell">daemon ocprometheus
+   exec /sbin/ip netns exec ns-MGMT /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+   no shutdown
+</code></pre>
+<p>By default in EOS versions that have control-plane ACL we need to permit TCP port 8080 (default), or
+whichever port you decide to use to send data to the Prometheus server (defined in the targets list in <code>prometheus.yml</code>)</p>
+<pre><code class="language-shell"> ip access-list def2
+
+  9 permit tcp any any eq 8080
+  10 permit icmp any any
+  20 permit ip any any tracked
+  30 permit udp any any eq bfd ttl eq 255
+  40 permit udp any any eq bfd-echo ttl eq 254
+  50 permit udp any any eq multihop-bfd
+  60 permit udp any any eq micro-bfd
+  70 permit ospf any any
+  80 permit tcp any any eq ssh telnet www snmp bgp https msdp ldp netconf-ssh gnmi
+  90 permit udp any any eq bootps bootpc snmp rip ntp ldp
+  100 permit tcp any any eq mlag ttl eq 255
+  110 permit udp any any eq mlag ttl eq 255
+  120 permit vrrp any any
+  130 permit ahp any any
+  140 permit pim any any
+  150 permit igmp any any
+  160 permit tcp any any range 5900 5910
+  170 permit tcp any any range 50000 50100
+  180 permit udp any any range 51000 51100
+  190 permit tcp any any eq 3333
+  200 permit tcp any any eq nat ttl eq 255
+  210 permit tcp any eq bgp any
+  220 permit rsvp any any
+</code></pre>
+<p>To check if the port is open you can use <code>netstat</code>, e.g.:</p>
+<pre><code class="language-shell">netstat -an | grep :8080
+</code></pre>
+<p>Or the network namespace command if VRF is used</p>
+<pre><code class="language-shell">sudo ip netns exec ns-MGMT netstat -an | grep :8080
+</code></pre>
+<p>You should see a similar output as below:</p>
+<pre><code class="language-shell">$ sudo netstat -tulnap | grep :8080
+
+tcp6       0 0 :::8080                 :::* LISTEN   17200/ocprometheus
+tcp6       0 0 172.28.160.232:8080     10.83.13.78:48956 ESTABLISHED 17200/ocprometheus
+</code></pre>
+<p>Or in case of using a VRF:</p>
+<pre><code class="language-shell">$ sudo ip netns exec ns-management netstat -tulnap | grep :8080
+
+tcp6       0 0 :::8080                 :::* LISTEN   12344/ocprometheus
+tcp6       0 0 10.83.13.139:8080       10.83.13.78:40820 ESTABLISHED 12344/ocprometheus
+</code></pre>
+<p>Don’t be confused if you see tcp6 in the output, that’s expected, as AF_INET6 works for both IPv4 and IPv6 as per RFC <a href="https://tools.ietf.org/html/rfc3493#section-3.7">3493</a>.</p>
+<blockquote>
+<p>Note: The same configuration is used but no control-plane ACL for 4.20.7M &gt; EOS &gt;4.19 or in newer releases
+where EOS-PDP.swi is used, and you’ll need to allow the Prometheus server IP using <code>-allowed_ips=&lt;IP/subnet&gt;</code></p>
+</blockquote>
+<p>Here are some of the configuration combinations that you might have:</p>
+<h4 id="no-vrf-and-streaming-to-both-cvp-and-prometheus">No VRF and streaming to both CVP and Prometheus</h4>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -ingestgrpcurl=10.83.13.33:9910 -cvcompression=gzip -taillogs -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa
+  no shutdown
+!
+daemon ocprometheus
+  exec /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+  no shutdown
+!
+</code></pre>
+<h4 id="no-vrf-and-only-prometheus">No VRF and only Prometheus</h4>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -disableaaa
+  no shutdown
+!
+daemon ocprometheus
+  exec /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+  no shutdown
+!
+</code></pre>
+<h4 id="vrf-management-and-streaming-to-both-cvp-and-prometheus">VRF management and streaming to both CVP and Prometheus</h4>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -ingestgrpcurl=10.83.13.79:9910 -cvcompression=gzip -taillogs -ingestvrf=management -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa -grpcaddr management/0.0.0.0:6042
+  no shutdown
+!
+daemon ocprometheus
+  exec /sbin/ip netns exec ns-management /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+  no shutdown
+!
+</code></pre>
+<h4 id="vrf-and-only-prometheus">VRF and only Prometheus</h4>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -disableaaa -grpcaddr management/0.0.0.0:6042
+  no shutdown
+!
+daemon ocprometheus
+  exec /sbin/ip netns exec ns-management /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+  no shutdown
+!
+</code></pre>
+<h4 id="vrf-and-only-prometheus-using-authentication">VRF and only Prometheus using authentication</h4>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -grpcaddr management/0.0.0.0:6042
+  no shutdown
+!
+daemon ocprometheus
+  exec /sbin/ip netns exec ns-management /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042 -username=cvpadmin -password=arista
+  no shutdown
+!
+</code></pre>
+<h3 id="pdp-vrf-and-only-prometheus">PDP: VRF and only Prometheus</h3>
+<pre><code class="language-shell">!
+daemon TerminAttr
+  exec /usr/bin/TerminAttr -disableaaa -grpcaddr management/0.0.0.0:6042 -allowed_ips=10.83.13.78/32
+  no shutdown
+!
+daemon ocprometheus
+  exec /sbin/ip netns exec ns-management /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6042
+  no shutdown
+!
+</code></pre>
+<p>The minimum required flags for TerminAttr are:</p>
+<ul>
+<li><code>disableaaa</code>: Disable AAA checking – all AAA requests pass (in case username/password is not used in ocprometheus)</li>
+<li>grpcaddr string
+     VRF and address to listen on to serve data using the gNMI interface.
+     The expected form is <code>[&lt;vrf-name&gt;/]address:port</code> (default <code>127.0.0.1:6042</code>)</li>
+</ul>
+<p>After configuring our switches we can head over to Grafana and start drawing our graphs!</p>
+<h2 id="creating-dashboards-in-grafana">Creating dashboards in Grafana</h2>
+<p>First you’ll need to add Prometheus as a data source, to be able to graph streamed data to Prometheus.
+You can do this by using the following steps:</p>
+<p>1. Go to Configuration (gear icon) / Data Sources</p>
+<p><img alt="Grafana1" src="resources/Grafana1.png" /></p>
+<p>2. Add data source and select Prometheus</p>
+<p><img alt="Grafana2" src="resources/Grafana2.png" /></p>
+<p><img alt="Grafana3" src="resources/Grafana3.png" /></p>
+<p>3. Fill out the form (add the URL for the Prometheus server e.g.: <code>http://myprometheus.com:9090/</code></p>
+<p>It should look like this:</p>
+<p><img alt="Grafana4" src="resources/Grafana4.png" /></p>
+<p>4. Save &amp; Test</p>
+<p>5. Now we can create our dashboard ( + button on the left)</p>
+<p><img alt="Grafana5" src="resources/Grafana5.png" /></p>
+<p>6. Add query</p>
+<p><img alt="Grafana6" src="resources/Grafana6.png" /></p>
+<p>7. Make sure you have ‘Prometheus’ selected as Data Source</p>
+<p><img alt="Grafana7" src="resources/Grafana7.png" /></p>
+<p>After selecting ‘prometheus’ you will be able to add expressions like ‘intfCounter’ , ‘tempSensor’, etc. defined in
+the ocprometheus config yaml file.</p>
+<p><img alt="Grafana8" src="resources/Grafana8.png" /></p>
+<p>8. After adding ‘intfCounter’ to the query, it’ll start plotting the counters for all the interfaces and all the devices
+ that Prometheus is polling</p>
+<p><img alt="Grafana8v2" src="resources/Grafana8v2.png" /></p>
+<p>9. Save the dashboard</p>
+<p><img alt="Grafana9" src="resources/Grafana9.png" /></p>
+<p>Finally:</p>
+<ul>
+<li>you can add as many dashboards you want</li>
+<li>you can add more expression on a single graph</li>
+<li>you can choose one line on the graph and it will show the graph for only that line (e.g. in interface counters you</li>
+<li>can choose a specific interface to look at the counters for)</li>
+</ul>
+<h3 id="how-to-graph-data-only-for-specific-interface">How to graph data only for specific interface?</h3>
+<p>We can add filters to the queries in both Prometheus console or in grafana, e.g. if I want to see data for
+interface Ethernet24 I’d use the following filter:</p>
+<p><code>intfCounter{intf=”Ethernet24″}</code></p>
+<p><img alt="Grafana10" src="resources/Grafana10.png" /></p>
+<p><img alt="Grafana11" src="resources/Grafana11.png" /></p>
+<p>You can filter based on any of the labels defined in the config file (some of them are unnamed,
+but you can add a name to those capturing/non-capturing groups inside the config file on EOS).</p>
+<p>Some of the paths contains capturing groups that are not named, and Prometheus will give them a name in the following
+format: <code>unnamedLabelX</code></p>
+<p>For example, for interface counters on a 7160 device I have the following path:</p>
+<p><code>/Smash/counters/ethIntf/XpCounters/current/(counter)/(?P&lt;intf&gt;.+)/statistics/(?P&lt;direction&gt;(?:in|out))(Octets|Errors|Discards)</code></p>
+<p>From the above path you can see for example that the direction of the packets is captured in a named capturing group
+that also contains a non-capturing group: <code>(?P&lt;direction&gt;(?:in|out))</code></p>
+<p>Named capturing groups can be created with <code>?P&lt;name&gt;</code>.</p>
+<p>We don’t need to capture a separate group for in|out as we already do it with the named capturing group of direction,
+so we can use a non-capturing group with ?:</p>
+<p>Explanation:</p>
+<ul>
+<li>Named Capture Group: <strong>direction</strong> <code>(?P&lt;direction&gt;(?:in|out))</code></li>
+<li>Non-capturing group <code>(?:in|out)</code><ul>
+<li>1st Alternative in</li>
+<li>in matches the characters in literally (case sensitive)</li>
+<li>2nd Alternative out</li>
+<li>out matches the characters out literally (case sensitive)</li>
+</ul>
+</li>
+</ul>
+<p>Match for inOctets will be divided like this:</p>
+<pre><code class="language-shell">Match 1
+Full match            0-8 inOctets
+Group `direction`     0-2   in
+Group 2.              2-8 Octets
+</code></pre>
+<p>If we wouldn’t use non-capturing group for in|out the result will be the following</p>
+<pre><code class="language-shell">Match 1
+Full match         0-8 inOctets
+Group `direction`  0-2 in
+Group 2.           0-2 in
+Group 3.           2-8 Octets
+</code></pre>
+<p>Notice the extra group for matching <code>in</code>.</p>
+<p>Now for <code>(Octets|Errors|Discards)</code> there is no name defined, so the result will be</p>
+<pre><code class="language-shell">Match 1
+Full match   2-8 Octets
+Group 1.     2-8 Octets
+</code></pre>
+<p>In this case since we used a capturing group by putting our strings/expression in a parenthesis, Prometheus will
+know that it needs to treat it as a separate label, so it gives it a name.</p>
+<p>If you don’t want to see unnamedLabels you can add a group name similarly to the direction group.</p>
+<p>E.g. you can use the following expression: <code>(?P&lt;packetType&gt;(?:Octets|Errors|Discards))</code></p>
+<p>Result:</p>
+<pre><code class="language-shell">Match 1
+Full match          2-8 Octets
+Group `packetType`  2-8 Octets
+</code></pre>
+<h3 id="pre-defined-dashboard">Pre-defined dashboard</h3>
+<p>The open-source community is really helpful and thanks to Be Smart Be Open and Vista Technology we have a pre-defined
+grafana dashboard for Arista devices which you can find here:</p>
+<p><a href="https://grafana.com/dashboards/10222">https://grafana.com/dashboards/10222</a></p>
+<p>You can download the dashboard as a JSON file and then import it in Grafana.</p>
+<p>Some of the graphs that you’ll find in this dashboard:</p>
+<ul>
+<li>Aggregated traffic</li>
+<li>Traffic by interface</li>
+<li>CPU &amp; Temperature</li>
+<li>Power levels</li>
+<li>Voltage levels</li>
+<li>Interface counters for individual interfaces</li>
+</ul>
+<p><img alt="Grafana12" src="resources/Grafana12.png" /></p>
+<blockquote>
+<p>Beware of <a href="https://github.com/grafana/grafana/issues/6888">https://github.com/grafana/grafana/issues/6888</a></p>
+</blockquote>
+<p>In case you have modular devices or multilane interfaces, you cannot use a variable to match those interfaces
+for example with <code>intf="$interface"</code> because Grafana will escape special characters, even if they were
+already escaped by Prometheus (it’ll escape it again). So instead of <code>Ethernet3\\/2</code> you’ll have <code>Ethernet3\\\\/2</code> and
+no data will be plotted.</p>
+<p>The workaround is to use regex matching by putting the tilda (<code>~</code>) character after the equal sign.</p>
+<p><code>rate(intfCounter{job="$deviceType",instance="$device",intf=~"$interface",type="Octets"}[1m])*8</code></p>
+<p>You can also use regex matching like below</p>
+<p><code>rate(intfCounter{job="$deviceType",instance="$device",intf=~"Ethernet(.*\\/.*)?(.*)?",type="Octets"}[1m])*8</code></p>
+<h2 id="using-rule-records-in-prometheus-for-eos-paths">Using rule records in Prometheus for EOS paths</h2>
+<p>Rule records allow you to precompute frequently needed expressions and save the result as a new set of time series.
+Querying this result will be much faster then executing the original expression and very useful for dashboards,
+which need to query the same expression repeatedly.
+One example would be to use the <code>/Kernel/proc/stat/&lt;pid&gt;/comm</code> as a value label and store the metrics in a new time
+series for the other items under that path.</p>
+<p>For more details on rule records, please visit the best practices and the configuration section on the official
+Prometheus website.</p>
+<p>In my example I’ve recorded a rule for the <code>rss</code> key under <code>/Kernel/proc/stat/&lt;pid&gt;/</code></p>
+<p>Here’s what TerminAttr is streaming under <code>/Kernel/proc/stat</code></p>
+<p><code>curl localhost:6060/rest/Kernel/proc/stat/1</code></p>
+<p>Output:</p>
+<pre><code class="language-shell">{
+    &quot;cguestTime&quot;: 0,
+    &quot;cmajflt&quot;: 4399,
+    &quot;cmdline&quot;: &quot;/sbin/init&quot;,
+    &quot;cminflt&quot;: 511393,
+    &quot;comm&quot;: &quot;systemd&quot;,
+    &quot;cstime&quot;: 3802,
+    &quot;cutime&quot;: 10380,
+    &quot;delayacctBlkioTicks&quot;: 0,
+    &quot;endcode&quot;: 135520894,
+    &quot;exitSignal&quot;: 17,
+    &quot;flags&quot;: 4219136,
+    &quot;guestTime&quot;: 0,
+    &quot;kstkeip&quot;: 4151638626,
+    &quot;kstkesp&quot;: 4292454672,
+    &quot;majflt&quot;: 31,
+    &quot;minflt&quot;: 10592,
+    &quot;name&quot;: &quot;1&quot;,
+    &quot;nice&quot;: 0,
+    &quot;numThreads&quot;: 1,
+    &quot;pgrp&quot;: 1,
+    &quot;policy&quot;: 0,
+    &quot;ppid&quot;: 0,
+    &quot;priority&quot;: 20,
+    &quot;processor&quot;: 3,
+    &quot;rlim&quot;: 18446744073709551615,
+    &quot;rss&quot;: 1553,
+    &quot;rtPriority&quot;: 0,
+    &quot;session&quot;: 1,
+    &quot;startcode&quot;: 134512640,
+    &quot;startstack&quot;: 4292456144,
+    &quot;starttime&quot;: 2,
+    &quot;state&quot;: 83,
+    &quot;stime&quot;: 374,
+    &quot;tpgid&quot;: -1,
+    &quot;ttyNr&quot;: 0,
+    &quot;utime&quot;: 601,
+    &quot;vsize&quot;: 8925184,
+    &quot;wchan&quot;: 18446744071580351996
+}
+</code></pre>
+<p>In my example I’ve used the ‘rss’ key and similarly you can create a record for each key.</p>
+<p>Here’s how the sample config looks like:</p>
+<h3 id="ocprometheusyml-on-eos">Ocprometheus.yml on EOS</h3>
+<p>On the switch, the yml file should look like this (note that I’ve deleted the other paths just for testing purposes).</p>
+<pre><code class="language-shell"># Subscriptions to OpenConfig paths.
+subscriptions:
+        - /Kernel/proc
+# Prometheus metrics configuration.
+# If you use named capture groups in the path, they will be extracted into labels with the same name.
+# All fields are mandatory.
+
+metrics:
+        - name: kernelprocrss
+          path: /Kernel/proc/stat/(?P&lt;pid&gt;.+)/rss
+          help: KernelProcRSS
+        - name: kernelproc
+          path: /Kernel/proc/stat/(?P&lt;pid&gt;.+)/comm
+          help: KernelProcStat
+          valuelabel: command
+          defaultvalue: 1
+</code></pre>
+<p>On the Prometheus server, you’ll need to add a rules file and edit your prometheus.yml to specify the path to that file.</p>
+<h3 id="prometheusyml-on-the-server">Prometheus.yml on the server</h3>
+<p>You’ll need to create another yml file for the rules and mention it in the prometheus.yml file under the rule_files key.</p>
+<p><code>cat prometheus.yml</code></p>
+<p>Output:</p>
+<pre><code class="language-shell"># my global config
+
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+
+rule_files:
+  # - &quot;first_rules.yml&quot;
+  # - &quot;second_rules.yml&quot;
+    - &quot;kernel_rules.yml&quot;
+
+# A scrape configuration containing exactly one endpoint to scrape:
+
+# Here it's Prometheus itself.
+
+scrape_configs:
+  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'arista'
+    static_configs:
+      - targets: ['10.83.13.140:8080','10.81.116.237:8080','10.81.117.21:8080','10.83.13.132:8080','10.83.13.139:8080','10.83.12.109:8080','10.83.13.138:8080']
+</code></pre>
+<h3 id="kernel_rulesyml-on-the-server">Kernel_rules.yml on the server</h3>
+<pre><code class="language-shell">groups:
+ - name: test
+   rules:
+    - record: kernelprocrsswithcommand
+      expr: kernelprocrss * on(pid) group_right kernelproc
+</code></pre>
+<blockquote>
+<p>Note that if you did not mount the kernel_rules.yml file when creating your docker container (as I did) you’ll need
+to copy the file over to your container with the following command</p>
+</blockquote>
+<pre><code class="language-shell">docker cp kernel_rules.yml eager_kapitsa:/etc/prometheus/
+</code></pre>
+<p>Checking on the GUI, it will give you the following results</p>
+<p><img alt="prom13.png" src="resources/prom13.png" /></p>
+<p>You can also use the expression from the <code>kernel_rules.yml</code> directly on the GUI</p>
+<p><img alt="prom14.png" src="resources/prom14.png" /></p>
+<p>After you create the records and update the yml files on the server, make sure you can see the rule created in
+the Status – Rules submenu</p>
+<p><img alt="prom15.png" src="resources/prom15.png" /></p>
+<h2 id="using-ocprometheus-with-the-openconfigocta-agent-management-api-gnmi">Using ocprometheus with the OpenConfig/OCTA agent (management api gnmi)</h2>
+<p>While ocprometheus can subscribe to EOS native paths provided by TerminAttr’s gNMI server on TCP <code>6042</code>
+(default, can be changed), it can also subscribe to OpenConfig paths provided by the OpenConfig/OCTA agent’s gnmi server
+on TCP <code>6030</code> (default, can be changed). For example to subscribe to interface counters the subscription and
+the metric path would look like below:</p>
+<pre><code class="language-yaml">subscriptions:
+     - /interfaces/interface
+metrics:
+     - name: intfCounter
+       path: /interfaces/interface\[name=(?P&lt;intf&gt;[^\]]+)\]/state/counters/(?P&lt;countertype&gt;.+)
+OpenConfig and EOS native paths can be mixed when using OCTA and in that case the origin must be specified. Since the default origin is openconfig, the origin has to be only specified for EOS native paths under the subscriptions key, e.g.:
+
+subscriptions:
+   - /interfaces/interface
+   - eos_native:/Kernel/proc
+</code></pre>
+<blockquote>
+<p>Note On EOS 4.23+ it's highly recommended to use OCTA with ocprometheus and only use <code>eos-native</code> paths where
+an openconfig model does not exist.</p>
+</blockquote>
+<h3 id="example-configurations">Example configurations</h3>
+<h4 id="no-vrf-gnmiocta-ocprometheus">No VRF - gnmi/OCTA + ocprometheus</h4>
+<pre><code class="language-shell">   management api gnmi
+      transport grpc def
+      provider eos-native
+   !
+   daemon ocprometheus
+      exec /mnt/flash/ocprometheus -config /mnt/flash/ocprometheus.yml -addr localhost:6030 -username admin
+       no shutdown
+</code></pre>
+<h4 id="vrf-gnmiocta-ocprometheus">VRF - gnmi/OCTA + ocprometheus</h4>
+<pre><code class="language-shell">   management api gnmi
+      transport grpc def
+         vrf management
+      provider eos-native
+      !
+   daemon ocprometheus
+      exec /sbin/ip netns exec ns-management /mnt/flash/ocprometheus -config /mnt/flash/ocprometheus.yml -addr localhost:6030 -username admin
+      no shutdown
+</code></pre>
+<h3 id="cert-based-authentification-with-ocprometheus">Cert-based authentification with ocprometheus</h3>
+<p>1. Follow the steps mentioned in <a href="https://aristanetworks.github.io/openmgmt/configuration/mtls/">Certificate Authentification Configuration page</a>.</p>
+<p>2. Copy the client certificate and client key to the <code>/persist/secure/ssl</code> and <code>/persist/secure/keys</code> directory respectively.</p>
+<p>3. The EOS configuration should look like the following:</p>
+<pre><code class="language-shell">management api gnmi
+   transport grpc def
+      ssl profile test-arista
+      vrf MGMT
+   provider eos-native
+!
+management security
+   ssl profile server
+      certificate v1.crt key v1.key
+      trust certificate demo-ca.crt
+!
+daemon ocprometheus
+   exec /sbin/ip netns exec ns-MGMT /usr/bin/ocprometheus -config /usr/bin/ocprometheus.yml -addr localhost:6030 -certfile /persist/secure/ssl/certs/gnmi-client.crt -keyfile /persist/secure/ssl/keys/gnmi-client.key -cafile /persist/secure/ssl/certs/demo-ca.crt
+   no shutdown
+!
+</code></pre>
+<h2 id="troubleshooting-tips">Troubleshooting tips</h2>
+<h3 id="checking-logs-and-troubleshooting">Checking Logs and troubleshooting</h3>
+<p>As any daemon/agent, logs are saved in /var/log/agents/ so we can either read those in bash with cat/more/less/vi/nano
+or from the CLI using the show agent <agent_name> logs command.</p>
+<h3 id="common-issues">Common issues</h3>
+<h4 id="context_deadline_exceeded">Context_deadline_exceeded</h4>
+<p>Seeing context_deadline_exceeded in the Targets section of the Prometheus GUI.
+This means connectivity is not established between the switch and the Prometheus server, which can be due to several reasons:</p>
+<ul>
+<li>TerminAttr and/or ocprometheus is not running</li>
+<li>TerminAttr and/or prometheus are not configured in the correct namespace/vrf</li>
+<li>Port 8080, which is used by default is not open on the switch (please check with <code>netstat -an | grep 8080</code>
+  or <code>sudo ip netns exec ns-&lt;vrf_name&gt; netstat -an | grep 8080</code> if using a vrf; make sure the control plane ACL is
+  updated and applied to vrf default or the specific vrf when using EOS version with CoPP</li>
+<li>Make sure TerminAttr is communicating with ocprometheus</li>
+<li>TerminAttr should have the -disableaaa flag added</li>
+</ul>
+<h4 id="not-seeing-any-streams-on-prometheus">Not seeing any streams on Prometheus</h4>
+<p>Check TerminAttr version (After TerminAttr 1.5.1 we replaced the deprecated <code>gnmi.Value</code> with <code>gnmi.TypedValue</code>).
+This was only changed on our OpenConfig connectors (ockafka, ocprometheus, octsdb, ocredis, etc.) after March, 2019, thus
+older ocprometheus versions will ignore the updates.</p>
+<p>The version of ocprometheus hat uses TypedValue as well was pushed to <a href="https://github.com/aristanetworks/goarista/commit/22b2444f947b7d395b5c227cf0dd881d0100bdb1">github</a>
+on March 19th. A newer commit was done
+in the beginning of June to deal with <a href="https://github.com/aristanetworks/goarista/commit/fef20d617fa7e1c7509e958fd3bd49cf4a4af5c0">coalesced deletes</a>,
+and it’s recommended to use the latest version.</p>
+<p>The best way to check if you are hitting any issues is to enable verbosity for ocprometheus with <code>-v 9</code></p>
+<pre><code class="language-shell">!
+daemon ocprometheus
+   exec /sbin/ip netns exec ns-management /mnt/flash/ocprometheus -config /mnt/flash/ocprometheus20190319.yml -addr localhost:6042 -v 9
+   no shutdown
+!
+</code></pre>
+<p>In <code>/var/log/agents/ocprometheus-&lt;pid&gt;</code> you’ll see error messages like below  ( Ignoring incompatible update value ) :</p>
+<pre><code class="language-shell">I0319 13:41:11.899488    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;vsize&quot; &gt; &gt; val:&lt;json_val:&quot;4505600&quot; &gt;
+I0319 13:41:11.899518    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;startstack&quot; &gt; &gt; val:&lt;json_val:&quot;4289154048&quot; &gt;
+I0319 13:41:11.899548    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;kstkesp&quot; &gt; &gt; val:&lt;json_val:&quot;0&quot; &gt;
+I0319 13:41:11.899578    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;exitSignal&quot; &gt; &gt; val:&lt;json_val:&quot;17&quot; &gt;
+I0319 13:41:11.899608    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;state&quot; &gt; &gt; val:&lt;json_val:&quot;83&quot; &gt;
+I0319 13:41:11.899638    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;cmajflt&quot; &gt; &gt; val:&lt;json_val:&quot;0&quot; &gt;
+I0319 13:41:11.899668    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;priority&quot; &gt; &gt; val:&lt;json_val:&quot;20&quot; &gt;
+I0319 13:41:11.899698    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;delayacctBlkioTicks&quot; &gt; &gt; val:&lt;json_val:&quot;0&quot; &gt;
+</code></pre>
+<p>Make sure you’re running the latest ocprometheus and TerminAttr versions.</p>
+<h4 id="broken-paths-due-to-incorrect-regexp">Broken paths due to incorrect regexp</h4>
+<p>Some of the subscription paths in the sample config file might not work on all type of devices.
+In case of broken paths, unfortunately we won’t stream anything, and you might encounter a similar error as below when
+checking the metrics URL (http://x.x.x.x:8080/metrics) of a modular device:</p>
+<pre><code class="language-shell">An error has occurred during metrics gathering:
+
+
+17 error(s) occurred:
+
+* collected metric voltageSensor label:&lt;name:&quot;sensor&quot; value:&quot;21&quot; &gt; label:&lt;name:&quot;unnamedLabel2&quot; value:&quot;voltage&quot; &gt; gauge:&lt;value:1.040771484375 &gt;  was collected before with the same name and label values
+
+* collected metric voltageSensor label:&lt;name:&quot;sensor&quot; value:&quot;22&quot; &gt; label:&lt;name:&quot;unnamedLabel2&quot; value:&quot;voltage&quot; &gt; gauge:&lt;value:0.996826171875 &gt;  was collected before with the same name and label values
+
+* collected metric voltageSensor label:&lt;name:&quot;sensor&quot; value:&quot;12&quot; &gt; label:&lt;name:&quot;unnamedLabel2&quot; value:&quot;voltage&quot; &gt; gauge:&lt;value:11.93359375 &gt;  was collected before with the same name and label values
+</code></pre>
+<p>This can happen if the regexp matching is incorrect. The regexp path in question is:</p>
+<p><code>/Sysdb/environment/archer/power/status/voltageSensor/(?:cell/.+|system)/(?P&lt;sensor&gt;.+)/(voltage)</code></p>
+<p>This would match on <code>VoltageSensorX</code>, however if you check the list of voltage sensors using curl, you’ll see that the
+sensors have the following format: <code>VoltageSensorX/Y</code></p>
+<pre><code class="language-shell">$ curl localhost:6060/rest/Sysdb/environment/archer/power/status/voltageSensor/cell/1/
+
+{
+    &quot;VoltageSensor1/12&quot;: {
+        &quot;_ptr&quot;: &quot;/Sysdb/environment/archer/power/status/voltageSensor/cell/1/VoltageSensor1/12&quot;
+    },
+    &quot;VoltageSensor1/13&quot;: {
+        &quot;_ptr&quot;: &quot;/Sysdb/environment/archer/power/status/voltageSensor/cell/1/VoltageSensor1/13&quot;
+    },
+    &quot;VoltageSensor1/14&quot;: {
+        &quot;_ptr&quot;: &quot;/Sysdb/environment/archer/power/status/voltageSensor/cell/1/VoltageSensor1/14&quot;
+    },
+</code></pre>
+<p>You can validate your regular expression using a regexp app (e.g <a href="www.regex101.com">www.regex101.com</a>):</p>
+<p>As you can see we are only matching <code>VoltageSensorX</code></p>
+<p><img alt="regex16" src="resources/regex16.png" /></p>
+<p>To correct the issue, we can use the following path instead:</p>
+<p><code>/Sysdb/environment/archer/power/status/voltageSensor/(?:cell/.+|system)/(?P&lt;sensor&gt;VoltageSensor.+)/(voltage)</code></p>
+<p>As you can see, we are able to match on both VoltageSensorX and VoltageSensorX/Y .</p>
+<p><img alt="regex17" src="resources/regex17.png" /></p>
+<h4 id="authentication-failed">Authentication failed</h4>
+<p>When you see the following message, it means that ocprometheus is not able to connect to the gRPC server that
+TerminAttr/OpenConfig/OCTA is serving, either because the <code>disableaaa</code> flag is not specified in the TerminAttr
+config (in case of using TerminAttr) or the username and password strings are incorrect in the ocprometheus config.</p>
+<pre><code class="language-shell">cat ocprometheus-11069
+
+===== Output from /sbin/ip ['netns', 'exec', 'ns-management', '/mnt/flash/ocprometheus', '-config', '/mnt/flash/ocprometheus.yml', '-addr', 'localhost:6042'] (PID=11069) started Jun 17 11:27:35.313690 ===
+
+F0617 11:27:35.449652   11069 main.go:90] rpc error: code = Unauthenticated desc = Authentication failed
+</code></pre>
+<h4 id="connection-refused">Connection refused</h4>
+<p>You might see the following error:</p>
+<pre><code class="language-shell">cat ocprometheus-10314
+
+===== Output from /sbin/ip ['netns', 'exec', 'ns-management', '/mnt/flash/ocprometheus', '-config', '/mnt/flash/ocprometheus.yml', '-addr', 'localhost:6042'] (PID=10314) started Jun 17 11:21:05.494319 ===
+
+F0617 11:21:05.533516   10314 main.go:90] rpc error: code = Unavailable desc = all SubConns are in TransientFailure, latest connection error: connection error: desc = &quot;transport: Error while dialing dial tcp 127.0.0.1:6042: connect: connection refused&quot;
+</code></pre>
+<p>When you get connection refused, it means that the gRPC server is not reachable. In this case ocprometheus is executed
+in the management VRF, however TerminAttr is running in the default VRF and the gRPC server by default is running in
+the default VRF too. To fix it you can configure the gRPC server in the correct VRF:</p>
+<ul>
+<li>in case of TerminAttr using <code>-grpcaddr &lt;vrf&gt;/&lt;IP&gt;:&lt;port&gt;</code>:</li>
+</ul>
+<pre><code class="language-shell">-grpcaddr management/0.0.0.0:6042
+</code></pre>
+<ul>
+<li>in case of using OpenConfig/OCTA:</li>
+</ul>
+<pre><code class="language-shell">management api gnmi
+  transport grpc management
+     vrf management
+  provider eos-native
+</code></pre>
+<h2 id="subscription-paths">Subscription paths</h2>
+<p>You can find sample configuration files on our github page in the <a href="https://github.com/aristanetworks/goarista/tree/master/cmd/ocprometheus/sample_configs">sample_configs</a>
+directory, which contains per-platform EOS-native path examples but also OpenConfig path examples which are standard
+across all platforms in the <a href="https://github.com/aristanetworks/goarista/blob/master/cmd/ocprometheus/sample_configs/ocprometheus_gnmi_4.23.yaml">ocprometheus_gnmi_4.23.yaml</a></p>
+<p>In this file, which is referred with the <code>-config /mnt/flash/ocprometheus.yml</code> flag and config file in the daemon
+ocprometheus configuration, you can add your desired Sysdb paths</p>
+<p>More examples (per platform + gnmi paths) can be found in the sample_configs folder.</p>
+<p>Commonly used paths:</p>
+<ul>
+<li>MAC table: <code>/Smash/bridging/status/smashFdbStatus</code></li>
+<li>ARP table: <code>/Smash/arp/status/arpEntry</code></li>
+<li>Neighbor table: <code>/Smash/arp/status/neighborEntry</code></li>
+<li>IPv4 RIB: <code>/Smash/routing/status/route</code></li>
+<li>IPv6 RIB: <code>/Smash/routing6/status/route</code></li>
+<li>IPv4 next-hop table: <code>/Smash/routing/status/nexthop</code></li>
+<li>IPv6 next-hop table: <code>/Smash/routing6/status/nexthop</code></li>
+<li>CPU info: <code>/Kernel/proc/cpu</code></li>
+<li>Process statistics: <code>/Kernel/proc/stat</code></li>
+<li>System info: <code>/Kernel/sysinfo</code></li>
+<li>Interface counters: <code>/Smash/counters/ethIntf/&lt;agent&gt;/current/counter</code></li>
+</ul>
+<p>For details about subscription paths and metric path structures please visit: https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming</p>
+<h2 id="useful-links">Useful links</h2>
+<p><a href="https://prometheus.io/docs/prometheus/">https://prometheus.io/docs/prometheus/</a></p>
+<p><a href="https://grafana.com/docs/">https://grafana.com/docs/</a></p>
+<p><a href="http://docs.grafana.org/installation/docker/">http://docs.grafana.org/installation/docker/</a></p>
+<p><a href="https://grafana.com/dashboards">https://grafana.com/dashboards</a></p>
+<p><a href="https://fpm.readthedocs.io/en/latest/installing.html">https://fpm.readthedocs.io/en/latest/installing.html</a></p>
+<p><a href="https://regex101.com/">https://regex101.com/</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../gnmireverse/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gNMIReverse" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              gNMIReverse
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../models/" class="md-footer__link md-footer__link--next" aria-label="Next: Models" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Models
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>
