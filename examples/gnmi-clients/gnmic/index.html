@@ -769,6 +769,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#changing-the-running-config" class="md-nav__link">
+    Changing the running-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing the running-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-json" class="md-nav__link">
+    Using JSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-yaml" class="md-nav__link">
+    Using YAML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-imperative-commands" class="md-nav__link">
+    Using imperative commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1529,6 +1563,40 @@
   <a href="#get-the-total-route-count" class="md-nav__link">
     Get the total route count
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-running-config" class="md-nav__link">
+    Changing the running-config
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing the running-config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-json" class="md-nav__link">
+    Using JSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-yaml" class="md-nav__link">
+    Using YAML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-imperative-commands" class="md-nav__link">
+    Using imperative commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2529,6 +2597,147 @@ gnmic -a 127.0.0.1:6030 -u admin -p admin --insecure  get \
   --path &quot;cli:/show ip route summary&quot; \
   | jq '.[0].updates[0].values.&quot;show ip route summary&quot;.totalRoutes'
 </code></pre>
+<h3 id="changing-the-running-config">Changing the running-config</h3>
+<p>There are multiple ways to change the configuration using the <code>cli</code> origin:</p>
+<h4 id="using-json">Using JSON</h4>
+<p>Multiple config sections can be change at a time, for instance in the below example vlan 304 is created and
+the description of Ethernet1 is changed:</p>
+<pre><code class="language-shell"> gnmic -a 10.83.13.214:6030 -u admin -p admin --insecure --gzip set \
+    --request-file intf.json
+</code></pre>
+<p>Output:</p>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  &quot;timestamp&quot;: 1628103804792021864,
+  &quot;time&quot;: &quot;2021-08-04T20:03:24.792021864+01:00&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    },
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    },
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    },
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    }
+  ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<pre><code class="language-shell">cat intf.json
+</code></pre>
+<pre><code class="language-javascript">{
+  &quot;updates&quot;: [
+    {
+      &quot;path&quot;: &quot;cli:&quot;,
+      &quot;value&quot;: &quot;interface Ethernet 1&quot;,
+      &quot;encoding&quot;: &quot;ascii&quot;
+    },
+    {
+      &quot;path&quot;: &quot;cli:&quot;,
+      &quot;value&quot;: &quot;description arista-openmgmt&quot;,
+      &quot;encoding&quot;: &quot;ascii&quot;
+    },
+    {
+      &quot;path&quot;: &quot;cli:&quot;,
+      &quot;value&quot;: &quot;vlan 304&quot;,
+      &quot;encoding&quot;: &quot;ascii&quot;
+    },
+    {
+      &quot;path&quot;: &quot;cli:&quot;,
+      &quot;value&quot;: &quot;name test&quot;,
+      &quot;encoding&quot;: &quot;ascii&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="using-yaml">Using YAML</h4>
+<p>Changing the maximum-routes for a BGP neighbor:</p>
+<pre><code class="language-shell">gnmic -a 10.83.13.214:6030 -u cvpadmin -p arista --insecure --gzip set \
+   --request-file bgp.yaml
+</code></pre>
+<p>Output:</p>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javscript">{
+  &quot;timestamp&quot;: 1628091791855672771,
+  &quot;time&quot;: &quot;2021-08-04T16:43:11.855672771+01:00&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    },
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    }
+  ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<pre><code class="language-shell">cat bgp.yaml
+</code></pre>
+<pre><code class="language-yaml">updates:
+ - path: &quot;cli:&quot;
+   value: router bgp 65101
+   encoding: ascii
+ - path: &quot;cli:&quot;
+   value: neighbor IPv4-UNDERLAY-PEERS maximum-routes 15500
+   encoding: ascii
+</code></pre>
+<h4 id="using-imperative-commands">Using imperative commands</h4>
+<pre><code class="language-shell">gnmic -a 10.83.13.214:6030 -u cvpadmin -p arista --insecure --gzip \
+   --encoding ASCII set \
+   --update-path &quot;cli:&quot; \
+   --update-value &quot;router bgp 65101&quot; \
+   --update-path &quot;cli:&quot; \
+   --update-value &quot;neighbor IPv4-UNDERLAY-PEERS maximum-routes 13500&quot;
+</code></pre>
+<p>Output:</p>
+<details><summary> Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  &quot;timestamp&quot;: 1628091405938523430,
+  &quot;time&quot;: &quot;2021-08-04T16:36:45.93852343+01:00&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    },
+    {
+      &quot;operation&quot;: &quot;UPDATE&quot;,
+      &quot;path&quot;: &quot;cli:&quot;
+    }
+  ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
 <h2 id="misc">Misc</h2>
 <h3 id="save-all-status-states-to-a-file">Save all status states to a file</h3>
 <pre><code class="language-shell">gnmic -a 127.0.0.1:6030 -u admin -p admin --insecure get \

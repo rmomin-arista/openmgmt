@@ -751,6 +751,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cli-origin" class="md-nav__link">
+    CLI origin
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI origin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-maximum-routes-for-a-bgp-neighbor" class="md-nav__link">
+    Changing the maximum-routes for a BGP neighbor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-version" class="md-nav__link">
+    show version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1466,6 +1493,33 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-origin" class="md-nav__link">
+    CLI origin
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI origin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-maximum-routes-for-a-bgp-neighbor" class="md-nav__link">
+    Changing the maximum-routes for a BGP neighbor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-version" class="md-nav__link">
+    show version
+  </a>
   
 </li>
         
@@ -2302,8 +2356,9 @@ total
 
 <h4 id="create-an-acl">Create an ACL</h4>
 <pre><code class="language-shell">gnmi -addr 10.83.28.203:6030 -username admin -password arista \
-  update /acl/acl-sets acl2.json`
-cat acl2.json
+  update /acl/acl-sets acl2.json
+</code></pre>
+<pre><code class="language-shell">cat acl2.json
 </code></pre>
 <details><summary>Reveal output</summary>
 <p>
@@ -2378,6 +2433,46 @@ cat acl2.json
   subscribe                                                   \
   '/network-instances/network-instance[name=Tenant_A_WEB_Zone]/protocols/protocol[identifier=BGP][name=BGP]/bgp/neighbors/neighbor[neighbor-address=10.255.251.1]/afi-safis/afi-safi[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST]/state/prefixes/received'
 </code></pre>
+<h2 id="cli-origin">CLI origin</h2>
+<h3 id="changing-the-maximum-routes-for-a-bgp-neighbor">Changing the maximum-routes for a BGP neighbor</h3>
+<pre><code class="language-shell">gnmi -addr 10.83.13.214:6030 -username arista -password arista \
+    update origin=cli &quot;&quot; &quot;router bgp 65101
+    neighbor IPv4-UNDERLAY-PEERS maximum-routes 12500&quot;
+</code></pre>
+<blockquote>
+<p>NOTE the <code>neighbor</code> command has to be on a new line, so the previous line should not end in <code>\</code>.</p>
+</blockquote>
+<h3 id="show-version">show version</h3>
+<pre><code class="language-shell">gnmi -addr 10.83.13.214:6030 -username cvpadmin -password arastra \
+   get  origin=cli &quot;show version&quot;
+</code></pre>
+<details><summary> Reveal output</summary>
+<p>
+
+```javascript
+/show version:
+{
+  "architecture": "i686",
+  "bootupTimestamp": 1626291561.0,
+  "configMacAddress": "00:00:00:00:00:00",
+  "hardwareRevision": "",
+  "hwMacAddress": "00:00:00:00:00:00",
+  "imageFormatVersion": "1.0",
+  "internalBuildId": "ed275a6c-1771-482d-829b-125e9c6ba677",
+  "internalVersion": "4.26.2F-23035564.riorel",
+  "isIntlVersion": false,
+  "memFree": 2422124,
+  "memTotal": 4002356,
+  "mfgName": "Arista",
+  "modelName": "vEOS-lab",
+  "serialNumber": "BAD032986065E8DC14CBB6472EC314A6",
+  "systemMacAddress": "50:08:00:a7:ca:c3",
+  "uptime": 1814877.63,
+  "version": "4.26.2F-23035564.riorel (engineering build)"
+}
+
+</p>
+</details>
                 
                   
                 
