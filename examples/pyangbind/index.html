@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/pyangbind/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1103,7 +1103,7 @@ pip install pyangbind
 <pre><code class="language-shell">pip3 freeze | grep pyang
 </code></pre>
 <h2 id="get-yang-modules">Get YANG modules</h2>
-<p>We need YANG modules so we can use Pyang and Pyangbind. </p>
+<p>We need YANG modules so we can use Pyang and Pyangbind.</p>
 <h3 id="create-a-directory">Create a directory</h3>
 <pre><code class="language-shell">mkdir yang_modules
 </code></pre>
@@ -1132,7 +1132,8 @@ Run this command to verify:</p>
 <pre><code class="language-shell">ls oc_bgp.py
 </code></pre>
 <h2 id="use-the-new-python-module-to-generate-an-openconfig-configuration-file">Use the new python module to generate an OpenConfig configuration file</h2>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/pyangbind/pyangbind_demo.py">pyangbind_demo.py</a> uses the new python module <code>oc_bgp.py</code> and generates this OpenConfig configuration file <a href="demo.json">demo.json</a></p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/pyangbind/pyangbind_demo.py">pyangbind_demo.py</a> uses
+the new python module <code>oc_bgp.py</code> and generates this OpenConfig configuration file <a href="demo.json">demo.json</a></p>
 <pre><code class="language-shell">python3 pyangbind_demo.py
 </code></pre>
 <h2 id="use-gnmi-set-rpc-to-configure-a-device">Use gNMI SET RPC to configure a device</h2>
@@ -1150,7 +1151,8 @@ Run this command to verify:</p>
 </code></pre>
 <h4 id="use-gnmic-to-configure-the-swicth_1">Use gNMIc to configure the swicth</h4>
 <pre><code class="language-shell">gnmic -a 10.73.1.117:6030 --insecure -u arista -p arista set  \
-    --replace-path '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp' --replace-file demo.json
+    --replace-path '/network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp' \
+    --replace-file demo.json
 </code></pre>
 <h4 id="check-the-device-configuration-after">Check the device configuration after</h4>
 <pre><code class="language-shell">gnmic -a 10.73.1.117:6030 --insecure -u arista -p arista get  \
@@ -1228,10 +1230,10 @@ Run this command to verify:</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>

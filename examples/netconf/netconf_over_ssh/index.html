@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/netconf/netconf_over_ssh/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -703,8 +703,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edit-the-candidate-configuration" class="md-nav__link">
-    Edit the candidate configuration
+  <a href="#edit-the-candidate-configuration-edit-interface-description" class="md-nav__link">
+    Edit the candidate configuration - edit interface description
   </a>
   
 </li>
@@ -724,8 +724,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edit-the-candidate-configuration_1" class="md-nav__link">
-    Edit the candidate configuration
+  <a href="#edit-the-candidate-configuration-set-hostname" class="md-nav__link">
+    Edit the candidate configuration - set hostname
   </a>
   
 </li>
@@ -1107,8 +1107,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edit-the-candidate-configuration" class="md-nav__link">
-    Edit the candidate configuration
+  <a href="#edit-the-candidate-configuration-edit-interface-description" class="md-nav__link">
+    Edit the candidate configuration - edit interface description
   </a>
   
 </li>
@@ -1128,8 +1128,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#edit-the-candidate-configuration_1" class="md-nav__link">
-    Edit the candidate configuration
+  <a href="#edit-the-candidate-configuration-set-hostname" class="md-nav__link">
+    Edit the candidate configuration - set hostname
   </a>
   
 </li>
@@ -1211,7 +1211,7 @@ Server:             running on port 830, in MGMT VRF
 <h3 id="advertise-the-client-capabilities">Advertise the client capabilities</h3>
 <p>Once the NETCONF session is open, the NETCONF server (EOS device) advertises its capabilities.</p>
 <p>You must advertise the client capabilities. Example:</p>
-<pre><code class="language-shell">&lt;hello xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot;&gt;
+<pre><code class="language-xml">&lt;hello xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot;&gt;
     &lt;capabilities&gt;
         &lt;capability&gt;urn:ietf:params:netconf:base:1.0&lt;/capability&gt;
         &lt;capability&gt;urn:ietf:params:netconf:capability:candidate:1.0&lt;/capability&gt;
@@ -1223,14 +1223,14 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-all-configuration-and-state-data">Get all configuration and state data</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;1&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;1&quot;&gt;
   &lt;get&gt;
   &lt;/get&gt;
 &lt;/rpc&gt;
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-the-operational-status-of-an-interface">Get the operational status of an Interface</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;2&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;2&quot;&gt;
   &lt;get&gt;
     &lt;filter type=&quot;subtree&quot;&gt;
         &lt;interfaces&gt;
@@ -1248,7 +1248,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-the-whole-running-configuration">Get the whole running configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;3&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;3&quot;&gt;
   &lt;get-config&gt;
     &lt;source&gt;
         &lt;running/&gt;
@@ -1258,7 +1258,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-the-running-configuration-of-an-interface">Get the running configuration of an interface</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;4&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;4&quot;&gt;
   &lt;get-config&gt;
     &lt;source&gt;
         &lt;running/&gt;
@@ -1275,7 +1275,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-the-interface-description-from-the-running-configuration">Get the interface description from the running configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;5&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;5&quot;&gt;
   &lt;get-config&gt;
     &lt;source&gt;
         &lt;running/&gt;
@@ -1296,7 +1296,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="lock-the-running-configuration">Lock the running configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;6&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;6&quot;&gt;
   &lt;lock&gt;
     &lt;target&gt;
       &lt;running/&gt;
@@ -1306,7 +1306,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="edit-the-running-configuration-using-eos-native-data-model">Edit the running configuration using EOS native data model</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;7&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;7&quot;&gt;
 &lt;edit-config&gt;
     &lt;target&gt;
       &lt;running/&gt;
@@ -1324,7 +1324,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="edit-the-running-configuration-using-openconfig-data-model">Edit the running configuration using OpenConfig data model</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;8&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;8&quot;&gt;
 &lt;edit-config&gt;
     &lt;target&gt;
         &lt;running/&gt;
@@ -1345,7 +1345,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="edit-the-running-configuration-to-delete-an-existing-existing-data">Edit the running configuration to delete an existing existing data</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;9&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;9&quot;&gt;
 &lt;edit-config&gt;
     &lt;target&gt;
         &lt;running/&gt;
@@ -1367,7 +1367,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="unlock-the-running-configuration">Unlock the running configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;10&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;10&quot;&gt;
   &lt;unlock&gt;
     &lt;target&gt;
       &lt;running/&gt;
@@ -1377,7 +1377,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="save-running-configuration-on-the-flash">Save running configuration on the flash</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;11&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;11&quot;&gt;
   &lt;copy-config&gt;
     &lt;target&gt;
       &lt;url&gt;
@@ -1392,7 +1392,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="copy-the-running-configuration-datastore-to-the-startup-configuration-datastore">Copy the running configuration datastore to the startup configuration datastore</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;12&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;12&quot;&gt;
     &lt;copy-config&gt;
         &lt;target&gt;
             &lt;startup/&gt;
@@ -1405,7 +1405,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="lock-the-candidate-configuration">Lock the candidate configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;13&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;13&quot;&gt;
   &lt;lock&gt;
     &lt;target&gt;
       &lt;candidate/&gt;
@@ -1414,8 +1414,8 @@ Server:             running on port 830, in MGMT VRF
 &lt;/rpc&gt;
 ]]&gt;]]&gt;
 </code></pre>
-<h3 id="edit-the-candidate-configuration">Edit the candidate configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;14&quot;&gt;
+<h3 id="edit-the-candidate-configuration-edit-interface-description">Edit the candidate configuration - edit interface description</h3>
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;14&quot;&gt;
 &lt;edit-config&gt;
     &lt;target&gt;
         &lt;candidate/&gt;
@@ -1436,13 +1436,13 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="commit-the-configuration-change-from-the-candidate-to-the-running-configuration">Commit the configuration change (from the candidate to the running configuration)</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;15&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;15&quot;&gt;
     &lt;commit/&gt;
 &lt;/rpc&gt;
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="unlock-the-candidate-configuration">Unlock the candidate configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;20&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;20&quot;&gt;
   &lt;unlock&gt;
     &lt;target&gt;
       &lt;candidate/&gt;
@@ -1451,8 +1451,8 @@ Server:             running on port 830, in MGMT VRF
 &lt;/rpc&gt;
 ]]&gt;]]&gt;
 </code></pre>
-<h3 id="edit-the-candidate-configuration_1">Edit the candidate configuration</h3>
-<pre><code>&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;21&quot;&gt;
+<h3 id="edit-the-candidate-configuration-set-hostname">Edit the candidate configuration - set hostname</h3>
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;21&quot;&gt;
 &lt;edit-config&gt;
     &lt;target&gt;
         &lt;candidate/&gt;
@@ -1470,7 +1470,7 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="get-part-of-the-candidate-configuration">Get part of the candidate configuration</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;5&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;5&quot;&gt;
   &lt;get-config&gt;
     &lt;source&gt;
         &lt;candidate/&gt;
@@ -1487,14 +1487,15 @@ Server:             running on port 830, in MGMT VRF
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="revert-the-candidate-configuration-to-the-current-running-configuration">Revert the candidate configuration to the current running configuration</h3>
-<p>If you decide to not commit the candidate configuration, you can revert the candidate configuration to the current running configuration</p>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;90&quot;&gt;
+<p>If you decide to not commit the candidate configuration, you can revert the candidate configuration to the current
+running configuration</p>
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;90&quot;&gt;
   &lt;discard-changes/&gt;
 &lt;/rpc&gt;
 ]]&gt;]]&gt;
 </code></pre>
 <h3 id="close-the-session">Close the session</h3>
-<pre><code class="language-shell">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;100&quot;&gt;
+<pre><code class="language-xml">&lt;rpc xmlns=&quot;urn:ietf:params:xml:ns:netconf:base:1.0&quot; message-id=&quot;100&quot;&gt;
     &lt;close-session&gt;
     &lt;/close-session&gt;
 &lt;/rpc&gt;
@@ -1570,10 +1571,10 @@ Server:             running on port 830, in MGMT VRF
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>

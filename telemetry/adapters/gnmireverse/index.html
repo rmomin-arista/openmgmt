@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/telemetry/adapters/gnmireverse/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -994,13 +994,15 @@
                   <h1>gNMIReverse</h1>
                 
                 <h2 id="introduction">Introduction</h2>
-<p>gNMIReverse is a Dial-Out gRPC service (available on our <a href="https://github.com/aristanetworks/goarista/tree/master/gnmireverse">Github</a>
-page) that reverses the direction of the dial for gNMI Subscriptions.
-The gNMIReverse client (running along with gNMI target) on the switch sends data to the gNMIReverse Server.</p>
-<p>This article contains steps on how to build the gNMIReverse client and server binaries 
-and examples on how to configure, the daemon to run the gNMIReverse client on EOS.</p>
+<p>gNMIReverse is a Dial-Out gRPC service (available on our
+<a href="https://github.com/aristanetworks/goarista/tree/master/gnmireverse">Github</a> page) that reverses the direction of the
+dial for gNMI Subscriptions.  The gNMIReverse client (running along with gNMI target) on the switch sends data to the
+gNMIReverse Server.</p>
+<p>This article contains steps on how to build the gNMIReverse client and server binaries and examples on how to configure,
+the daemon to run the gNMIReverse client on EOS.</p>
 <h2 id="prerequisite">Prerequisite</h2>
-<p>The following tools are required to proceed with this setup including cloning the repository and compiling client binary for EOS.</p>
+<p>The following tools are required to proceed with this setup including cloning the repository and compiling client binary
+for EOS.</p>
 <ul>
 <li><a href="https://golang.org/doc/install">Go</a></li>
 <li><a href="https://www.atlassian.com/git/tutorials/install-git">Git</a></li>
@@ -1054,8 +1056,14 @@ Authorization Required:No
 </code></pre>
 
 <p>gNMIReverse client daemon configuration (non-default VRF):</p>
+<p>Note: The <code>\</code> elements have been added to aid readability, these should be removed when entering the configuration.</p>
 <pre><code>daemon gnmi_reverse_client_1
-   exec /mnt/flash/client -username cvpadmin -password arista <span style="color: red;">-target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000</span> -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
+   exec /mnt/flash/client -username cvpadmin -password arista         \
+   <span style="color: red;">  -target_addr=management/127.0.0.1:6030                           \
+     -collector_addr=management/10.85.129.115:6000</span>                    \
+     -collector_tls=false                                             \
+     -target_value=gb421                                              \
+     -sample /system/processes/process[pid=*]/state@15s
    no shutdown
 </code></pre>
 
@@ -1076,8 +1084,12 @@ QoS DSCP:           none
 Authorization Required:No
 </code></pre>
 <p>gNMIReverse client daemon configuration (default VRF):</p>
+<p>Note: The <code>\</code> elements have been added to aid readability, these should be removed when entering the configuration.</p>
 <pre><code>daemon gnmi_reverse_client_1
-   exec /mnt/flash/client -username cvpadmin -password arista <span style="color: red;">-target_addr=127.0.0.1:6030 -collector_addr=10.85.129.115:6000</span> -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
+   exec /mnt/flash/client -username cvpadmin -password arista \
+   <span style="color: red;">  -target_addr=127.0.0.1:6030                              \
+     -collector_addr=10.85.129.115:6000</span> -collector_tls=false  \
+     -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
    no shutdown
 </code></pre>
 
@@ -1148,8 +1160,15 @@ management api gnmi
 </code></pre>
 
 <p>Configure the daemon to subscribe to the eos_native path as in following example:</p>
+<p>Note: The <code>\</code> elements have been added to aid readability, these should be removed when entering the configuration.</p>
 <pre><code>daemon gnmi_reverse_client_1
-   exec /mnt/flash/client -username cvpadmin -password arista -target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000 -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@30s <span style="color: red;">-origin eos_native -subscribe /Kernel/proc/meminfo/</span>
+   exec /mnt/flash/client -username cvpadmin -password arista \
+     -target_addr=management/127.0.0.1:6030                   \
+     -collector_addr=management/10.85.129.115:6000            \
+     -collector_tls=false -target_value=gb421                 \
+     -sample /system/processes/process[pid=*]/state@30s       \
+     <span style="color: red;">-origin eos_native                                       \
+     -subscribe /Kernel/proc/meminfo/</span>
    no shutdown
 </code></pre>
 
@@ -1183,8 +1202,16 @@ management api models
 </code></pre>
 
 <p>Configure the gNMIReverse client daemon:</p>
+<p>Note: The <code>\</code> elements have been added to aid readability, these should be removed when entering the configuration.</p>
 <pre><code>daemon gnmi_reverse_client_1
-   exec /mnt/flash/client -username cvpadmin -password arista -target_addr=management/127.0.0.1:6030 -collector_addr=management/10.85.129.115:6000 -collector_tls=false -target_value=gb421 -sample /system/processes/process[pid=*]/state@30s <span style="color: red;">-origin eos_native</span> -subscribe /Kernel/proc/meminfo/ <span style="color: red;">-subscribe /Smash/routing/status/</span>
+   exec /mnt/flash/client -username cvpadmin -password arista           \
+     -target_addr=management/127.0.0.1:6030                             \
+     -collector_addr=management/10.85.129.115:6000                      \
+     -collector_tls=false -target_value=gb421                           \
+     -sample /system/processes/process[pid=*]/state@30s                 \
+     <span style="color: red;">-origin eos_native</span>                                                 \
+     -subscribe /Kernel/proc/meminfo/                                   \
+     <span style="color: red;">-subscribe /Smash/routing/status/</span>
    no shutdown
 </code></pre>
 
@@ -1271,10 +1298,10 @@ management api models
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>

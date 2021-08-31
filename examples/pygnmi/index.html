@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/pygnmi/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -635,6 +635,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete" class="md-nav__link">
     Delete
   </a>
@@ -895,6 +902,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete" class="md-nav__link">
     Delete
   </a>
@@ -944,7 +958,9 @@ if __name__ == '__main__':
 <p>Assuming that the <code>pygnmi</code> module has been installed, this can be executed via the following command.</p>
 <pre><code class="language-shell">python3 gnmi_example.py
 </code></pre>
-<p>The following will simply run the <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/gnmi_example.py"><code>gnmi_example.py</code></a> file using python3 to get the openconfig interfaces.</p>
+<p>The following will simply run the
+<a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/gnmi_example.py"><code>gnmi_example.py</code></a> file using python3
+to get the openconfig interfaces.</p>
 <p>Truncated output</p>
 <pre><code class="language-javascript">{
     &quot;notification&quot;: [
@@ -968,14 +984,15 @@ if __name__ == '__main__':
 
 </code></pre>
 <h2 id="gnmi-capabilities-rpc">gNMI Capabilities RPC</h2>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/capabilities.py">capabilities.py</a> uses the <a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module to get the gNMI capabilities.</p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/capabilities.py">capabilities.py</a> uses the
+<a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module to get the gNMI capabilities.</p>
 <pre><code class="language-shell">python3 capabilities.py
 </code></pre>
 <details><summary>Reveal output</summary>
 <p>
 
 
-<pre><code class="language-shell">{'gnmi_version': '0.7.0',
+<pre><code class="language-json">{'gnmi_version': '0.7.0',
  'supported_encodings': ['json', 'json_ietf', 'ascii'],
  'supported_models': [{'name': 'arista-exp-eos-varp-net-inst',
                        'organization': 'Arista Networks &lt;http://arista.com/&gt;',
@@ -1412,7 +1429,8 @@ if __name__ == '__main__':
 </details>
 
 <h2 id="gnmi-get-rpc">gNMI Get RPC</h2>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/get.py">get.py</a> uses the <a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI GET RPC</p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/get.py">get.py</a> uses the
+<a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI GET RPC</p>
 <pre><code class="language-shell">python3 get.py
 </code></pre>
 <details><summary>Reveal output</summary>
@@ -1498,14 +1516,15 @@ if __name__ == '__main__':
 </details>
 
 <h2 id="gnmi-subscribe-rpc">gNMI Subscribe RPC</h2>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/sub.py">sub.py</a> uses the <a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI Subscribe RPC</p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/sub.py">sub.py</a> uses the
+<a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI Subscribe RPC</p>
 <pre><code class="language-shell">python3 sub.py
 </code></pre>
 <details><summary>Reveal output</summary>
 <p>
 
 
-<pre><code class="language-shell">{'update': {'update': [{'path': 'interfaces/interface[name=Ethernet1]/state/counters/in-broadcast-pkts', 'val': 2}], 'timestamp': 1626462768674581749}}
+<pre><code class="language-json">{'update': {'update': [{'path': 'interfaces/interface[name=Ethernet1]/state/counters/in-broadcast-pkts', 'val': 2}], 'timestamp': 1626462768674581749}}
 {'update': {'update': [{'path': 'interfaces/interface[name=Ethernet1]/state/counters/in-discards', 'val': 0}], 'timestamp': 1626462768674597259}}
 {'update': {'update': [{'path': 'interfaces/interface[name=Ethernet1]/state/counters/in-errors', 'val': 0}], 'timestamp': 1626462768674603747}}
 {'update': {'update': [{'path': 'interfaces/interface[name=Ethernet1]/state/counters/in-fcs-errors', 'val': 0}], 'timestamp': 1626462768672465216}}
@@ -1610,12 +1629,13 @@ if __name__ == '__main__':
 
 <h2 id="gnmi-set-rpc">gNMI Set RPC</h2>
 <h3 id="update">Update</h3>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/update.py">update.py</a> uses the <a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI SET RPC (update)</p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/update.py">update.py</a> uses the
+<a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI SET RPC (update)</p>
 <pre><code class="language-shell">python3 update.py
 </code></pre>
-<p>output</p>
-<pre><code class="language-shell">GET RPC, interface Ethernet1 config, before the update
-{
+<h3 id="output">output</h3>
+<p>GET RPC, interface Ethernet1 config, before the update</p>
+<pre><code class="language-json">{
   &quot;notification&quot;: [
     {
       &quot;timestamp&quot;: 0,
@@ -1637,9 +1657,9 @@ if __name__ == '__main__':
     }
   ]
 }
-
-SET RPC, update, interface Ethernet1
-{'response': [{'path': 'interfaces/interface[name=Ethernet1]', 'op': 'UPDATE'}]}
+</code></pre>
+<p>SET RPC, update, interface Ethernet1</p>
+<pre><code class="language-json">{'response': [{'path': 'interfaces/interface[name=Ethernet1]', 'op': 'UPDATE'}]}
 
 GET RPC, interface Ethernet1 config, after the update
 {
@@ -1668,7 +1688,8 @@ GET RPC, interface Ethernet1 config, after the update
 <p></p>
 </details></p>
 <h3 id="delete">Delete</h3>
-<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/delete.py">delete.py</a> uses the <a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI SET RPC (delete)</p>
+<p>The file <a href="https://github.com/aristanetworks/openmgmt/blob/main/src/pygnmi/delete.py">delete.py</a> uses the
+<a href="https://pypi.org/project/pygnmi/">pygnmi</a> python module and uses the gNMI SET RPC (delete)</p>
 <pre><code class="language-shell">python3 delete.py
 </code></pre>
 <p>output</p>
@@ -1746,10 +1767,10 @@ GET RPC, interface Ethernet1 config, after the update
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>

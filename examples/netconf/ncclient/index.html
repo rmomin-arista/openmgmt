@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/netconf/ncclient/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.be71726b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -629,13 +629,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xml-output-parsing" class="md-nav__link">
-    XML output parsing
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#rpc" class="md-nav__link">
     RPC
   </a>
@@ -953,13 +946,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xml-output-parsing" class="md-nav__link">
-    XML output parsing
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#rpc" class="md-nav__link">
     RPC
   </a>
@@ -1109,34 +1095,50 @@ True
 </code></pre>
 <h4 id="capabilities">Capabilities</h4>
 <ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_client_capabilities.py">print_client_capabilities.py</a> prints the NETCONF client capabilities.</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_server_capabilities.py">print_server_capabilities.py</a> prints the NETCONF server capabilities.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_client_capabilities.py">print_client_capabilities.py</a>
+  prints the NETCONF client capabilities.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/print_server_capabilities.py">print_server_capabilities.py</a>
+  prints the NETCONF server capabilities.</li>
 </ul>
 <h4 id="get-operation">get operation</h4>
 <ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get.py">get.py</a> uses the <code>get</code> operation to retrieve the configuration and state data. It uses a filter to specify the portion of the configuration and state data to retrieve.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get.py">get.py</a> uses the <code>get</code> operation to
+  retrieve the configuration and state data. It uses a filter to specify the portion of the configuration and state data
+  to retrieve.</li>
 </ul>
 <h4 id="get-config-operation">get-config operation</h4>
 <ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get_config.py">get_config.py</a> uses the <code>get-config</code> operation with a filter to retrieve part of the configuration.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/get_config.py">get_config.py</a> uses the <code>get-config</code>
+  operation with a filter to retrieve part of the configuration.</li>
 </ul>
 <h4 id="edit-config-operation">edit-config operation</h4>
 <ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_merge.py">edit_config_merge.py</a> uses the <code>edit-config</code> operation with the <code>merge</code> operation (which is the default operation for <code>edit-config</code>)</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_replace.py">edit_config_replace.py</a> uses the <code>edit-config</code> operation with the <code>replace</code> operation</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_delete.py">edit_config_delete.py</a>
-uses the <code>edit-config</code> operation with the <code>delete</code> operation</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/EOS_commands_with_NETCONF.py">EOS_commands_with_NETCONF.py</a> configures a device using the <code>edit-config</code> operation and EOS data model</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_commit.py">candidate_configuration_commit.py</a> uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>commit</code> operation.</li>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_discard_changes.py">candidate_configuration_discard_changes.py</a>. uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>discard_change</code> operation to revert the candidate configuration to the current running configuration (insteaf of commiting the candidate configuration).</li>
-</ul>
-<h4 id="xml-output-parsing">XML output parsing</h4>
-<ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/parse_xml_output.py">parse_xml_output.py</a> uses the <code>get</code> operation to retrieve data from the device and then parse this data.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_merge.py">edit_config_merge.py</a> uses
+  the <code>edit-config</code> operation with the <code>merge</code> operation (which is the default operation for <code>edit-config</code>)</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_replace.py">edit_config_replace.py</a>
+  uses the <code>edit-config</code> operation with the <code>replace</code> operation</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/edit_config_delete.py">edit_config_delete.py</a> uses
+  the <code>edit-config</code> operation with the <code>delete</code> operation</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/EOS_commands_with_NETCONF.py">EOS_commands_with_NETCONF.py</a>
+  configures a device using the <code>edit-config</code> operation and EOS data model</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_commit.py">candidate_configuration_commit.py</a>
+  uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and <code>commit</code>
+  operation.</li>
+<li>
+<p><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/candidate_configuration_discard_changes.py">candidate_configuration_discard_changes.py</a>.
+  uses the <code>edit-config</code> operation with the <code>candidate</code> configuration datastore. It uses a <code>lock</code> operation and
+  <code>discard_change</code> operation to revert the candidate configuration to the current running configuration (insteaf of
+  commiting the candidate configuration).  #### XML output parsing</p>
+</li>
+<li>
+<p><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/parse_xml_output.py">parse_xml_output.py</a> uses the
+  <code>get</code> operation to retrieve data from the device and then parse this data.</p>
+</li>
 </ul>
 <h4 id="rpc">RPC</h4>
 <ul>
-<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/rpc.py">rpc.py</a> sends RPCs to configure EOS devices.</li>
+<li><a href="https://github.com/aristanetworks/openmgmt/tree/main/src/ncclient/rpc.py">rpc.py</a> sends RPCs to configure EOS
+  devices.</li>
 </ul>
                 
                   
@@ -1210,10 +1212,10 @@ uses the <code>edit-config</code> operation with the <code>delete</code> operati
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56a63758.min.js"></script>
       
     
   </body>
