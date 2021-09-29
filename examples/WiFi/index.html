@@ -13,14 +13,14 @@
         <meta name="author" content="Arista Networks">
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/golang/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/WiFi/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
-        <title>golang - Open Management</title>
+        <title>WiFi - Open Management</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              golang
+              WiFi
             
           </span>
         </div>
@@ -536,54 +536,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Go Lang
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../golang/" class="md-nav__link">
         Go Lang
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#truncated-output" class="md-nav__link">
-    Truncated output
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -799,11 +756,102 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../WiFi/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          WiFi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         WiFi
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-ap" class="md-nav__link">
+    Get AP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-frequencies-bands-of-ssid" class="md-nav__link">
+    Get operating frequencies (bands) of SSID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ssid-configuration" class="md-nav__link">
+    Get SSID Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-clients-for-ssid" class="md-nav__link">
+    Get clients for SSID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-channel-of-radio" class="md-nav__link">
+    Get operating channel of radio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-eirp-of-radio" class="md-nav__link">
+    Get operating EIRP of radio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-operating-channel-of-radio" class="md-nav__link">
+    Set operating channel of radio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -920,12 +968,60 @@
     Overview
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#truncated-output" class="md-nav__link">
-    Truncated output
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-ap" class="md-nav__link">
+    Get AP
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-frequencies-bands-of-ssid" class="md-nav__link">
+    Get operating frequencies (bands) of SSID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-ssid-configuration" class="md-nav__link">
+    Get SSID Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-clients-for-ssid" class="md-nav__link">
+    Get clients for SSID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-channel-of-radio" class="md-nav__link">
+    Get operating channel of radio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-operating-eirp-of-radio" class="md-nav__link">
+    Get operating EIRP of radio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-operating-channel-of-radio" class="md-nav__link">
+    Set operating channel of radio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -941,83 +1037,336 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/golang/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/WiFi/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Go Lang</h1>
+                  <h1>WiFi</h1>
                 
                 <h2 id="overview">Overview</h2>
-<p>The following example uses the <a href="https://pkg.go.dev/github.com/aristanetworks/goarista">goarista</a> go module for gNMI to
-interact with a device.  Within this very simplistic getting started example main.go will simply perform a get method to
-the device for all paths.</p>
-<pre><code class="language-golang">package main
-
-import (
-  &quot;context&quot;
-  &quot;fmt&quot;
-
-  &quot;github.com/aristanetworks/glog&quot;
-  &quot;github.com/aristanetworks/goarista/gnmi&quot;
-  pb &quot;github.com/openconfig/gnmi/proto/gnmi&quot;
-)
-
-var cfg = &amp;gnmi.Config{
-    Addr:     &quot;10.20.30.67:6030&quot;,
-    Username: &quot;ansible&quot;,
-    Password: &quot;ansible&quot;,
-}
-
-func main() {
-    paths := []string{&quot;/&quot;}
-    var origin = &quot;openconfig&quot;
-    //var origin = &quot;eos_native&quot;
-    ctx := gnmi.NewContext(context.Background(), cfg)
-    client, err := gnmi.Dial(cfg)
-    if err != nil {
-        glog.Fatal(err)
-    }
-
-    req, err := gnmi.NewGetRequest(gnmi.SplitPaths(paths), origin)
-    if err != nil {
-        glog.Fatal(err)
-    }
-    if cfg.Addr != &quot;&quot; {
-        if req.Prefix == nil {
-            req.Prefix = &amp;pb.Path{}
-        }
-        req.Prefix.Target = cfg.Addr
-    }
-
-    err = gnmi.GetWithRequest(ctx, client, req)
-    if err != nil {
-        glog.Fatal(err)
-    }
-    fmt.Println(err)
-}
+<p>Arista APs include an agent module (ocagent) that implements the OpenConfig
+interfaces. The agent module interacts with the rest of the AP modules for
+applying changes, fetching data, etc. For mor information on OpenConfig
+implementation in Arista WiFi,
+see <a href="https://wifihelp.arista.com/post/
+openconfig-for-arista-wifi?term=openconfig&amp;page=1">OpenConfig for Arista WiFi.</a></p>
+<p>This page lists a few examples of the AP using gNMI. For more information on gNxI, refer to <a href="https://github.com/google/gnxi">gNxI Tools.</a></p>
+<h3 id="get-ap">Get AP</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt; -x /provision-aps -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com
 </code></pre>
-<p>Copy the above code into a file and run via the following command.</p>
-<pre><code class="language-shell">go run main.go
-</code></pre>
-<h2 id="truncated-output">Truncated output</h2>
+<details><summary>Reveal output</summary>
+<p>
+
+
 <pre><code class="language-javascript">{
-  &quot;openconfig-acl:acl&quot;: {
-    &quot;state&quot;: {
-      &quot;counter-capability&quot;: &quot;AGGREGATE_ONLY&quot;
+  &quot;openconfig-ap-manager:provision-ap&quot;: [
+    {
+      &quot;mac&quot;: &quot;30:86:2D:B0:0F:EF&quot;,
+      &quot;config&quot;: {
+        &quot;country-code&quot;: &quot;IN&quot;,
+        &quot;hostname&quot;: &quot;arista&quot;
+      },
+      &quot;state&quot;: {
+        &quot;country-code&quot;: &quot;IN&quot;,
+        &quot;hostname&quot;: &quot;arista&quot;
+      }
     }
-  },
-  &quot;arista-exp-eos:arista&quot;: {
-    &quot;eos&quot;: {
-      &quot;arista-exp-eos-igmpsnooping:bridging&quot;: {
-        &quot;igmpsnooping&quot;: {
-          &quot;config&quot;: {}
+  ]
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="get-operating-frequencies-bands-of-ssid">Get operating frequencies (bands) of SSID</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/ssids/ssid[name=&lt;ssid-name&gt;]/state/operating-frequency
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">FREQ_2_5_GHZ
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="get-ssid-configuration">Get SSID Configuration</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/ssids/ssid[name=&lt;ssid-name&gt;]/config
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  &quot;openconfig-access-points:dva&quot;: true,
+  &quot;openconfig-access-points:supported-data-rates-5g&quot;: [
+    &quot;openconfig-wifi-types:RATE_11MB&quot;,
+    &quot;openconfig-wifi-types:RATE_12MB&quot;,
+    &quot;openconfig-wifi-types:RATE_18MB&quot;,
+    &quot;openconfig-wifi-types:RATE_24MB&quot;,
+    &quot;openconfig-wifi-types:RATE_36MB&quot;,
+    &quot;openconfig-wifi-types:RATE_48MB&quot;,
+    &quot;openconfig-wifi-types:RATE_54MB&quot;
+  ],
+  &quot;openconfig-access-points:opmode&quot;: &quot;WPA2_PERSONAL&quot;,
+  &quot;openconfig-access-points:okc&quot;: true,
+  &quot;openconfig-access-points:supported-data-rates-2g&quot;: [
+    &quot;openconfig-wifi-types:RATE_11MB&quot;,
+    &quot;openconfig-wifi-types:RATE_12MB&quot;,
+    &quot;openconfig-wifi-types:RATE_18MB&quot;,
+    &quot;openconfig-wifi-types:RATE_24MB&quot;,
+    &quot;openconfig-wifi-types:RATE_36MB&quot;,
+    &quot;openconfig-wifi-types:RATE_48MB&quot;,
+    &quot;openconfig-wifi-types:RATE_54MB&quot;
+  ],
+  &quot;openconfig-access-points:name&quot;: &quot;OCWiFi1&quot;,
+  &quot;openconfig-access-points:basic-data-rates-2g&quot;: [
+    &quot;openconfig-wifi-types:RATE_11MB&quot;,
+    &quot;openconfig-wifi-types:RATE_12MB&quot;,
+    &quot;openconfig-wifi-types:RATE_18MB&quot;,
+    &quot;openconfig-wifi-types:RATE_24MB&quot;,
+    &quot;openconfig-wifi-types:RATE_36MB&quot;,
+    &quot;openconfig-wifi-types:RATE_48MB&quot;,
+    &quot;openconfig-wifi-types:RATE_54MB&quot;
+  ],
+  &quot;openconfig-access-points:wpa2-psk&quot;: &quot;0123456789&quot;,
+  &quot;openconfig-access-points:basic-data-rates-5g&quot;: [
+    &quot;openconfig-wifi-types:RATE_11MB&quot;,
+    &quot;openconfig-wifi-types:RATE_12MB&quot;,
+    &quot;openconfig-wifi-types:RATE_18MB&quot;,
+    &quot;openconfig-wifi-types:RATE_24MB&quot;,
+    &quot;openconfig-wifi-types:RATE_36MB&quot;,
+    &quot;openconfig-wifi-types:RATE_48MB&quot;,
+    &quot;openconfig-wifi-types:RATE_54MB&quot;
+  ]
+}
+
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="get-clients-for-ssid">Get clients for SSID</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/ssids/ssid[name=&lt;ssid-name&gt;]/clients
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  &quot;openconfig-access-points:client&quot;: [
+    {
+      &quot;mac&quot;: &quot;C2:2F:42:79:CB:BA&quot;,
+      &quot;client-rf&quot;: {
+        &quot;state&quot;: {
+          &quot;phy-rate&quot;: 0,
+          &quot;rssi&quot;: -52,
+          &quot;frequency&quot;: 0,
+          &quot;snr&quot;: 42,
+          &quot;ss&quot;: 0
         }
       },
-      &quot;arista-exp-eos-mlag:mlag&quot;: {
-        &quot;config&quot;: {
-          &quot;dual-primary-action&quot;: &quot;action-none&quot;,
+      &quot;state&quot;: {
+        &quot;mac&quot;: &quot;C2:2F:42:79:CB:BA&quot;,
+        &quot;counters&quot;: {
+          &quot;tx-bytes&quot;: &quot;34707&quot;,
+          &quot;tx-retries&quot;: &quot;0&quot;,
+          &quot;rx-bytes&quot;: &quot;19705&quot;,
+          &quot;rx-retries&quot;: &quot;18&quot;
+        }
+      },
+      &quot;client-connection&quot;: {
+        &quot;state&quot;: {
+          &quot;username&quot;: &quot;&quot;,
+          &quot;client-state&quot;: &quot;openconfig-wifi-types:AUTHENTICATED&quot;,
+          &quot;hostname&quot;: &quot;&quot;,
+          &quot;operating-system&quot;: &quot;&quot;,
+          &quot;ipv6-addresses&quot;: [
+            &quot;fe80::c02f:42ff:fe79:cbba&quot;
+          ],
+          &quot;ipv4-address&quot;: [
+            &quot;192.168.29.250&quot;
+          ],
+          &quot;connection-time&quot;: &quot;1628849487411018113&quot;
+        }
+      }
+    }
+  ]
+}
+
 </code></pre>
+
+
+</p>
+</details>
+
+<h3 id="get-operating-channel-of-radio">Get operating channel of radio</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/radios/radio[id=1][operating-frequency=FREQ_5GHZ]/state/channel
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  timestamp: 1628855017049472718
+  update {
+    path {
+      elem {
+        name: &quot;access-points&quot;
+      }
+      elem {
+        name: &quot;access-point&quot;
+        key {
+          key: &quot;hostname&quot;
+          value: &quot;arista&quot;
+        }
+      }
+      elem {
+        name: &quot;radios&quot;
+      }
+      elem {
+        name: &quot;radio&quot;
+        key {
+          key: &quot;id&quot;
+          value: &quot;1&quot;
+        }
+        key {
+          key: &quot;operating-frequency&quot;
+          value: &quot;FREQ_5GHZ&quot;
+        }
+      }
+      elem {
+        name: &quot;state&quot;
+      }
+      elem {
+        name: &quot;channel&quot;
+      }
+    }
+    val {
+      uint_val: 36
+    }
+  }
+}
+
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="get-operating-eirp-of-radio">Get operating EIRP of radio</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+get -t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/radios/radio[id=1][operating-frequency=FREQ_5GHZ]/state/transmit-eirp
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">{
+  timestamp: 1628855017049472718
+  update {
+    path {
+      elem {
+        name: &quot;access-points&quot;
+      }
+      elem {
+        name: &quot;access-point&quot;
+        key {
+          key: &quot;hostname&quot;
+          value: &quot;arista&quot;
+        }
+      }
+      elem {
+        name: &quot;radios&quot;
+      }
+      elem {
+        name: &quot;radio&quot;
+        key {
+          key: &quot;id&quot;
+          value: &quot;1&quot;
+        }
+        key {
+          key: &quot;operating-frequency&quot;
+          value: &quot;FREQ_5GHZ&quot;
+        }
+      }
+      elem {
+        name: &quot;state&quot;
+      }
+      elem {
+        name: &quot;transmit-eirp&quot;
+      }
+    }
+    val {
+      uint_val: 28
+    }
+  }
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<h3 id="set-operating-channel-of-radio">Set operating channel of radio</h3>
+<pre><code class="language-shell">python py_gnmicli.py -m
+set-replace-t &lt;AP-IP&gt;  -user &lt;username&gt; -pass &lt;password&gt; -p &lt;port&gt; -g -o openconfig.mojonetworks.com -x access-points/access-point[hostname=&lt;host&gt;]/radios/radio[id=1][operating-frequency=FREQ_5GHZ]/config/channel -val 169
+</code></pre>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-javascript">response {
+  path {
+    elem {
+      name: &quot;access-points&quot;
+    }
+    elem {
+      name: &quot;access-point&quot;
+      key {
+        key: &quot;hostname&quot;
+        value: &quot;arista&quot;
+      }
+    }
+    elem {
+      name: &quot;radios&quot;
+    }
+    elem {
+      name: &quot;radio&quot;
+      key {
+        key: &quot;id&quot;
+        value: &quot;1&quot;
+      }
+      key {
+        key: &quot;operating-frequency&quot;
+        value: &quot;FREQ_5GHZ&quot;
+      }
+    }
+    elem {
+      name: &quot;config&quot;
+    }
+    elem {
+      name: &quot;channel&quot;
+    }
+  }
+  op: REPLACE
+}
+
+</code></pre>
+
+
+</p>
+</details>
                 
                   
                 
@@ -1039,7 +1388,7 @@ func main() {
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../gnoi/grpcurl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gRPCurl" rel="prev">
+        <a href="../ygot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ygot" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1048,20 +1397,20 @@ func main() {
               <span class="md-footer__direction">
                 Previous
               </span>
-              gRPCurl
+              ygot
             </div>
           </div>
         </a>
       
       
         
-        <a href="../netconf/" class="md-footer__link md-footer__link--next" aria-label="Next: About NETCONF" rel="next">
+        <a href="../../telemetry/adapters/gnmireverse/" class="md-footer__link md-footer__link--next" aria-label="Next: gNMIReverse" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              About NETCONF
+              gNMIReverse
             </div>
           </div>
           <div class="md-footer__button md-icon">
