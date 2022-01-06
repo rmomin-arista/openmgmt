@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/configuration/openconfig/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.23b6d78a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -363,6 +363,13 @@
         <li class="md-nav__item">
   <a href="#enable-aft-mapping" class="md-nav__link">
     Enable AFT mapping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telemetry-timestamps" class="md-nav__link">
+    Telemetry Timestamps
   </a>
   
 </li>
@@ -1089,6 +1096,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#telemetry-timestamps" class="md-nav__link">
+    Telemetry Timestamps
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     Troubleshooting
   </a>
@@ -1208,19 +1222,18 @@ QoS DSCP:           none
 <p>Starting in EOS <code>4.24.0F</code> it is possible to configure the Smash paths that Octa has access to. Under the <code>management api
 models</code> mode, the provider smash sub-mode allows for enabling or disabling a Smash path with the <code>[no] path
 smash_path_here [disabled]</code> command.</p>
-<pre><code class="language-text">SW(config)#management api models
-SW(config-mgmt-api-models)#provider smash
-SW(config-provider-smash)#path forwarding/status
-SW(config-provider-smash)#path routing/status disabled
-SW(config-provider-smash)#path routing/isis/lsdb
-SW(config-provider-smash)#exit
+<pre><code class="language-text">management api models
+   provider smash
+      path forwarding/status
+      path routing/status disabled
+      path routing/isis/lsdb
 </code></pre>
 <p>Note that every time a new path is added the Octa agent has to be restarted.
 EOS CLI:</p>
-<pre><code class="language-text">(config)#management api gnmi
-(config-mgmt-api-gnmi)#transport grpc &lt;NAME&gt;
-(config-gnmi-transport-def)#shut
-(config-gnmi-transport-def)#no shut
+<pre><code class="language-text">management api gnmi
+   transport grpc &lt;NAME&gt;
+   shutdown
+   no shutdown
 </code></pre>
 <p>Bash:
 <code>$ sudo killall Octa</code></p>
@@ -1253,9 +1266,50 @@ to permit or deny the new tokens OpenConfig.Get and OpenConfig.Set.</p>
 disabled, as the volume of data can be large.</p>
 <p>Starting in EOS <code>4.25.1F</code> it is possible to enable these mappings, for IPV4, IPV6, or both, as described below:</p>
 <pre><code class="language-text">management api models
-    ipv4-unicast
-    ipv6-unicast
+   ipv4-unicast
+   ipv6-unicast
 </code></pre>
+<h2 id="telemetry-timestamps">Telemetry Timestamps</h2>
+<p>Per the GNMI specification, the default timestamp field of a notification message is set to be the time at which the
+value of the underlying data source changes or when the reported event takes place.  In order to facilitate integration
+in legacy environments oriented around polling style operations, an option to support overriding the timestamp field to
+the send-time is available. (as of 4.27.0F)</p>
+<p>Overriding the timestamp to <code>send-time</code> is applicable to all STREAM and POLL subscriptions.</p>
+<p>Configuration is outlined below.</p>
+<pre><code class="language-text">management api gnmi
+   transport grpc &lt;NAME&gt;
+      notification timestamp send-time
+</code></pre>
+<p>If there's a need to return to the standards-oriented operation, the following mechanisms can be used to reset the
+behavior.</p>
+<pre><code class="language-text">no notification timestamp send-time
+default notification timestamp
+notification timestamp last-change-time
+</code></pre>
+<details><summary>Validation</summary>
+<p>
+
+
+<pre><code class="language-text">#show management api gnmi
+Octa: enabled
+Set persistence: enabled
+
+Transport: default
+Enabled: yes
+Server: running on port 6030, in default VRF
+SSL profile: none
+QoS DSCP: none
+Authorization required: no
+Accounting requests: no
+Certificate username authentication: no
+Notification timestamp: send time
+Listen addresses: ::
+</code></pre>
+
+
+</p>
+</details>
+
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>The OpenConfig agent handles all transports described above: gNMI, RESTCONF, and
 NETCONF. The agent log file is present at <code>/var/log/agents/OpenConfig-{PID}</code>.
@@ -1350,10 +1404,10 @@ regular trace command. Here are a couple of examples:</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.c7dec7e7.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
     
     
-      <script src="../../assets/javascripts/bundle.da79ceb7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
       
     
   </body>
