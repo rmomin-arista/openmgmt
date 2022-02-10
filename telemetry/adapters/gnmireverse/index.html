@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/telemetry/adapters/gnmireverse/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d6be258b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -1176,7 +1176,7 @@ Authorization Required:No
 <pre><code>daemon gnmi_reverse_client_1
    exec /mnt/flash/client -username cvpadmin -password arista         \
    <span style="color: red;">  -target_addr=management/127.0.0.1:6030                           \
-     -collector_addr=management/10.85.129.115:6000</span>                    \
+     -collector_addr=management/198.51.100.115:6000</span>                    \
      -collector_tls=false                                             \
      -target_value=gb421                                              \
      -sample /system/processes/process[pid=*]/state@15s
@@ -1204,7 +1204,7 @@ Authorization Required:No
 <pre><code>daemon gnmi_reverse_client_1
    exec /mnt/flash/client -username cvpadmin -password arista \
    <span style="color: red;">  -target_addr=127.0.0.1:6030                              \
-     -collector_addr=10.85.129.115:6000</span> -collector_tls=false  \
+     -collector_addr=198.51.100.115:6000</span> -collector_tls=false  \
      -target_value=gb421 -sample /system/processes/process[pid=*]/state@15s
    no shutdown
 </code></pre>
@@ -1253,7 +1253,7 @@ Authorization Required:No
 </tbody>
 </table>
 <h2 id="running-the-gnmireverse-server">Running the gNMIReverse Server</h2>
-<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+<pre><code class="language-shell">$ ./server -tls=false -addr=198.51.100.115:6000
 
 [2020-12-28T10:52:17.990029143Z] (gb421) /system/processes/process[pid=1919]/state/cpu-usage-system = 89538
 [2020-12-28T10:52:27.990635976Z] (gb421) /system/processes/process[pid=1919]/state/cpu-usage-user = 312674
@@ -1280,7 +1280,7 @@ management api gnmi
 <pre><code>daemon gnmi_reverse_client_1
    exec /mnt/flash/client -username cvpadmin -password arista \
      -target_addr=management/127.0.0.1:6030                   \
-     -collector_addr=management/10.85.129.115:6000            \
+     -collector_addr=management/198.51.100.115:6000            \
      -collector_tls=false -target_value=gb421                 \
      -sample /system/processes/process[pid=*]/state@30s       \
      <span style="color: red;">-origin eos_native                                       \
@@ -1289,7 +1289,7 @@ management api gnmi
 </code></pre>
 
 <p>On the server side we can see the updates from the same subscription path:</p>
-<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+<pre><code class="language-shell">$ ./server -tls=false -addr=198.51.100.115:6000
 
 [2020-12-29T06:55:15.29120758Z] (gb421) /Kernel/proc/meminfo/memFree = 2482671616
 [2020-12-29T06:55:15.29121703Z] (gb421) /Kernel/proc/meminfo/memAvailable = 6465200128
@@ -1322,7 +1322,7 @@ management api models
 <pre><code>daemon gnmi_reverse_client_1
    exec /mnt/flash/client -username cvpadmin -password arista           \
      -target_addr=management/127.0.0.1:6030                             \
-     -collector_addr=management/10.85.129.115:6000                      \
+     -collector_addr=management/198.51.100.115:6000                      \
      -collector_tls=false -target_value=gb421                           \
      -sample /system/processes/process[pid=*]/state@30s                 \
      <span style="color: red;">-origin eos_native</span>                                                 \
@@ -1332,7 +1332,7 @@ management api models
 </code></pre>
 
 <p>On server side we can see updates as follows:</p>
-<pre><code class="language-shell">$ ./server -tls=false -addr=10.85.129.115:6000
+<pre><code class="language-shell">$ ./server -tls=false -addr=198.51.100.115:6000
 
 [2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/storage = 4294967240
 [2020-12-29T07:39:33.857345257Z] (gb421) /Smash/routing/status/route/1.1.1.1\/32/routeType = ebgp
@@ -1407,10 +1407,10 @@ management api models
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e3b2bf44.min.js"></script>
       
     
   </body>

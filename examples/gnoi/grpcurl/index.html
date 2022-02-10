@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnoi/grpcurl/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d6be258b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -1216,7 +1216,7 @@ grpcurl
 <pre><code class="language-shell">interface Management1
    description oob_management
    vrf MGMT
-   ip address 10.73.1.118/24
+   ip address 192.0.2.118/24
 
 username arista secret 0 arista
 
@@ -1231,10 +1231,10 @@ SSL Profile:        none
 QoS DSCP:           none
 DC1-L2LEAF2A#
 </code></pre>
-<p>Before to use gNOI ping and traceroute, lets run these commands locally:</p>
-<pre><code class="language-shell">$ ssh arista@10.73.1.118
+<p>Before to use gNOI ping and traceroute, let's run these commands locally:</p>
+<pre><code class="language-shell">$ ssh arista@192.0.2.118
 Password:
-Last login: Thu Jun  3 12:06:25 2021 from 10.73.1.3
+Last login: Thu Jun  3 12:06:25 2021 from 192.0.2.3
 DC1-L2LEAF2A&gt;en
 DC1-L2LEAF2A#bash
 
@@ -1257,7 +1257,7 @@ traceroute to 172.31.255.0 (172.31.255.0), 30 hops max, 60 byte packets
 [arista@DC1-L2LEAF2A ~]$ exit
 logout
 DC1-L2LEAF2A#exit
-Connection to 10.73.1.118 closed.
+Connection to 192.0.2.118 closed.
 </code></pre>
 <h2 id="use-grpcurl">Use gRPCurl</h2>
 <h3 id="describe-from-a-proto-file">Describe from a proto file</h3>
@@ -1355,7 +1355,7 @@ gnoi.os.OS.Install
 gnoi.os.OS.Verify
 </code></pre>
 <h4 id="list-from-a-grpc-server-eos-device">List from a gRPC server (EOS device)</h4>
-<pre><code class="language-shell">$ grpcurl --plaintext 10.73.1.105:6030 list
+<pre><code class="language-shell">$ grpcurl --plaintext 192.0.2.105:6030 list
 gnmi.gNMI
 gnoi.certificate.CertificateManagement
 gnoi.system.System
@@ -1365,7 +1365,7 @@ grpc.reflection.v1alpha.ServerReflection
 <pre><code class="language-shell">grpcurl -H 'username: arista'  -H 'password: arista' \
    -d '{&quot;destination&quot;: &quot;172.31.255.0&quot;, &quot;count&quot;: 2, &quot;do_not_resolve&quot;:true}' \
    -import-path ${GOPATH}/src -proto github.com/openconfig/gnoi/system/system.proto \
-   -plaintext 10.73.1.118:6030 gnoi.system.System/Ping
+   -plaintext 192.0.2.118:6030 gnoi.system.System/Ping
 </code></pre>
 <p>Output:</p>
 <pre><code class="language-shell">{
@@ -1396,7 +1396,7 @@ grpc.reflection.v1alpha.ServerReflection
 <pre><code class="language-shell">grpcurl -H 'username: arista'  -H 'password: arista' \
     -d '{&quot;destination&quot;: &quot;172.31.255.0&quot;, &quot;max_ttl&quot;: 50, &quot;do_not_resolve&quot;:true}' \
     -import-path ${GOPATH}/src -proto github.com/openconfig/gnoi/system/system.proto \
-    -plaintext 10.73.1.118:6030 gnoi.system.System/Traceroute
+    -plaintext 192.0.2.118:6030 gnoi.system.System/Traceroute
 </code></pre>
 <p>Output:</p>
 <pre><code class="language-shell">{
@@ -1501,10 +1501,10 @@ grpc.reflection.v1alpha.ServerReflection
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e3b2bf44.min.js"></script>
       
     
   </body>

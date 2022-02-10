@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/telemetry/adapters/ocprometheus/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d6be258b.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -1173,8 +1173,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#broken-paths-due-to-incorrect-regexp" class="md-nav__link">
-    Broken paths due to incorrect regexp
+  <a href="#broken-paths-due-to-incorrect-regex" class="md-nav__link">
+    Broken paths due to incorrect regex
   </a>
   
 </li>
@@ -1616,8 +1616,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#broken-paths-due-to-incorrect-regexp" class="md-nav__link">
-    Broken paths due to incorrect regexp
+  <a href="#broken-paths-due-to-incorrect-regex" class="md-nav__link">
+    Broken paths due to incorrect regex
   </a>
   
 </li>
@@ -1736,7 +1736,7 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'arista'
     static_configs:
-      - targets: ['10.83.13.139:8080']
+      - targets: ['192.0.2.139:8080']
 </code></pre>
 <p>Start the Prometheus Docker container with an external configuration file:</p>
 <pre><code class="language-shell">docker run -d \
@@ -1780,10 +1780,10 @@ CONTAINER ID        IMAGE COMMAND                  CREATED STATUS PORTS         
 &lt;ommited&gt;
   static_configs:
   - targets:
-    - 10.83.13.132:8080
-    - 10.83.13.139:8080
+    - 192.0.2.132:8080
+    - 192.0.2.139:8080
     - 10.83.12.109:8080
-    - 10.83.13.138:8080
+    - 192.0.2.138:8080
 &lt;ommited&gt;
 </code></pre>
 <p>Forum that explains this <a href="https://forums.docker.com/t/modify-a-file-which-mount-as-a-data-volume-but-it-didnt-change-in-container/2813/13">behavior</a>.</p>
@@ -1851,7 +1851,7 @@ you can use the <code>–recurse-submodules</code> flag while cloning which will
 <pre><code class="language-shell">GOOS=linux GOARCH=386 go build
 </code></pre>
 <p>3. Copy the binary with SCP to the switch</p>
-<pre><code class="language-shell">scp ocprometheus admin@10.83.13.139://mnt/flash
+<pre><code class="language-shell">scp ocprometheus admin@192.0.2.139://mnt/flash
 </code></pre>
 <p>Since EOS has a linux kernel, the OS has to be set to linux and the architecture to 32 bit (386) with GOOS and GOARCH
 variables respectively. Starting 4.22.0 we’ve introduced a 64-bit EOS () and you can also compile ocprometheus for
@@ -1879,7 +1879,6 @@ using the following steps:</p>
 <p>2. Copy the compiled <code>ocprometheus</code> and the <code>sampleconfig.yml</code> (in this example it was renamed to <code>ocprometheus.yml</code>)
 downloaded from github:</p>
 <pre><code class="language-shell">cp ~/git/goarista/cmd/ocprometheus/ocprometheus /backup/fpmbuild/
-
 cp ~/git/goarista/cmd/ocprometheus/sampleconfig_above_4.20.yml /backup/fpmbuild/ocprometheus.yml
 </code></pre>
 <p>3. Compile it with fpm:</p>
@@ -2088,13 +2087,13 @@ whichever port you decide to use to send data to the Prometheus server (defined 
 <pre><code class="language-shell">$ sudo netstat -tulnap | grep :8080
 
 tcp6       0 0 :::8080                 :::* LISTEN   17200/ocprometheus
-tcp6       0 0 172.28.160.232:8080     10.83.13.78:48956 ESTABLISHED 17200/ocprometheus
+tcp6       0 0 172.28.160.232:8080     192.0.2.78:48956 ESTABLISHED 17200/ocprometheus
 </code></pre>
 <p>Or in case of using a VRF:</p>
 <pre><code class="language-shell">$ sudo ip netns exec ns-management netstat -tulnap | grep :8080
 
 tcp6       0 0 :::8080                 :::* LISTEN   12344/ocprometheus
-tcp6       0 0 10.83.13.139:8080       10.83.13.78:40820 ESTABLISHED 12344/ocprometheus
+tcp6       0 0 192.0.2.139:8080       192.0.2.78:40820 ESTABLISHED 12344/ocprometheus
 </code></pre>
 <p>Don’t be confused if you see tcp6 in the output, that’s expected, as AF_INET6 works for both IPv4 and IPv6 as per RFC <a href="https://tools.ietf.org/html/rfc3493#section-3.7">3493</a>.</p>
 <blockquote>
@@ -2105,7 +2104,7 @@ where EOS-PDP.swi is used, and you’ll need to allow the Prometheus server IP u
 <h4 id="no-vrf-and-streaming-to-both-cvp-and-prometheus">No VRF and streaming to both CVP and Prometheus</h4>
 <pre><code class="language-shell">!
 daemon TerminAttr
-  exec /usr/bin/TerminAttr -ingestgrpcurl=10.83.13.33:9910 -cvcompression=gzip -taillogs -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa
+  exec /usr/bin/TerminAttr -ingestgrpcurl=192.0.2.33:9910 -cvcompression=gzip -taillogs -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa
   no shutdown
 !
 daemon ocprometheus
@@ -2127,7 +2126,7 @@ daemon ocprometheus
 <h4 id="vrf-management-and-streaming-to-both-cvp-and-prometheus">VRF management and streaming to both CVP and Prometheus</h4>
 <pre><code class="language-shell">!
 daemon TerminAttr
-  exec /usr/bin/TerminAttr -ingestgrpcurl=10.83.13.79:9910 -cvcompression=gzip -taillogs -ingestvrf=management -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa -grpcaddr management/0.0.0.0:6042
+  exec /usr/bin/TerminAttr -ingestgrpcurl=192.0.2.79:9910 -cvcompression=gzip -taillogs -ingestvrf=management -ingestauth=key,mysecretkey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -disableaaa -grpcaddr management/0.0.0.0:6042
   no shutdown
 !
 daemon ocprometheus
@@ -2160,7 +2159,7 @@ daemon ocprometheus
 <h3 id="pdp-vrf-and-only-prometheus">PDP: VRF and only Prometheus</h3>
 <pre><code class="language-shell">!
 daemon TerminAttr
-  exec /usr/bin/TerminAttr -disableaaa -grpcaddr management/0.0.0.0:6042 -allowed_ips=10.83.13.78/32
+  exec /usr/bin/TerminAttr -disableaaa -grpcaddr management/0.0.0.0:6042 -allowed_ips=192.0.2.78/32
   no shutdown
 !
 daemon ocprometheus
@@ -2385,7 +2384,8 @@ alerting:
     - targets:
       # - alertmanager:9093
 
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+# Load rules once and periodically evaluate them according to the
+# global 'evaluation_interval'.
 
 rule_files:
   # - &quot;first_rules.yml&quot;
@@ -2393,11 +2393,12 @@ rule_files:
     - &quot;kernel_rules.yml&quot;
 
 # A scrape configuration containing exactly one endpoint to scrape:
-
 # Here it's Prometheus itself.
 
 scrape_configs:
-  # The job name is added as a label `job=&lt;job_name&gt;` to any timeseries scraped from this config.
+  # The job name is added as a label `job=&lt;job_name&gt;` to any
+  # timeseries scraped from this config.
+
   - job_name: 'prometheus'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
@@ -2405,7 +2406,7 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: 'arista'
     static_configs:
-      - targets: ['10.83.13.140:8080','10.81.116.237:8080','10.81.117.21:8080','10.83.13.132:8080','10.83.13.139:8080','10.83.12.109:8080','10.83.13.138:8080']
+      - targets: ['192.0.2.140:8080','198.51.100.21:8080','192.0.2.132:8080','192.0.2.139:8080','192.0.2.138:8080']
 </code></pre>
 <h3 id="kernel_rulesyml-on-the-server">Kernel_rules.yml on the server</h3>
 <pre><code class="language-shell">groups:
@@ -2415,7 +2416,7 @@ scrape_configs:
       expr: kernelprocrss * on(pid) group_right kernelproc
 </code></pre>
 <blockquote>
-<p>Note that if you did not mount the kernel_rules.yml file when creating your docker container (as I did) you’ll need
+<p>Note, if you did not mount the kernel_rules.yml file when creating your docker container (as I did) you’ll need
 to copy the file over to your container with the following command</p>
 </blockquote>
 <pre><code class="language-shell">docker cp kernel_rules.yml eager_kapitsa:/etc/prometheus/
@@ -2437,9 +2438,11 @@ the metric path would look like below:</p>
 metrics:
      - name: intfCounter
        path: /interfaces/interface\[name=(?P&lt;intf&gt;[^\]]+)\]/state/counters/(?P&lt;countertype&gt;.+)
-OpenConfig and EOS native paths can be mixed when using OCTA and in that case the origin must be specified. Since the default origin is openconfig, the origin has to be only specified for EOS native paths under the subscriptions key, e.g.:
-
-subscriptions:
+</code></pre>
+<p>OpenConfig and EOS native paths can be mixed when using OCTA and in that case the origin must be specified. Since the
+default origin is openconfig, the origin has to be only specified for EOS native paths under the subscriptions key,
+e.g.:</p>
+<pre><code class="language-yaml">subscriptions:
    - /interfaces/interface
    - eos_native:/Kernel/proc
 </code></pre>
@@ -2468,9 +2471,13 @@ an openconfig model does not exist.</p>
       no shutdown
 </code></pre>
 <h3 id="cert-based-authentification-with-ocprometheus">Cert-based authentification with ocprometheus</h3>
-<p>1. Follow the steps mentioned in <a href="https://aristanetworks.github.io/openmgmt/configuration/mtls/">Certificate Authentification Configuration page</a>.</p>
-<p>2. Copy the client certificate and client key to the <code>/persist/secure/ssl</code> and <code>/persist/secure/keys</code> directory respectively.</p>
-<p>3. The EOS configuration should look like the following:</p>
+<ol>
+<li>Follow the steps mentioned in <a href="https://aristanetworks.github.io/openmgmt/configuration/mtls/">Certificate Authentification Configuration
+   page</a>.</li>
+<li>Copy the client certificate and client key to the <code>/persist/secure/ssl</code> and <code>/persist/secure/keys</code> directory
+   respectively.</li>
+<li>The EOS configuration should look like the following:</li>
+</ol>
 <pre><code class="language-shell">management api gnmi
    transport grpc def
       ssl profile test-arista
@@ -2508,7 +2515,7 @@ This means connectivity is not established between the switch and the Prometheus
 <p>Check TerminAttr version (After TerminAttr 1.5.1 we replaced the deprecated <code>gnmi.Value</code> with <code>gnmi.TypedValue</code>).
 This was only changed on our OpenConfig connectors (ockafka, ocprometheus, octsdb, ocredis, etc.) after March, 2019, thus
 older ocprometheus versions will ignore the updates.</p>
-<p>The version of ocprometheus hat uses TypedValue as well was pushed to <a href="https://github.com/aristanetworks/goarista/commit/22b2444f947b7d395b5c227cf0dd881d0100bdb1">github</a>
+<p>The version of ocprometheus that uses TypedValue as well was pushed to <a href="https://github.com/aristanetworks/goarista/commit/22b2444f947b7d395b5c227cf0dd881d0100bdb1">github</a>
 on March 19th. A newer commit was done
 in the beginning of June to deal with <a href="https://github.com/aristanetworks/goarista/commit/fef20d617fa7e1c7509e958fd3bd49cf4a4af5c0">coalesced deletes</a>,
 and it’s recommended to use the latest version.</p>
@@ -2530,7 +2537,7 @@ I0319 13:41:11.899668    5386 collector.go:77] Ignoring incompatible update valu
 I0319 13:41:11.899698    5386 collector.go:77] Ignoring incompatible update value in path:&lt;elem:&lt;name:&quot;delayacctBlkioTicks&quot; &gt; &gt; val:&lt;json_val:&quot;0&quot; &gt;
 </code></pre>
 <p>Make sure you’re running the latest ocprometheus and TerminAttr versions.</p>
-<h4 id="broken-paths-due-to-incorrect-regexp">Broken paths due to incorrect regexp</h4>
+<h4 id="broken-paths-due-to-incorrect-regex">Broken paths due to incorrect regex</h4>
 <p>Some of the subscription paths in the sample config file might not work on all type of devices.
 In case of broken paths, unfortunately we won’t stream anything, and you might encounter a similar error as below when
 checking the metrics URL (http://x.x.x.x:8080/metrics) of a modular device:</p>
@@ -2624,14 +2631,16 @@ ocprometheus configuration, you can add your desired Sysdb paths</p>
 <li>System info: <code>/Kernel/sysinfo</code></li>
 <li>Interface counters: <code>/Smash/counters/ethIntf/&lt;agent&gt;/current/counter</code></li>
 </ul>
-<p>For details about subscription paths and metric path structures please visit: https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming</p>
+<p>For details about subscription paths and metric path structures please visit: <a href="https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming">https://eos.arista.com/understanding-subscription-paths-for-open-source-telemetry-streaming</a></p>
 <h2 id="useful-links">Useful links</h2>
-<p><a href="https://prometheus.io/docs/prometheus/">https://prometheus.io/docs/prometheus/</a></p>
-<p><a href="https://grafana.com/docs/">https://grafana.com/docs/</a></p>
-<p><a href="http://docs.grafana.org/installation/docker/">http://docs.grafana.org/installation/docker/</a></p>
-<p><a href="https://grafana.com/dashboards">https://grafana.com/dashboards</a></p>
-<p><a href="https://fpm.readthedocs.io/en/latest/installing.html">https://fpm.readthedocs.io/en/latest/installing.html</a></p>
-<p><a href="https://regex101.com/">https://regex101.com/</a></p>
+<ul>
+<li><a href="https://prometheus.io/docs/prometheus/">https://prometheus.io/docs/prometheus/</a></li>
+<li><a href="https://grafana.com/docs/">https://grafana.com/docs/</a></li>
+<li><a href="http://docs.grafana.org/installation/docker/">http://docs.grafana.org/installation/docker/</a></li>
+<li><a href="https://grafana.com/dashboards">https://grafana.com/dashboards</a></li>
+<li><a href="https://fpm.readthedocs.io/en/latest/installing.html">https://fpm.readthedocs.io/en/latest/installing.html</a></li>
+<li><a href="https://regex101.com/">https://regex101.com/</a></li>
+</ul>
 
               
             </article>
@@ -2697,10 +2706,10 @@ ocprometheus configuration, you can add your desired Sysdb paths</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e3b2bf44.min.js"></script>
       
     
   </body>
