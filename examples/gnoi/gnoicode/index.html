@@ -12,21 +12,21 @@
         <meta name="author" content="Arista Networks">
       
       
-        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/restconf/">
+        <link rel="canonical" href="https://aristanetworks.github.io/openmgmt/examples/gnoi/gnoicode/">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>RESTCONF - Open Management</title>
+        <title>gNOI in Golang - Open Management</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.644de097.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.644de097.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -45,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#about-restconf" class="md-skip">
+        <a href="#gnoi-review" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../../.." title="Open Management" class="md-header__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RESTCONF
+              gNOI in Golang
             
           </span>
         </div>
@@ -191,7 +191,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
+    <a href="../../.." title="Open Management" class="md-nav__button md-logo" aria-label="Open Management" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -222,7 +222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -263,7 +263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/openconfig/" class="md-nav__link">
+      <a href="../../../configuration/openconfig/" class="md-nav__link">
         OpenConfig
       </a>
     </li>
@@ -277,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/netconf/" class="md-nav__link">
+      <a href="../../../configuration/netconf/" class="md-nav__link">
         NETCONF
       </a>
     </li>
@@ -291,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/restconf/" class="md-nav__link">
+      <a href="../../../configuration/restconf/" class="md-nav__link">
         RESTCONF
       </a>
     </li>
@@ -305,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/mtls/" class="md-nav__link">
+      <a href="../../../configuration/mtls/" class="md-nav__link">
         Certificate Authentication
       </a>
     </li>
@@ -319,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../configuration/security/" class="md-nav__link">
+      <a href="../../../configuration/security/" class="md-nav__link">
         Security Configuration
       </a>
     </li>
@@ -369,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible/" class="md-nav__link">
+      <a href="../../ansible/" class="md-nav__link">
         Ansible
       </a>
     </li>
@@ -409,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnmi-clients/arista-gnmi/" class="md-nav__link">
+      <a href="../../gnmi-clients/arista-gnmi/" class="md-nav__link">
         gnmi (Arista)
       </a>
     </li>
@@ -423,7 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnmi-clients/gnmic/" class="md-nav__link">
+      <a href="../../gnmi-clients/gnmic/" class="md-nav__link">
         gnmic
       </a>
     </li>
@@ -444,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnmi-gateway/" class="md-nav__link">
+      <a href="../../gnmi-gateway/" class="md-nav__link">
         gNMI gateway
       </a>
     </li>
@@ -456,12 +456,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
       
       
       
@@ -484,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnoi/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         About gNOI
       </a>
     </li>
@@ -498,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnoi/gnoic/" class="md-nav__link">
+      <a href="../gnoic/" class="md-nav__link">
         gNOIc
       </a>
     </li>
@@ -512,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gnoi/grpcurl/" class="md-nav__link">
+      <a href="../grpcurl/" class="md-nav__link">
         gRPCurl
       </a>
     </li>
@@ -524,11 +526,108 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../gnoi/gnoicode/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          gNOI in Golang
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         gNOI in Golang
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gnoi-review" class="md-nav__link">
+    gNOI review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-device-configuration" class="md-nav__link">
+    Test Device configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Device configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cd-into-srcgnoi" class="md-nav__link">
+    cd into src/gnoi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-pinggo" class="md-nav__link">
+    Run ping.go
+  </a>
+  
+    <nav class="md-nav" aria-label="Run ping.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srcgnoipinggo" class="md-nav__link">
+    src/gnoi/ping.go
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-traceroutego" class="md-nav__link">
+    Run traceroute.go
+  </a>
+  
+    <nav class="md-nav" aria-label="Run traceroute.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srcgnoitraceroutego" class="md-nav__link">
+    src/gnoi/traceroute.go
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -547,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../golang/" class="md-nav__link">
+      <a href="../../golang/" class="md-nav__link">
         Go Lang
       </a>
     </li>
@@ -587,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../netconf/" class="md-nav__link">
+      <a href="../../netconf/" class="md-nav__link">
         About NETCONF
       </a>
     </li>
@@ -601,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../netconf/ncclient/" class="md-nav__link">
+      <a href="../../netconf/ncclient/" class="md-nav__link">
         ncclient
       </a>
     </li>
@@ -615,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../netconf/netconf_over_ssh/" class="md-nav__link">
+      <a href="../../netconf/netconf_over_ssh/" class="md-nav__link">
         NETCONF over SSH
       </a>
     </li>
@@ -636,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pygnmi/" class="md-nav__link">
+      <a href="../../pygnmi/" class="md-nav__link">
         Pygnmi
       </a>
     </li>
@@ -650,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pyang/" class="md-nav__link">
+      <a href="../../pyang/" class="md-nav__link">
         Pyang
       </a>
     </li>
@@ -664,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pyangbind/" class="md-nav__link">
+      <a href="../../pyangbind/" class="md-nav__link">
         Pyangbind
       </a>
     </li>
@@ -676,14 +775,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
       
       
       
@@ -704,62 +801,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          About RESTCONF
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../restconf/" class="md-nav__link">
         About RESTCONF
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-restconf" class="md-nav__link">
-    About RESTCONF
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eos-configuration" class="md-nav__link">
-    EOS configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eos-control-plane-acl" class="md-nav__link">
-    EOS Control plane ACL
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -771,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="curl/" class="md-nav__link">
+      <a href="../../restconf/curl/" class="md-nav__link">
         cURL
       </a>
     </li>
@@ -785,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="python/" class="md-nav__link">
+      <a href="../../restconf/python/" class="md-nav__link">
         Python
       </a>
     </li>
@@ -806,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ygot/" class="md-nav__link">
+      <a href="../../ygot/" class="md-nav__link">
         ygot
       </a>
     </li>
@@ -820,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../WiFi/" class="md-nav__link">
+      <a href="../../WiFi/" class="md-nav__link">
         WiFi
       </a>
     </li>
@@ -868,7 +914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../telemetry/adapters/gnmireverse/" class="md-nav__link">
+      <a href="../../../telemetry/adapters/gnmireverse/" class="md-nav__link">
         gNMIReverse
       </a>
     </li>
@@ -882,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../telemetry/adapters/ocprometheus/" class="md-nav__link">
+      <a href="../../../telemetry/adapters/ocprometheus/" class="md-nav__link">
         ocprometheus
       </a>
     </li>
@@ -904,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../models/" class="md-nav__link">
+      <a href="../../../models/" class="md-nav__link">
         Models
       </a>
     </li>
@@ -919,7 +965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../videos/" class="md-nav__link">
+      <a href="../../../videos/" class="md-nav__link">
         Videos
       </a>
     </li>
@@ -951,23 +997,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-restconf" class="md-nav__link">
-    About RESTCONF
+  <a href="#gnoi-review" class="md-nav__link">
+    gNOI review
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#eos-configuration" class="md-nav__link">
-    EOS configuration
+  <a href="#test-device-configuration" class="md-nav__link">
+    Test Device configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Device configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cd-into-srcgnoi" class="md-nav__link">
+    cd into src/gnoi
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#eos-control-plane-acl" class="md-nav__link">
-    EOS Control plane ACL
+        
+          <li class="md-nav__item">
+  <a href="#run-pinggo" class="md-nav__link">
+    Run ping.go
   </a>
+  
+    <nav class="md-nav" aria-label="Run ping.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srcgnoipinggo" class="md-nav__link">
+    src/gnoi/ping.go
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-traceroutego" class="md-nav__link">
+    Run traceroute.go
+  </a>
+  
+    <nav class="md-nav" aria-label="Run traceroute.go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#srcgnoitraceroutego" class="md-nav__link">
+    src/gnoi/traceroute.go
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -983,31 +1075,208 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/restconf/index.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/aristanetworks/openmgmt/edit/master/docs/examples/gnoi/gnoicode.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-  <h1>About RESTCONF</h1>
+  <h1>gNOI in Golang</h1>
 
-<h2 id="about-restconf">About RESTCONF</h2>
-<p>RESTCONF is defined in the <a href="https://datatracker.ietf.org/doc/html/rfc8040">RFC 8040</a></p>
-<ul>
-<li>The GET method is sent by the client to retrieve data for a resource.</li>
-<li>The HEAD method is sent by the client to retrieve just the header fields (which contain the metadata for a resource)
-that would be returned for the comparable GET method, without the response message-body.
-It is supported for all resources that support the GET method.</li>
-<li>The POST method is sent by the client to create a data resource.</li>
-<li>The PUT method is sent by the client to create or replace the target data resource.</li>
-<li>The DELETE method is used to delete the target resource.</li>
-</ul>
-<h2 id="eos-configuration">EOS configuration</h2>
-<p>Please refer to <a href="../../configuration/restconf/">this link</a></p>
-<h2 id="eos-control-plane-acl">EOS Control plane ACL</h2>
-<p>The default RESTCONF port on Arista devices is TCP 6020.</p>
-<p>We need to change the default control-plane ACL on EOS in order to allow TCP 6020 (or the configured RESTCONF TCP port).</p>
-<p>Please refer to <a href="../../configuration/security/">this link</a></p>
+<h2 id="gnoi-review">gNOI review</h2>
+<p>These are a few examples leveraging golang and gNOI using the gNOI protobuf specifically the <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto">System
+service</a></p>
+<p>The following examples show how to leverage the <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto#L41">ping
+rpc</a> and <a href="https://github.com/openconfig/gnoi/blob/master/system/system.proto#L47">traceroute
+rpc</a></p>
+<p>All code can be found within the <a href="https://github.com/aristanetworks/openmgmt/tree/main/src/gnoi">src directory under
+gnoi</a></p>
+<p>We will be leveraging the gNOI <a href="(https://pkg.go.dev/github.com/openconfig/gnoi)">godocs</a> which module can be imported as
+github.com/openconfig/gnoi</p>
+<p>Each one of the examples has the following default flags which can be changed based on the environment.</p>
+<pre><code class="language-text">-username    = &quot;admin&quot;
+-password    = &quot;admin&quot;
+-target      = &quot;172.20.20.2:6030&quot;
+-destination = &quot;1.1.1.1&quot;
+</code></pre>
+<h2 id="test-device-configuration">Test Device configuration</h2>
+<pre><code class="language-text">management api gnmi
+   transport grpc default
+   provider eos-native
+</code></pre>
+<h3 id="cd-into-srcgnoi">cd into src/gnoi</h3>
+<pre><code class="language-text">cd src/gnoi
+</code></pre>
+<p>The directory should include the go.mod/go.sum for the correct packages so nothing needs installed on the system at the
+current time.</p>
+<pre><code class="language-text">ls
+go.mod  go.sum  pinggnoi.go  traceroutegnoi.go
+</code></pre>
+<h3 id="run-pinggo">Run ping.go</h3>
+<h4 id="srcgnoipinggo">src/gnoi/ping.go</h4>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-golang">package main
+
+import (
+    &quot;context&quot;
+    &quot;flag&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;time&quot;
+
+    log &quot;github.com/golang/glog&quot;
+    system &quot;github.com/openconfig/gnoi/system&quot;
+    &quot;google.golang.org/grpc&quot;
+    &quot;google.golang.org/grpc/metadata&quot;
+)
+
+func checkflags(flag ...string) {
+    for _, f := range flag {
+        if f == &quot;&quot; {
+            fmt.Printf(&quot;You have an empty flag please fix.&quot;)
+            os.Exit(1)
+        }
+    }
+}
+
+func main() {
+    // Add input parameters
+    username := flag.String(&quot;username&quot;, &quot;admin&quot;, &quot;username for connection to gNOI&quot;)
+    password := flag.String(&quot;password&quot;, &quot;admin&quot;, &quot;password for connection to gNOI&quot;)
+    target := flag.String(&quot;target&quot;, &quot;&quot;, &quot;Target ip or hostname of the device running gNOI&quot;)
+    destination := flag.String(&quot;destination&quot;, &quot;&quot;, &quot;Destination of the address to ping to&quot;)
+    flag.Parse()
+    // Check for empty flags.
+    checkflags(*username, *password, *target, *destination)
+
+    conn, err := grpc.Dial(*target, grpc.WithInsecure())
+    if err != nil {
+        log.Exitf(&quot;Failed to %s Error: %v&quot;, target, err)
+    }
+    defer conn.Close()
+
+    // Create the new grpc service connection
+    Sys := system.NewSystemClient(conn)
+    // pass in context blank information with the timeout.
+    ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+    // cancel when the function is over.
+    defer cancel()
+    // Since Metadata needs a map to pass into the header of gRPC request create a map for it.
+    metamap := make(map[string]string)
+    // Set the username and password
+    metamap[&quot;username&quot;] = *username
+    metamap[&quot;password&quot;] = *password
+    // Set the metadata needed in the metadata package
+    md := metadata.New(metamap)
+    // set the ctx to use the metadata in every update.
+    ctx = metadata.NewOutgoingContext(ctx, md)
+    // Try to ping 10 times with a loop
+    for i := 0; i &lt; 10; i++ {
+        response, err := Sys.Ping(ctx, &amp;system.PingRequest{Destination: *destination})
+        if err != nil {
+            log.Fatalf(&quot;Error trying to ping: %v&quot;, err)
+        }
+        fmt.Println(response.Recv())
+    }
+}
+</code></pre>
+
+
+</p>
+</details>
+
+<p>Output</p>
+<pre><code class="language-text">go run ping/ping.go -username admin -password admin -target 172.20.20.2:6030 -destination 2.2.2.2
+source:&quot;2.2.2.2&quot; time:38000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:44000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:37000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:41000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:40000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:38000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:40000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:36000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:44000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+source:&quot;2.2.2.2&quot; time:66000 bytes:64 sequence:1 ttl:64 &lt;nil&gt;
+</code></pre>
+<h3 id="run-traceroutego">Run traceroute.go</h3>
+<h4 id="srcgnoitraceroutego">src/gnoi/traceroute.go</h4>
+<details><summary>Reveal output</summary>
+<p>
+
+
+<pre><code class="language-golang">package main
+
+import (
+    &quot;context&quot;
+    &quot;flag&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;time&quot;
+
+    log &quot;github.com/golang/glog&quot;
+    system &quot;github.com/openconfig/gnoi/system&quot;
+    &quot;google.golang.org/grpc&quot;
+    &quot;google.golang.org/grpc/metadata&quot;
+)
+
+func checkflags(flag ...string) {
+    for _, f := range flag {
+        if f == &quot;&quot; {
+            fmt.Printf(&quot;You have an empty flag please fix.&quot;)
+            os.Exit(1)
+        }
+    }
+}
+
+func main() {
+    // Add input parameters
+    username := flag.String(&quot;username&quot;, &quot;&quot;, &quot;username for connection to gNOI&quot;)
+    password := flag.String(&quot;password&quot;, &quot;&quot;, &quot;password for connection to gNOI&quot;)
+    target := flag.String(&quot;target&quot;, &quot;&quot;, &quot;Target ip or hostname of the device running gNOI&quot;)
+    destination := flag.String(&quot;destination&quot;, &quot;&quot;, &quot;Destination of the address to traceroute to&quot;)
+    flag.Parse()
+    conn, err := grpc.Dial(*target, grpc.WithInsecure())
+    if err != nil {
+        log.Exitf(&quot;Failed to %s Error: %v&quot;, target, err)
+    }
+    defer conn.Close()
+    // Check for empty flags.
+    checkflags(*username, *password, *target, *destination)
+    // Create the new grpc service connection
+    Sys := system.NewSystemClient(conn)
+    // pass in context blank information with the timeout.
+    ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+    // cancel when the function is over.
+    defer cancel()
+    // Since Metadata needs a map to pass into the header of gRPC request create a map for it.
+    metamap := make(map[string]string)
+    // Set the username and password
+    metamap[&quot;username&quot;] = *username
+    metamap[&quot;password&quot;] = *password
+    // Set the metadata needed in the metadata package
+    md := metadata.New(metamap)
+    // set the ctx to use the metadata in every update.
+    ctx = metadata.NewOutgoingContext(ctx, md)
+
+    response, err := Sys.Traceroute(ctx, &amp;system.TracerouteRequest{Destination: *destination})
+    if err != nil {
+        log.Fatalf(&quot;Cannot trace path: %v&quot;, err)
+    }
+    fmt.Println(response.Recv())
+}
+</code></pre>
+
+
+</p>
+</details>
+<p><br></p>
+<p>Output</p>
+<pre><code class="language-text">go run traceroute/traceroute.go -username admin -password admin -target 172.20.20.2:6030 -destination 2.2.2.2
+destination_name:&quot;2.2.2.2&quot;  destination_address:&quot;2.2.2.2&quot;  hops:30  packet_size:60 &lt;nil&gt;
+</code></pre>
 
               
             </article>
@@ -1021,7 +1290,7 @@ It is supported for all resources that support the GET method.</li>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../pyangbind/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pyangbind" rel="prev">
+        <a href="../grpcurl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: gRPCurl" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1030,20 +1299,20 @@ It is supported for all resources that support the GET method.</li>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Pyangbind
+              gRPCurl
             </div>
           </div>
         </a>
       
       
         
-        <a href="curl/" class="md-footer__link md-footer__link--next" aria-label="Next: cURL" rel="next">
+        <a href="../../golang/" class="md-footer__link md-footer__link--next" aria-label="Next: Go Lang" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              cURL
+              Go Lang
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1073,10 +1342,10 @@ It is supported for all resources that support the GET method.</li>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c44cc438.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c44cc438.min.js"></script>
       
     
   </body>
