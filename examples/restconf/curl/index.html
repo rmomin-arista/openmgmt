@@ -1278,14 +1278,14 @@ an error similar to the following would be generated:</p>
 if are omitted the error message would be:
 <code>handler.go:95] ERROR failed to find key values after element "protocol" in "network-instances/network-instance=default/protocols/protocol</code></p>
 <p>Tip: <a href="../pyang/">pyang</a> can be useful to understand what keys each leaf requires, e.g:</p>
-<p>```shell
-pyang openconfig-network-instance.yang -f tree --tree-depth=4 | tail -n 4
-       |        ...
-       +--rw protocols
-          +--rw protocol* [identifier name]
-                ...
-</p>
 </blockquote>
+<pre><code class="language-shell">pyang openconfig-network-instance.yang -f tree --tree-depth=4 | tail -n 4
+
+   |        ...
+   +--rw protocols
+      +--rw protocol* [identifier name]
+            ...
+</code></pre>
 <h3 id="head">HEAD</h3>
 <pre><code class="language-shell">curl --head 'https://192.0.2.105:6020/restconf/data/openconfig-interfaces:interfaces/interface=Ethernet1' \
     --header 'Accept: application/yang-data+json' -u arista:arista  --insecure
